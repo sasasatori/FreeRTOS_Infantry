@@ -685,6 +685,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\ShootTask.c</FilePath>
             </File>
+            <File>
+              <FileName>IMU_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\IMU_Task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

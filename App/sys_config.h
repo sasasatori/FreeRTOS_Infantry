@@ -31,6 +31,10 @@
 #define JUDGE_HUART     huart2
 #define COMPUTER_HUART  huart6
 
+/*OS相关*/
+#define GIMBAL_PERIOD   1
+#define CHASSIS_PERIOD  10
+
 /*其他*/
 #define PI              3.142f
 

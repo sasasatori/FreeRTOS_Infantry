@@ -13,6 +13,9 @@
 #include "stm32f4xx_hal.h"
 #include "main.h"
 
+#include "ChassisTask.h"
+#include "GimbalTask.h"
+
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！協吶延楚！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 
