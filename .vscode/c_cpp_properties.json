@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "{$workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "{$workspaceFolder}/Inc",
+                "{$workspaceFolder}/Third_Party/FreeRTOS/Source/CMSIS_RTOS",
+                "{$workspaceFolder}/Third_Party/FreeRTOS/Source/include",
+                "{$workspaceFolder}/BSP",
+                "{$workspaceFolder}/APP"
+            ]
+        }
+    ],
+    "version": 4
+}
