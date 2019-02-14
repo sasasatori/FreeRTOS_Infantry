@@ -1,5 +1,5 @@
 infantry_project_yyy\remotemsgtask.o: ..\App\RemoteMsgTask.c
-infantry_project_yyy\remotemsgtask.o: ..\App\RemoteMsgTask.h
+infantry_project_yyy\remotemsgtask.o: ..\BSP\bsp_uart.h
 infantry_project_yyy\remotemsgtask.o: ../Inc/usart.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_project_yyy\remotemsgtask.o: ../Inc/stm32f4xx_hal_conf.h
@@ -37,6 +37,7 @@ infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\remotemsgtask.o: ..\App\RemoteMsgTask.h
 infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_project_yyy\remotemsgtask.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/CMSIS/Include/core_cmFunc.h

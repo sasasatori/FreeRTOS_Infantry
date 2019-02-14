@@ -27,7 +27,7 @@
 /*CAN相关*/
 
 /*UART相关*/
-#define DBUS_HUART       huart1
+#define DBUS_HUART      huart1
 #define JUDGE_HUART     huart2
 #define COMPUTER_HUART  huart6
 

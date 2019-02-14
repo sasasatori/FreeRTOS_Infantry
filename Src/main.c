@@ -57,6 +57,8 @@
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
+#include "bsp_uart.h"
+#include "bsp_uart.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -121,7 +123,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  RemoteMsg_Receive_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -229,19 +231,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  This function is executed in case of error occurrence.
+  * @brief  Error_Handler!一出错，就闪红灯，简单易行~
   * @param  file: The file name as string.
   * @param  line: The line in file as a number.
   * @retval None
   */
 void _Error_Handler(char *file, int line)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
   while(1)
   {
+    HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
+    HAL_Delay(100);
   }
-  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT

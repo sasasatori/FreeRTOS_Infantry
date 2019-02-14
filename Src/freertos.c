@@ -61,13 +61,14 @@
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
-osThreadId RemoteMsg_Receive_TaskHandle;
+osThreadId RemoteMsg_Receive_ModeSw_TaskHandle;
+//osThreadId 
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
-void RemoteMsg_Receive_TaskStart(void const * argument);
+void RemoteMsg_Receive_ModeSw_TaskStart(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -98,8 +99,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   //从这里开始创建各种任务
-  osThreadDef(RemoteMsg_Receive_Task,RemoteMsg_Receive_TaskStart,osPriorityAboveNormal,0,128);
-  RemoteMsg_Receive_TaskHandle = osThreadCreate(osThread(RemoteMsg_Receive_Task),NULL);
+  osThreadDef(RemoteMsg_Receive_ModeSw_Task,RemoteMsg_Receive_ModeSw_TaskStart,osPriorityAboveNormal,0,128);
+  RemoteMsg_Receive_ModeSw_TaskHandle = osThreadCreate(osThread(RemoteMsg_Receive_ModeSw_Task),NULL);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */

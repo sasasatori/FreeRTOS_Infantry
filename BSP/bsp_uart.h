@@ -18,6 +18,6 @@
 void Uart_Recieve_Handler(UART_HandleTypeDef *huart);
 void uart_rx_callback(UART_HandleTypeDef *huart);
 
-uint16_t dma_current_data_counter(DMA_Stream_TypeDef *dma_stream);
+void RemoteMsg_Receive_Init(void);
 
 #endif /*_BSP_UART_H_*/

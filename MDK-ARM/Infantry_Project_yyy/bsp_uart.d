@@ -1,6 +1,5 @@
 infantry_project_yyy\bsp_uart.o: ..\BSP\bsp_uart.c
 infantry_project_yyy\bsp_uart.o: ..\App\RemoteMsgTask.h
-infantry_project_yyy\bsp_uart.o: ../Inc/usart.h
 infantry_project_yyy\bsp_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_project_yyy\bsp_uart.o: ../Inc/stm32f4xx_hal_conf.h
 infantry_project_yyy\bsp_uart.o: ../Inc/main.h
@@ -37,6 +36,7 @@ infantry_project_yyy\bsp_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 infantry_project_yyy\bsp_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\bsp_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\bsp_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\bsp_uart.o: ../Inc/usart.h
 infantry_project_yyy\bsp_uart.o: ..\BSP\bsp_uart.h
 infantry_project_yyy\bsp_uart.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_project_yyy\bsp_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

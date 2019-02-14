@@ -19,7 +19,6 @@ infantry_project_yyy\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/incl
 infantry_project_yyy\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_project_yyy\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 infantry_project_yyy\freertos.o: ..\App\RemoteMsgTask.h
-infantry_project_yyy\freertos.o: ../Inc/usart.h
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_project_yyy\freertos.o: ../Inc/stm32f4xx_hal_conf.h
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -53,6 +52,7 @@ infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\freertos.o: ../Inc/usart.h
 infantry_project_yyy\freertos.o: ..\App\ChassisTask.h
 infantry_project_yyy\freertos.o: ..\App\GimbalTask.h
 infantry_project_yyy\freertos.o: ..\App\CanMsgTask.h
