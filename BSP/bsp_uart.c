@@ -57,9 +57,11 @@ static void uart_rx_callback(UART_HandleTypeDef *huart)
         HAL_UART_DMAStop(&huart1);
         rx_data_len = DBUS_MAX_LENTH - __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
         HAL_UART_Receive_DMA(&huart1, dbus_buff, DBUS_MAX_LENTH);  
-			  if(rx_data_len == DBUS_BUF_LENTH)
+        if(rx_data_len == DBUS_BUF_LENTH)
         {
             RemoteMsg_decode_handler(&remote_data,dbus_buff);
+            //以任务通知的方式来进行模式切换
+            Remote_Mode_Select(&remote_data);
         }
     }
 }

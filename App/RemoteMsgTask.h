@@ -5,6 +5,7 @@
 #include "usart.h"
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！潤更悶！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
+
 typedef __packed struct
 {
     __packed struct
@@ -67,6 +68,7 @@ extern remote_info_t    remote_data;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
-void RemoteMsg_decode_handler(remote_info_t *rc , uint8_t *buff);
+void RemoteMsg_decode_handler(remote_info_t *remote_data , uint8_t *buff);
+void Remote_Mode_Select(remote_info_t *remote_data);
 
 #endif /*_Remote_H_*/

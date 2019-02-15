@@ -1,4 +1,7 @@
 代码平台：RM开发板
+FreeRTOS: V9.00
+HAL库版本：1.13.0
+作者：Satori
 
 2019/2/13
 建立了App和Bsp两个文件夹，分别放RTOS的task和bsp层的东西，目前打算先把遥控器数据的解码做掉，然后把can的发送做掉，最后实现一下遥控器控电机
@@ -8,3 +11,35 @@
 发现一个坑的要死的地方......
 CUBEMX生成的功能引脚和板子上实际用的引脚不同的有好几个，就非常搞
 遥控接收完成，但是是裸机的，实际上本来DJI的代码也没有用这个，但是有一个比较有意思的，专门有个任务用来执行模式切换，我觉得我们也可以尝试一下这个
+
+2019/2/15
+用信号量弄了一下模式切换
+void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
+{
+    osEvent Event;
+    while(1)
+    {
+        Event = osSignalWait(RC_MODE_SIGNAL | KM_MODE_SIGNAL | ST_MODE_SIGNAL , osWaitForever);
+
+        //然后就是分一下模式咯
+        if(Event.status == osEventSignal)
+        {
+            if(Event.value.signals & RC_MODE_SIGNAL)
+            {
+                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,RESET);
+                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,SET);
+            }
+            if(Event.value.signals & KM_MODE_SIGNAL)
+            {
+                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,RESET);
+                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,SET);
+            }
+            if(Event.value.signals & ST_MODE_SIGNAL)
+            {
+                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,RESET);
+                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,RESET);
+            }
+        }
+    }
+}
+就是这样的一个弱智玩意，然后考虑

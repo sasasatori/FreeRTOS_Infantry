@@ -56,3 +56,4 @@ infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source
 infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 infantry_project_yyy\remotemsgtask.o: ..\App\ChassisTask.h
 infantry_project_yyy\remotemsgtask.o: ..\App\GimbalTask.h
+infantry_project_yyy\remotemsgtask.o: ..\App\sys_config.h
