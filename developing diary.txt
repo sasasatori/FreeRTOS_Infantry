@@ -42,4 +42,56 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
         }
     }
 }
-就是这样的一个弱智玩意，然后考虑
+就是这样的一个弱智玩意，感觉还是先设计一下整体的程序再去弄比较好，不然到时候写个乱七八糟的工程出来就太蠢了
+
+大概理了一下程序，后面在这个基础上去再加更改吧
+目前控制模式这样分：
+typedef enum
+{
+chassis_follow_gimbal_remote_control;
+chassis_follow_gimbal_keymouse_control;
+chassis_free_keymouse_control;
+chassis_sway;
+chassis_stop;
+}chassis_mode;
+
+typedef enum
+{
+gimbal_remote_control;
+gimbal_keymouse_control;
+gimbal_auto;
+gimbal_stop;
+}gimbal_mode; 
+
+typedef enum
+{
+shoot_auto;
+shoot_remote_control;
+shoot_keymouse_control;
+shoot_stop;
+}shoot_mode；
+
+其中，如果是遥控器控制模式，则是
+chassis_mode = CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL
+
+gimbal_mode = GIMBAL_REMOTE_CONTROL
+
+shoot_mode = SHOOT_REMOTE_CONTROL/SHOOT_STOP
+
+如果是停止模式，则是
+chassis_mode = CHASSIS_STOP
+
+gimabl_mode = GIMBAL_STOP
+
+shoot_mode = SHOOT_STOP
+
+如果是键盘控制模式，则是
+chassis_mode = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL/CHASSIS_FREE_KEYMOUSE_CONTROL/CHASSIS_SWAY/CHASSIS_STOP
+
+gimbal_mode = GIMBAL_KEYMOUSE_CONTROL/GIMBAL_AUTO/GIMBAL_STOP
+
+shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP
+
+2019/2/16
+
+
