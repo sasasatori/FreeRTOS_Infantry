@@ -36,3 +36,4 @@ infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\gimbaltask.o: ..\App\Motor.h

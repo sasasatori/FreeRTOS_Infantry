@@ -36,5 +36,4 @@ infantry_project_yyy\chassistask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4x
 infantry_project_yyy\chassistask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\chassistask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\chassistask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
-infantry_project_yyy\chassistask.o: ..\App\RemoteMsgTask.h
-infantry_project_yyy\chassistask.o: ../Inc/usart.h
+infantry_project_yyy\chassistask.o: ..\App\Motor.h

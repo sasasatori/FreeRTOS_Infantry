@@ -28,6 +28,7 @@
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÏµÍ³½»»¥ÉèÖÃ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
+
 /*CANÏà¹Ø*/
 
 /*UARTÏà¹Ø*/
@@ -47,17 +48,5 @@
 
 /*ÆäËû*/
 #define PI              3.142f
-
-#define VAL_LIMIT(val,min,max) \
-do { \
-if((val) <= (min))\
-{\
-    (val) = (min);\
-}\
-if((cval) >= (max))\
-{\
-    (val) = (max);\
-}\
-}while(0) \
 
 #endif /*_SYS_CONFIG_H_*/

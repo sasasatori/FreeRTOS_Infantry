@@ -11,8 +11,7 @@
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÒýÓÃ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
 #include "stm32f4xx_hal.h"
-
-/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª½á¹¹Ìå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+#include "Motor.h"
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªºê¶¨Òå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
@@ -22,11 +21,79 @@ typedef enum
     SHOOT_REMOTE_CONTROL            = 1,
     SHOOT_KEYMOUSE_CONTROL          = 2,
     SHOOT_STOP                      = 3,
-} shoot_mode;
+} shoot_mode_e;
+
+typedef enum
+{
+    BULLET_SPD_LOW                  = 0,
+    BULLET_SPD_MID                  = 1,
+    BULLET_SPD_HIG                  = 2,
+} bullet_spd_e;
+
+typedef enum
+{
+    TRIG_ONCE                       = 0,
+    TRIG_CONT                       = 1,
+    TRIG_STOP                       = 2,
+    TRIG_BLK                        = 3,
+} trig_mode_e;
+
+typedef enum
+{
+    WHEEL_STOP                      = 0,
+    WHEEL_RUN                       = 1,
+} wheel_status_e;
+
+typedef enum
+{
+    CLOCKWISE                       = 0,
+    ANTI_CLOCKWISE                  = 1,
+} trigger_dir_e;
+
+/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª½á¹¹Ìå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+
+//ËùÓÐÓë·¢Éä»ú¹¹ÓÐ¹ØµÄ²ÎÊý»áÔÚÕâ¸öÀïÃæ¸ø¶¨Òå£º
+//1.Éä»÷Ä£Ê½
+//2.Éä»÷µ²Î»
+//3.³ÖÐøÉä»÷Ê±¼ä
+//4.Ä¦²ÁÂÖ¿ªÆô/²»¿ª
+//5.Ä¦²ÁÂÖ×ªËÙ
+//6.Éä³öµÄ×Óµ¯Êý
+//7.Ê£ÓàµÄ×Óµ¯Êý
+
+typedef __packed struct
+{
+    shoot_mode_e       clrl_mode;
+    bullet_spd_e       shoot_gear;
+    uint32_t           continue_shoot_time;
+    wheel_status_e     fric_wheel_run;
+    uint16_t           fric_wheel_spd;
+    uint16_t           shoot_bullets;
+    uint16_t           remain_bullets;
+} shoot_t;
+
+//ËùÓÐÓë²¦µ¯»ú¹¹ÓÐ¹ØµÄ²ÎÊý»áÔÚÕâ¸öÀïÃæ¸ø¶¨Òå£º
+//ÓÉÓÚ²¦µ¯µç»úÒª×öË«»·¿ØÖÆ£¬ËùÒÔ»áÓÐÎ»ÖÃ+ËÙ¶È»·µÄÆÚÍûÔÚÀïÃæ
+//1.²¦µ¯Ä£Ê½
+//2.ËÙ¶È»·ÆÚÍû
+//3.Î»ÖÃ»·ÆÚÍû
+//4.·½Ïò
+//5.¹©µ¯ËÙ¶È
+
+typedef __packed struct
+{
+    trig_mode_e         trig_mode;
+    int32_t             spd_ref;
+    int32_t             pos_ref;
+    trigger_dir_e       dir;
+    int32_t             feed_bullet_spd;
+} trigger_t;
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª±äÁ¿¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªº¯Êý¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+
+void Shoot_TaskStart(void const * argument);
 
 #endif /*_SHOOT_H_*/

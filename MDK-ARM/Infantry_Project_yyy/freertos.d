@@ -54,6 +54,7 @@ infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_l
 infantry_project_yyy\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 infantry_project_yyy\freertos.o: ../Inc/usart.h
 infantry_project_yyy\freertos.o: ..\App\ChassisTask.h
+infantry_project_yyy\freertos.o: ..\App\Motor.h
 infantry_project_yyy\freertos.o: ..\App\GimbalTask.h
 infantry_project_yyy\freertos.o: ..\App\CanMsgTask.h
 infantry_project_yyy\freertos.o: ..\App\ShootTask.h

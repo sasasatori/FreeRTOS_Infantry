@@ -73,4 +73,8 @@ extern remote_info_t    remote_data;
 void RemoteMsg_decode_handler(remote_info_t *remote_data , uint8_t *buff);
 void Remote_Mode_Select(remote_info_t *remote_data);
 
+void Remote_Control_handler(void);
+void Keymouse_Control_handler(void);
+void Stop_handler(void);
+
 #endif /*_Remote_H_*/

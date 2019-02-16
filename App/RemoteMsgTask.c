@@ -44,20 +44,18 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
             if(Event.value.signals & RC_MODE_SIGNAL)
             {
                 //进入遥控器控制模式
-                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,RESET);
-                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,SET);
+                Remote_Control_handler();
+                
             }
             if(Event.value.signals & KM_MODE_SIGNAL)
             {
                 //进入键鼠控制模式
-                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,RESET);
-                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,SET);
+                Keymouse_Control_handler();
             }
             if(Event.value.signals & ST_MODE_SIGNAL)
             {
                 //进入停止模式
-                HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,RESET);
-                HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,RESET);
+                Stop_handler();
             }
         }
     }
@@ -147,3 +145,24 @@ void Remote_Mode_Select(remote_info_t *remote_data)
 
     mode_last = mode_now;
 };
+
+void Remote_Control_handler(void)
+{
+    //绿灯亮
+    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_SET);
+}
+
+void Keymouse_Control_handler(void)
+{
+    //红灯亮
+    HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_SET);
+}
+
+void Stop_handler(void)
+{
+    //红绿灯都亮
+    HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_RESET);
+}
