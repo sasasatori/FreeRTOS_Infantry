@@ -91,7 +91,38 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
+void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName);
 
+//检测任务栈溢出这件事倒确实都应该弄一下，只不过我现在可能还不会去弄这个
+__weak void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName)
+{
+   /* Run time stack overflow checking is performed if
+   configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2. This hook function is
+   called if a stack overflow is detected. */
+// #if 0
+//     if (xTask == chassis_task_t)
+//       stack_over_flow_warning = 1;
+//     else if (xTask == gimbal_task_t)
+//       stack_over_flow_warning = 2;
+//     else if (xTask == detect_task_t)
+//       stack_over_flow_warning = 3;
+//     else if (xTask == record_task_t)
+//       stack_over_flow_warning = 4;
+//     else if (xTask == imu_task_t)
+//       stack_over_flow_warning = 5;
+//     else if (xTask == freq_info_task_t)
+//       stack_over_flow_warning = 6;
+//     else if (xTask == mode_sw_task_t)
+//       stack_over_flow_warning = 7;
+//     else if (xTask == info_get_task_t)
+//       stack_over_flow_warning = 8;
+//     else
+//       stack_over_flow_warning = 9;
+// #endif
+//     while (1)
+//     {
+//     }
+}
 /* Init FreeRTOS */
 
 void MX_FREERTOS_Init(void) {
@@ -130,19 +161,19 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(RemoteMsg_Receive_ModeSw_Task,RemoteMsg_Receive_ModeSw_TaskStart,osPriorityAboveNormal,0,128);
   RemoteMsg_Receive_ModeSw_TaskHandle = osThreadCreate(osThread(RemoteMsg_Receive_ModeSw_Task),NULL);
   
-  osThreadDef(CANMsg_Send_Task,CanMsg_Send_TaskStart , osPriorityAboveNormal , 0 , 128);
-  CanMsg_Send_TaskHandle = osThreadCreate(osThread(CANMsg_Send_Task),NULL);
+//  osThreadDef(CANMsg_Send_Task,CanMsg_Send_TaskStart , osPriorityAboveNormal , 0 , 128);
+//  CanMsg_Send_TaskHandle = osThreadCreate(osThread(CANMsg_Send_Task),NULL);
   
-  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
-  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);
+//  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
+//  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);
 
-  osThreadDef(Shoot_Task, Shoot_TaskStart, osPriorityNormal , 0 , 128);
-  Shoot_TaskHandle = osThreadCreate(osThread(Shoot_Task),NULL);
+//  osThreadDef(Shoot_Task, Shoot_TaskStart, osPriorityNormal , 0 , 128);
+//  Shoot_TaskHandle = osThreadCreate(osThread(Shoot_Task),NULL);
   /* USER CODE END RTOS_THREADS */
 
   //两个定时器的启动其实还是放到ModeSw_Task下面比较好？
   //osTimerStart(Chassis_Timer_Id, CHASSIS_PERIOD);
-  //osTimerStart(Gimbal_Timer_Id, GIMBAL_PERIOD)
+  //osTimerStart(Gimbal_Timer_Id, GIMBAL_PERIOD);
 
   taskEXIT_CRITICAL();
   /* USER CODE BEGIN RTOS_QUEUES */

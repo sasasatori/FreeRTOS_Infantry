@@ -21,6 +21,8 @@
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！協吶延楚！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 extern osThreadId RemoteMsg_Receive_ModeSw_TaskHandle;
+extern osTimerId  Chassis_Timer_Id;
+extern osTimerId  Gimbal_Timer_Id;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！販暦痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
@@ -34,6 +36,11 @@ extern osThreadId RemoteMsg_Receive_ModeSw_TaskHandle;
 void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
 {
     osEvent Event;
+    
+    //尼強曾倖罷周協扮匂��貫緩蝕兵協扮峇佩堝岬販暦才久徒販暦
+    osTimerStart(Chassis_Timer_Id, CHASSIS_PERIOD);
+    osTimerStart(Gimbal_Timer_Id, GIMBAL_PERIOD);
+
     while(1)
     {
         Event = osSignalWait(RC_MODE_SIGNAL | KM_MODE_SIGNAL | ST_MODE_SIGNAL , osWaitForever);

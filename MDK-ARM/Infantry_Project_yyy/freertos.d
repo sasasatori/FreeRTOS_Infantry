@@ -57,6 +57,8 @@ infantry_project_yyy\freertos.o: ..\App\ChassisTask.h
 infantry_project_yyy\freertos.o: ..\App\Motor.h
 infantry_project_yyy\freertos.o: ..\App\GimbalTask.h
 infantry_project_yyy\freertos.o: ..\App\CanMsgTask.h
+infantry_project_yyy\freertos.o: ..\BSP\bsp_can.h
+infantry_project_yyy\freertos.o: ../Inc/can.h
 infantry_project_yyy\freertos.o: ..\App\ShootTask.h
 infantry_project_yyy\freertos.o: ..\App\IMU_Task.h
 infantry_project_yyy\freertos.o: ..\App\sys_config.h

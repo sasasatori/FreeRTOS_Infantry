@@ -94,6 +94,6 @@ typedef __packed struct
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
-void Shoot_TaskStart(void const * argument);
+// void Shoot_TaskStart(void const * argument);
 
 #endif /*_SHOOT_H_*/

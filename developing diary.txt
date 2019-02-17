@@ -48,27 +48,27 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
 目前控制模式这样分：
 typedef enum
 {
-chassis_follow_gimbal_remote_control;
-chassis_follow_gimbal_keymouse_control;
-chassis_free_keymouse_control;
-chassis_sway;
-chassis_stop;
+chassis_follow_gimbal_remote_control，
+chassis_follow_gimbal_keymouse_control，
+chassis_free_keymouse_control，
+chassis_sway，
+chassis_stop，
 }chassis_mode;
 
 typedef enum
 {
-gimbal_remote_control;
-gimbal_keymouse_control;
-gimbal_auto;
-gimbal_stop;
+gimbal_remote_control，
+gimbal_keymouse_control，
+gimbal_auto，
+gimbal_stop，
 }gimbal_mode; 
 
 typedef enum
 {
-shoot_auto;
-shoot_remote_control;
-shoot_keymouse_control;
-shoot_stop;
+shoot_auto，
+shoot_remote_control，
+shoot_keymouse_control，
+shoot_stop，
 }shoot_mode；
 
 其中，如果是遥控器控制模式，则是
@@ -93,5 +93,47 @@ gimbal_mode = GIMBAL_KEYMOUSE_CONTROL/GIMBAL_AUTO/GIMBAL_STOP
 shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP
 
 2019/2/16
-
-
+代码的整体框架基本上搭建完毕，程序整体流程图也画了一部分，下面就是各个任务的具体实现上了，明天应该能够把底盘的task给完成掉
+回头估计要建一个bsp_can来做can通信的相关参数
+static void chassis_twist_handler(void)
+{
+  twist_count++;
+  
+  if (twist_side > 0)
+  {
+    if (gim.sensor.yaw_relative_angle >= 2*twist_angle)
+    {
+      twist_count = 0;
+      twist_sign  = -1;
+    }
+    
+    if(gim.sensor.yaw_relative_angle <= 0)
+    {
+      twist_count = 0;
+      twist_sign  = 1;
+    }
+    
+  }
+  else
+  {
+    if (gim.sensor.yaw_relative_angle >= 0)
+    {
+      twist_count = 0;
+      twist_sign  = -1;
+    }
+    
+    if(gim.sensor.yaw_relative_angle <= -2*twist_angle)
+    {
+      twist_count = 0;
+      twist_sign  = 1;
+    }
+    
+  }
+  chassis.position_ref = -twist_sign*twist_angle*cos(2*PI/twist_period*twist_count) + twist_side*twist_angle;
+  
+  chassis.vw = -pid_calc(&pid_chassis_angle, gim.sensor.yaw_relative_angle, chassis.position_ref);
+  
+}
+ICRA的车的chassis_twist_handler
+然后刚才跑了一下程序发现及其快乐的事情，软件定时器没开启成功，最后出来的结果是osError，非常的愤怒不知道到底是个什么鬼
+然后看了一下是因为在FreeRTOSConfig.h下面的配置就不对，这就是一个非常有趣的坑了，我敲了这么久代码甚至都没有想到先去把FreeRTOSConfig.h先给修改一下，绝了

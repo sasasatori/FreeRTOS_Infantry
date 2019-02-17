@@ -2,15 +2,15 @@
 *@file      bsp_uart.h
 *@date      2019/2/14
 *@author    Satori
-*@brief     bsp_uartµÄÍ·ÎÄ¼þ£¨·Ï»°£©
+*@brief     bsp_canµÄÍ·ÎÄ¼þ£¨·Ï»°£©
 */
 
-#ifndef _BSP_UART_H_
-#define _BSP_UART_H_
+#ifndef _BSP_CAN_H_
+#define _BSP_CAN_H_
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÒýÓÃ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
-#include "usart.h"
+#include "can.h"
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª½á¹¹Ìå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
@@ -18,9 +18,4 @@
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªº¯Êý¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
-void Uart_Recieve_Handler(UART_HandleTypeDef *huart);
-void uart_rx_callback(UART_HandleTypeDef *huart);
-
-void RemoteMsg_Receive_Init(void);
-
-#endif /*_BSP_UART_H_*/
+#endif /*BSP_CAN_H_*/

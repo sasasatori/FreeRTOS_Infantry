@@ -7,10 +7,10 @@
 
 #include "IMU_Task.h"
 
-void IMU_TaskStart(void const * argument)
-{
-    while(1)
-    {
-        ;
-    }
-}
+// void IMU_TaskStart(void const * argument)
+// {
+//     while(1)
+//     {
+//         ;
+//     }
+// }

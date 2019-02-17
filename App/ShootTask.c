@@ -7,10 +7,10 @@
 
 #include "ShootTask.h"
 
-void Shoot_TaskStart(void const * argument)
-{
-    while(1)
-    {
-        ;
-    }
-}
+// void Shoot_TaskStart(void const * argument)
+// {
+//     while(1)
+//     {
+//         ;
+//     }
+// }

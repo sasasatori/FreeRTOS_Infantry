@@ -761,7 +761,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -777,7 +777,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -791,7 +791,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -806,7 +806,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -825,7 +825,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5BE1A33F)
 I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5BE1A33F)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -843,7 +843,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -856,7 +856,7 @@ F (../Middlewares/Third_Party/FreeRTOS/Source/croutine.c)(0x5BE1A345)(--c99 -c -
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -872,7 +872,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -887,7 +887,7 @@ F (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c)(0x5
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -1016,7 +1016,7 @@ I (../Inc/stm32f4xx_it.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
@@ -1028,7 +1028,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5BE1A345)
-I (..\BSP\bsp_uart.h)(0x5C650856)
+I (..\BSP\bsp_uart.h)(0x5C6916F7)
 I (../Inc/usart.h)(0x5C65195E)
 F (../Src/usbd_conf.c)(0x5C63FF16)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\usbd_conf.o --omf_browse infantry_project_yyy\usbd_conf.crf --depend infantry_project_yyy\usbd_conf.d)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5BE1A328)
@@ -1073,11 +1073,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5BE1A344)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5BE1A344)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5BE1A344)
-F (../Src/freertos.c)(0x5C669E82)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\freertos.o --omf_browse infantry_project_yyy\freertos.crf --depend infantry_project_yyy\freertos.d)
+F (../Src/freertos.c)(0x5C692DAE)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\freertos.o --omf_browse infantry_project_yyy\freertos.crf --depend infantry_project_yyy\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
@@ -1126,12 +1126,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (../Inc/usart.h)(0x5C65195E)
-I (..\App\ChassisTask.h)(0x5C67CDC2)
+I (..\App\ChassisTask.h)(0x5C6918D8)
 I (..\App\Motor.h)(0x5C682E17)
 I (..\App\GimbalTask.h)(0x5C682E3F)
-I (..\App\CanMsgTask.h)(0x5C67600D)
-I (..\App\ShootTask.h)(0x5C67CE90)
-I (..\App\IMU_Task.h)(0x5C657608)
+I (..\App\CanMsgTask.h)(0x5C692D73)
+I (..\BSP\bsp_can.h)(0x5C6916BA)
+I (../Inc/can.h)(0x5C63FF13)
+I (..\App\ShootTask.h)(0x5C692DCA)
+I (..\App\IMU_Task.h)(0x5C692DEA)
 I (..\App\sys_config.h)(0x5C67CCF0)
 F (../Src/stm32f4xx_hal_msp.c)(0x5C63FF17)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\stm32f4xx_hal_msp.o --omf_browse infantry_project_yyy\stm32f4xx_hal_msp.crf --depend infantry_project_yyy\stm32f4xx_hal_msp.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
@@ -1206,7 +1208,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
-F (../Src/main.c)(0x5C655B25)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\main.o --omf_browse infantry_project_yyy\main.crf --depend infantry_project_yyy\main.d)
+F (../Src/main.c)(0x5C694131)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\main.o --omf_browse infantry_project_yyy\main.crf --depend infantry_project_yyy\main.d)
 I (../Inc/main.h)(0x5C63FF17)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
@@ -1245,7 +1247,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
@@ -1268,7 +1270,7 @@ I (../Inc/usbd_conf.h)(0x5C63FF16)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (../Inc/gpio.h)(0x5C63FF12)
-I (..\BSP\bsp_uart.h)(0x5C650856)
+I (..\BSP\bsp_uart.h)(0x5C6916F7)
 F (../Src/usbd_cdc_if.c)(0x5C63FF16)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\usbd_cdc_if.o --omf_browse infantry_project_yyy\usbd_cdc_if.crf --depend infantry_project_yyy\usbd_cdc_if.d)
 I (../Inc/usbd_cdc_if.h)(0x5C63FF16)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5BE1A344)
@@ -1724,10 +1726,47 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5BE1A344)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5BE1A344)
 I (../Inc/usbd_desc.h)(0x5C63FF16)
-F (..\App\CanMsgTask.c)(0x5C657409)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\canmsgtask.o --omf_browse infantry_project_yyy\canmsgtask.crf --depend infantry_project_yyy\canmsgtask.d)
-I (..\App\CanMsgTask.h)(0x5C67600D)
-F (..\App\ChassisTask.c)(0x5C656CF6)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\chassistask.o --omf_browse infantry_project_yyy\chassistask.crf --depend infantry_project_yyy\chassistask.d)
-I (..\App\ChassisTask.h)(0x5C67CDC2)
+F (..\App\CanMsgTask.c)(0x5C692D8C)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\canmsgtask.o --omf_browse infantry_project_yyy\canmsgtask.crf --depend infantry_project_yyy\canmsgtask.d)
+I (..\App\CanMsgTask.h)(0x5C692D73)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
+I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
+I (../Inc/main.h)(0x5C63FF17)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5BE1A328)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h)(0x5BE1A328)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x5BE1A33F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/core_cmSimd.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x5BE1A328)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5BE1A33F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
+I (..\BSP\bsp_can.h)(0x5C6916BA)
+I (../Inc/can.h)(0x5C63FF13)
+F (..\App\ChassisTask.c)(0x5C6940F7)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\chassistask.o --omf_browse infantry_project_yyy\chassistask.crf --depend infantry_project_yyy\chassistask.d)
+I (..\App\ChassisTask.h)(0x5C6918D8)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
 I (../Inc/main.h)(0x5C63FF17)
@@ -1764,7 +1803,23 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (..\App\Motor.h)(0x5C682E17)
-F (..\App\GimbalTask.c)(0x5C676A31)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\gimbaltask.o --omf_browse infantry_project_yyy\gimbaltask.crf --depend infantry_project_yyy\gimbaltask.d)
+I (..\App\sys_config.h)(0x5C67CCF0)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5BE1A345)
+F (..\App\GimbalTask.c)(0x5C694111)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\gimbaltask.o --omf_browse infantry_project_yyy\gimbaltask.crf --depend infantry_project_yyy\gimbaltask.d)
 I (..\App\GimbalTask.h)(0x5C682E3F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
@@ -1802,8 +1857,24 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (..\App\Motor.h)(0x5C682E17)
-F (..\App\RemoteMsgTask.c)(0x5C67832A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\remotemsgtask.o --omf_browse infantry_project_yyy\remotemsgtask.crf --depend infantry_project_yyy\remotemsgtask.d)
-I (..\BSP\bsp_uart.h)(0x5C650856)
+I (..\App\sys_config.h)(0x5C67CCF0)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5BE1A345)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5BE1A346)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5BE1A345)
+F (..\App\RemoteMsgTask.c)(0x5C691355)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\remotemsgtask.o --omf_browse infantry_project_yyy\remotemsgtask.crf --depend infantry_project_yyy\remotemsgtask.d)
+I (..\BSP\bsp_uart.h)(0x5C6916F7)
 I (../Inc/usart.h)(0x5C65195E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
@@ -1844,7 +1915,7 @@ I (..\App\RemoteMsgTask.h)(0x5C67C91E)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
@@ -1856,12 +1927,12 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5BE1A345)
-I (..\App\ChassisTask.h)(0x5C67CDC2)
+I (..\App\ChassisTask.h)(0x5C6918D8)
 I (..\App\Motor.h)(0x5C682E17)
 I (..\App\GimbalTask.h)(0x5C682E3F)
 I (..\App\sys_config.h)(0x5C67CCF0)
-F (..\App\ShootTask.c)(0x5C675FED)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\shoottask.o --omf_browse infantry_project_yyy\shoottask.crf --depend infantry_project_yyy\shoottask.d)
-I (..\App\ShootTask.h)(0x5C67CE90)
+F (..\App\ShootTask.c)(0x5C692DBD)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\shoottask.o --omf_browse infantry_project_yyy\shoottask.crf --depend infantry_project_yyy\shoottask.d)
+I (..\App\ShootTask.h)(0x5C692DCA)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
 I (../Inc/main.h)(0x5C63FF17)
@@ -1898,8 +1969,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (..\App\Motor.h)(0x5C682E17)
-F (..\App\IMU_Task.c)(0x5C6574DF)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\imu_task.o --omf_browse infantry_project_yyy\imu_task.crf --depend infantry_project_yyy\imu_task.d)
-I (..\App\IMU_Task.h)(0x5C657608)
+F (..\App\IMU_Task.c)(0x5C692DDA)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\imu_task.o --omf_browse infantry_project_yyy\imu_task.crf --depend infantry_project_yyy\imu_task.d)
+I (..\App\IMU_Task.h)(0x5C692DEA)
 F (..\BSP\bsp_uart.c)(0x5C658753)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\bsp_uart.o --omf_browse infantry_project_yyy\bsp_uart.crf --depend infantry_project_yyy\bsp_uart.d)
 I (..\App\RemoteMsgTask.h)(0x5C67C91E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
@@ -1938,11 +2009,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
 I (../Inc/usart.h)(0x5C65195E)
-I (..\BSP\bsp_uart.h)(0x5C650856)
+I (..\BSP\bsp_uart.h)(0x5C6916F7)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5BE1A345)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5BE1A345)
-I (../Inc/FreeRTOSConfig.h)(0x5C63FF15)
+I (../Inc/FreeRTOSConfig.h)(0x5C692BA6)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5BE1A345)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5BE1A345)
@@ -1955,3 +2026,41 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5BE1A346)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5BE1A345)
 I (..\App\sys_config.h)(0x5C67CCF0)
+F (..\BSP\bsp_can.c)(0x5C6913A8)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/CMSIS/Include -I ..\App -I ..\BSP-I.\RTE\_Infantry_Project_yyy-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx-o infantry_project_yyy\bsp_can.o --omf_browse infantry_project_yyy\bsp_can.crf --depend infantry_project_yyy\bsp_can.d)
+I (..\BSP\bsp_can.h)(0x5C6916BA)
+I (../Inc/can.h)(0x5C63FF13)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5BE1A33F)
+I (../Inc/stm32f4xx_hal_conf.h)(0x5C63FF17)
+I (../Inc/main.h)(0x5C63FF17)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5BE1A328)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h)(0x5BE1A328)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x5BE1A33F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Include/core_cmSimd.h)(0x5BE1A33F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x5BE1A328)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5BE1A33F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x5BE1A33F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5BE1A340)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h)(0x5BE1A340)
