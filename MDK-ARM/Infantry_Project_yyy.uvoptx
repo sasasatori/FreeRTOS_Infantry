@@ -120,7 +120,9 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>???魐??</Name>
+          <Name> 逅
+?魐 逅
+</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -163,39 +165,41 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
+          <ItemText>\\Infantry_Project_yyy\../Src/can.c\hcan1</ItemText>
+        </Ww>
+      </WatchWindow1>
+      <WatchWindow2>
+        <Ww>
+          <count>0</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>chassis_time_last,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>2</WinNumber>
           <ItemText>chassis_time_ms,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>chassis_time_last,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
+          <WinNumber>2</WinNumber>
           <ItemText>gimbal_time_last,0x0A</ItemText>
         </Ww>
         <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
+          <count>3</count>
+          <WinNumber>2</WinNumber>
           <ItemText>gimbal_time_ms,0x0A</ItemText>
         </Ww>
         <Ww>
+          <count>4</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>can_send_time_last,0x0A</ItemText>
+        </Ww>
+        <Ww>
           <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\Infantry_Project_yyy\../App/CanMsgTask.c\can_send_time_last,0x0A</ItemText>
+          <WinNumber>2</WinNumber>
+          <ItemText>can_send_time_ms,0x0A</ItemText>
         </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\Infantry_Project_yyy\../App/CanMsgTask.c\can_send_time_ms,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\Infantry_Project_yyy\../Src/can.c\hcan1</ItemText>
-        </Ww>
-      </WatchWindow1>
+      </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

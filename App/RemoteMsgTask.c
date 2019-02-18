@@ -16,6 +16,7 @@
 
 #include "ChassisTask.h"
 #include "GimbalTask.h"
+#include "ShootTask.h"
 
 #include "sys_config.h"
 
@@ -24,6 +25,10 @@
 extern osThreadId RemoteMsg_Receive_ModeSw_TaskHandle;
 extern osTimerId  Chassis_Timer_Id;
 extern osTimerId  Gimbal_Timer_Id;
+
+extern chassis_t  chassis;
+extern gimbal_t   gimbal;
+extern shoot_t    shooter;
 
 /*———————————————————————————————任务函数———————————————————————————————*/
 
@@ -52,8 +57,7 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
             if(Event.value.signals & RC_MODE_SIGNAL)
             {
                 //进入遥控器控制模式
-                Remote_Control_handler();
-                
+                Remote_Control_handler();                
             }
             if(Event.value.signals & KM_MODE_SIGNAL)
             {
@@ -154,23 +158,48 @@ void Remote_Mode_Select(remote_info_t *remote_data)
     mode_last = mode_now;
 };
 
+//把模式参数弄成遥控器控制模式
 void Remote_Control_handler(void)
 {
     //绿灯亮
     HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_SET);
+    //给各个执行器设置模式
+    chassis.chassis_mode        = CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL;
+    gimbal.gimbal_mode          = GIMBAL_REMOTE_CONTROL;
+    shooter.ctrl_mode           = SHOOT_REMOTE_CONTROL;
+    shooter.shoot_gear          = BULLET_SPD_MID;
+    shooter.fric_wheel_run      = WHEEL_STOP;
+    shooter.trigger.trig_mode   = TRIG_STOP;
+    //具体还是得根据机械他们画的长啥样来确定
+    shooter.trigger.dir         = CLOCKWISE;
 }
 
+//把模式参数弄成键鼠控制模式，不过键鼠模式是真的烦，下面的模式太多了，所以只能先弄一个默认模式
 void Keymouse_Control_handler(void)
 {
     //红灯亮
     HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_SET);
+    //给各个执行器设置默认模式
+    chassis.chassis_mode        = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL;
+    gimbal.gimbal_mode          = GIMBAL_KEYMOUSE_CONTROL;
+    shooter.ctrl_mode           = SHOOT_KEYMOUSE_CONTROL;
+    shooter.shoot_gear          = BULLET_SPD_MID;
+    shooter.fric_wheel_run      = WHEEL_STOP;
+    shooter.trigger.trig_mode   = TRIG_STOP;
+    //反正跟着机械走
+    shooter.trigger.dir         = CLOCKWISE;
 }
 
+//把模式参数弄成停止模式
 void Stop_handler(void)
 {
     //红绿灯都亮
     HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,GPIO_PIN_RESET);
+    //给各个执行器设置模式
+    chassis.chassis_mode        = CHASSIS_STOP;
+    gimbal.gimbal_mode          = GIMBAL_STOP;
+    shooter.ctrl_mode           = SHOOT_STOP;
 }

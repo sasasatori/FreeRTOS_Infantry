@@ -44,7 +44,7 @@ void CanMsg_Send_TaskStart(void const * argument)
         {
             if (event.value.signals & CHASSIS_SEND_SIGNAL)
             {
-                Send_Chassis_Cur(10000,10000,10000,10000);;
+                //Send_Chassis_Cur(10000,10000,10000,10000);;
             }
 
             if (event.value.signals & GIMBAL_SEND_SIGNAL)

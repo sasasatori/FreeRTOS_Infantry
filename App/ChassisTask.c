@@ -42,6 +42,39 @@ void Chassis_Task(void const * argument)
     chassis_time_ms = HAL_GetTick() - chassis_time_last;
     chassis_time_last = HAL_GetTick();
 
+    switch (chassis.chassis_mode)
+    {
+        case CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL:
+        {
+            ;
+        }break;
+
+        case CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL:
+        {
+            ;
+        }break;
+
+        case CHASSIS_FREE_KEYMOUSE_CONTROL:
+        {
+            ;
+        }break;
+
+        case CHASSIS_SWAY:
+        {
+            ;
+        }break;
+
+        case CHASSIS_STOP:
+        {
+            ;
+        }break;
+    
+        default:
+        {
+            Error_Handler();
+        }break;
+    }
+
     osSignalSet(CanMsg_Send_TaskHandle, CHASSIS_SEND_SIGNAL);
 }
 

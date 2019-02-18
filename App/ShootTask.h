@@ -52,26 +52,6 @@ typedef enum
 
 /*———————————————————————————————结构体———————————————————————————————*/
 
-//所有与发射机构有关的参数会在这个里面给定义：
-//1.射击模式
-//2.射击挡位
-//3.持续射击时间
-//4.摩擦轮开启/不开
-//5.摩擦轮转速
-//6.射出的子弹数
-//7.剩余的子弹数
-
-typedef __packed struct
-{
-    shoot_mode_e       clrl_mode;
-    bullet_spd_e       shoot_gear;
-    uint32_t           continue_shoot_time;
-    wheel_status_e     fric_wheel_run;
-    uint16_t           fric_wheel_spd;
-    uint16_t           shoot_bullets;
-    uint16_t           remain_bullets;
-} shoot_t;
-
 //所有与拨弹机构有关的参数会在这个里面给定义：
 //由于拨弹电机要做双环控制，所以会有位置+速度环的期望在里面
 //1.拨弹模式
@@ -89,11 +69,32 @@ typedef __packed struct
     int32_t             feed_bullet_spd;
 } trigger_t;
 
+//所有与发射机构有关的参数会在这个里面给定义：
+//1.射击模式
+//2.射击挡位
+//3.持续射击时间
+//4.摩擦轮开启/不开
+//5.摩擦轮转速
+//6.射出的子弹数
+//7.剩余的子弹数
+
+typedef __packed struct
+{
+    shoot_mode_e       ctrl_mode;
+    bullet_spd_e       shoot_gear;
+    uint32_t           continue_shoot_time;
+    wheel_status_e     fric_wheel_run;
+    uint16_t           fric_wheel_spd;
+    uint16_t           shoot_bullets;
+    uint16_t           remain_bullets;
+    trigger_t          trigger;
+} shoot_t;
+
 /*———————————————————————————————变量———————————————————————————————*/
 
 
 /*———————————————————————————————函数———————————————————————————————*/
 
-// void Shoot_TaskStart(void const * argument);
+void Shoot_TaskStart(void const * argument);
 
 #endif /*_SHOOT_H_*/

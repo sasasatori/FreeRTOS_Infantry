@@ -93,7 +93,7 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 /* Hook prototypes */
 void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName);
 
-//检测任务栈溢出这件事倒确实都应该弄一下，只不过我现在可能还不会去弄这个
+//检测任务栈溢出这件事倒确实都应该弄一下，只不过怕是得等到我写完整个工程
 __weak void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName)
 {
    /* Run time stack overflow checking is performed if
@@ -167,8 +167,8 @@ void MX_FREERTOS_Init(void) {
 //  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
 //  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);
 
-//  osThreadDef(Shoot_Task, Shoot_TaskStart, osPriorityNormal , 0 , 128);
-//  Shoot_TaskHandle = osThreadCreate(osThread(Shoot_Task),NULL);
+  osThreadDef(Shoot_Task, Shoot_TaskStart, osPriorityNormal , 0 , 128);
+  Shoot_TaskHandle = osThreadCreate(osThread(Shoot_Task),NULL);
   /* USER CODE END RTOS_THREADS */
 
   //两个定时器的启动其实还是放到ModeSw_Task下面比较好？

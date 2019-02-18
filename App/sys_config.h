@@ -45,12 +45,12 @@
 #define CHASSIS_PERIOD          10
 
 //信号量定义
-//0bit:遥控器控制模式  1bit:键鼠控制模式 
 #define RC_MODE_SIGNAL          ( 1 << 0 )
 #define KM_MODE_SIGNAL          ( 1 << 1 )
 #define ST_MODE_SIGNAL          ( 1 << 2 )
 #define CHASSIS_SEND_SIGNAL     ( 1 << 3 )
 #define GIMBAL_SEND_SIGNAL      ( 1 << 4 )
+#define SHOOT_SEND_SIGNAL       ( 1 << 5 )
 
 //定义全局的电机电流
 typedef struct
