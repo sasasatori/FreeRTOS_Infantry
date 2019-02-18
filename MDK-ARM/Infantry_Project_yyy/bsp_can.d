@@ -1,6 +1,5 @@
 infantry_project_yyy\bsp_can.o: ..\BSP\bsp_can.c
 infantry_project_yyy\bsp_can.o: ..\BSP\bsp_can.h
-infantry_project_yyy\bsp_can.o: ../Inc/can.h
 infantry_project_yyy\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 infantry_project_yyy\bsp_can.o: ../Inc/stm32f4xx_hal_conf.h
 infantry_project_yyy\bsp_can.o: ../Inc/main.h
@@ -37,3 +36,9 @@ infantry_project_yyy\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 infantry_project_yyy\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\bsp_can.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\bsp_can.o: ../Inc/can.h
+infantry_project_yyy\bsp_can.o: ..\App\Motor.h
+infantry_project_yyy\bsp_can.o: ..\App\GimbalTask.h
+infantry_project_yyy\bsp_can.o: ..\App\ChassisTask.h
+infantry_project_yyy\bsp_can.o: ..\App\ShootTask.h
+infantry_project_yyy\bsp_can.o: ..\App\sys_config.h

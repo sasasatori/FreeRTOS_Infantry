@@ -58,7 +58,7 @@
 #include "usb_device.h"
 #include "gpio.h"
 #include "bsp_uart.h"
-#include "bsp_uart.h"
+#include "bsp_can.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -123,6 +123,10 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
+  //外设初始化
+  Can_Device_Init();
+
+  Can_Receive_Start();
   RemoteMsg_Receive_Init();
   /* USER CODE END 2 */
 

@@ -63,3 +63,5 @@ infantry_project_yyy\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 infantry_project_yyy\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 infantry_project_yyy\main.o: ../Inc/gpio.h
 infantry_project_yyy\main.o: ..\BSP\bsp_uart.h
+infantry_project_yyy\main.o: ..\BSP\bsp_can.h
+infantry_project_yyy\main.o: ..\App\Motor.h

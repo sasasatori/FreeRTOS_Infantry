@@ -38,3 +38,4 @@ infantry_project_yyy\canmsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 infantry_project_yyy\canmsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 infantry_project_yyy\canmsgtask.o: ..\BSP\bsp_can.h
 infantry_project_yyy\canmsgtask.o: ../Inc/can.h
+infantry_project_yyy\canmsgtask.o: ..\App\Motor.h
