@@ -120,7 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>???瑆??</Name>
+          <Name>???魐??</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -179,6 +179,21 @@
           <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>gimbal_time_ms,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\Infantry_Project_yyy\../App/CanMsgTask.c\can_send_time_last,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\Infantry_Project_yyy\../App/CanMsgTask.c\can_send_time_ms,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\Infantry_Project_yyy\../Src/can.c\hcan1</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

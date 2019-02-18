@@ -161,8 +161,8 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(RemoteMsg_Receive_ModeSw_Task,RemoteMsg_Receive_ModeSw_TaskStart,osPriorityAboveNormal,0,128);
   RemoteMsg_Receive_ModeSw_TaskHandle = osThreadCreate(osThread(RemoteMsg_Receive_ModeSw_Task),NULL);
   
-//  osThreadDef(CANMsg_Send_Task,CanMsg_Send_TaskStart , osPriorityAboveNormal , 0 , 128);
-//  CanMsg_Send_TaskHandle = osThreadCreate(osThread(CANMsg_Send_Task),NULL);
+  osThreadDef(CANMsg_Send_Task,CanMsg_Send_TaskStart , osPriorityAboveNormal , 0 , 128);
+  CanMsg_Send_TaskHandle = osThreadCreate(osThread(CANMsg_Send_Task),NULL);
   
 //  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
 //  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);

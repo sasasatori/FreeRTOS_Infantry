@@ -6,6 +6,7 @@
 */
 
 #include "GimbalTask.h"
+#include "bsp_can.h"
 
 #include "sys_config.h"
 #include "cmsis_os.h"
@@ -36,6 +37,10 @@ void Gimbal_Task(void const * argument)
 {
     gimbal_time_ms = HAL_GetTick() - gimbal_time_last;
     gimbal_time_last = HAL_GetTick();
+
+
+
+    osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
 }
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！凪麿峇佩痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/

@@ -48,7 +48,19 @@
 //0bit:遥控器控制模式  1bit:键鼠控制模式 
 #define RC_MODE_SIGNAL          ( 1 << 0 )
 #define KM_MODE_SIGNAL          ( 1 << 1 )
-#define ST_MODE_SIGNAL          ( 1 << 2 ) 
+#define ST_MODE_SIGNAL          ( 1 << 2 )
+#define CHASSIS_SEND_SIGNAL     ( 1 << 3 )
+#define GIMBAL_SEND_SIGNAL      ( 1 << 4 )
+
+//定义全局的电机电流
+typedef struct
+{
+    //四个底盘电机，两个云台电机，两个摩擦轮电机，一个拨轮电机
+    int16_t Chassis_Cur[4];
+    int16_t Gimbal_Cur[2];
+    int16_t Shooter_Cur[2];
+    int16_t Trigger_Cur;
+} motor_current_t;
 
 /*其他*/
 #define PI                      3.142f

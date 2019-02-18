@@ -7,6 +7,7 @@
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！哈喘遊猟周！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 #include "bsp_uart.h"
+#include "bsp_can.h"
 
 #include "RemoteMsgTask.h"
 #include "cmsis_os.h"

@@ -37,6 +37,8 @@ infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\gimbaltask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 infantry_project_yyy\gimbaltask.o: ..\App\Motor.h
+infantry_project_yyy\gimbaltask.o: ..\BSP\bsp_can.h
+infantry_project_yyy\gimbaltask.o: ../Inc/can.h
 infantry_project_yyy\gimbaltask.o: ..\App\sys_config.h
 infantry_project_yyy\gimbaltask.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_project_yyy\gimbaltask.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

@@ -143,3 +143,51 @@ ICRA的车的chassis_twist_handler
 然后就能成功跑软件定时器了，记住软件定时器的默认优先级是belowNormalPriority,所以其他任务如果不是以阻塞态运行就都能随随便便的打断它
 还有一个非常坑的东西，就是我突然发现一开始我创建工程的时候貌似是打算只写个demo还是啥的，所以一开始初始化的串口中断只有串口6一个，这就非常的坑了，因为实际用的工程怕是好几个串口中断都需要用上，此时一名不知死活的肥宅进入了自闭状态，更惨的是我定时器的外设就初始化了一个6号定时器，真jb精彩
 现在一个隐藏的雷区就是ICRA的车子弄了一堆定时器，而我并不知道它开这么多定时器究竟想做一些什么，搞得我非常非常慌
+
+2019/2/18
+开学没几天了嘤嘤嘤，先把can的收发写掉再说，由于目前没有mpu等乱七八糟玩意的资料，所以我现在也不太想继续细化我的程序框架图了
+基本上写完了bsp_can，上手测试了一下自己写的can，结果
+你写尼玛呢？？？？？？
+非常非常的崩，跑了几次之后就会报can_error，我也很懵逼很不爽，艹
+准确的说是这样的一个状态
+整个CAN发送会有三次发送处于成功的，确实进入了HAL_CAN_STATE_BUSY_TX里面去，但是三次之后就会完美进入error，这就让我很懵逼
+另外貌似can的接收中断也没有进去
+
+主要涉及到的问题是hcan1.Instance.TSR这一位，这是正常发送的情况：
+0x1C000003
+
+而我的情况：
+0x1C000000
+0x19000008
+0x52000008
+0x82000008
+
+emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
+
+好吧我tm就是个傻逼，我按照ICRA的外设配置进行的初始化，但是一点鸟用都没有，然后我就按照A型板的进行了一下配置，然后稳了
+  hcan1.Instance = CAN1;
+  hcan1.Init.Prescaler = 3;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
+  hcan1.Init.SJW = CAN_SJW_1TQ;
+  hcan1.Init.BS1 = CAN_BS1_9TQ;
+  hcan1.Init.BS2 = CAN_BS2_4TQ;
+  hcan1.Init.TTCM = DISABLE;
+  hcan1.Init.ABOM = DISABLE;
+  hcan1.Init.AWUM = DISABLE;
+  hcan1.Init.NART = DISABLE;
+  hcan1.Init.RFLM = DISABLE;
+  hcan1.Init.TXFP = ENABLE;
+贴一下'正确'的配置和'错误'的配置
+  hcan1.Instance = CAN1;
+  hcan1.Init.Prescaler = 5;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
+  hcan1.Init.SJW = CAN_SJW_1TQ;
+  hcan1.Init.BS1 = CAN_BS1_3TQ;
+  hcan1.Init.BS2 = CAN_BS2_5TQ;
+  hcan1.Init.TTCM = DISABLE;
+  hcan1.Init.ABOM = ENABLE;
+  hcan1.Init.AWUM = DISABLE;
+  hcan1.Init.NART = DISABLE;
+  hcan1.Init.RFLM = DISABLE;
+  hcan1.Init.TXFP = DISABLE;
+既然遥控器的数据也读出来了，电机也能动了，那么接下来就只剩下一件事情了，那就是......今晚写一个能动的底盘出来，嘿嘿嘿

@@ -37,6 +37,9 @@ infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
 infantry_project_yyy\remotemsgtask.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+infantry_project_yyy\remotemsgtask.o: ..\BSP\bsp_can.h
+infantry_project_yyy\remotemsgtask.o: ../Inc/can.h
+infantry_project_yyy\remotemsgtask.o: ..\App\Motor.h
 infantry_project_yyy\remotemsgtask.o: ..\App\RemoteMsgTask.h
 infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 infantry_project_yyy\remotemsgtask.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
@@ -55,6 +58,5 @@ infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source
 infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_project_yyy\remotemsgtask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 infantry_project_yyy\remotemsgtask.o: ..\App\ChassisTask.h
-infantry_project_yyy\remotemsgtask.o: ..\App\Motor.h
 infantry_project_yyy\remotemsgtask.o: ..\App\GimbalTask.h
 infantry_project_yyy\remotemsgtask.o: ..\App\sys_config.h

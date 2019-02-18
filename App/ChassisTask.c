@@ -6,6 +6,7 @@
 */
 
 #include "ChassisTask.h"
+#include "bsp_can.h"
 
 #include "sys_config.h"
 #include "cmsis_os.h"
@@ -40,6 +41,8 @@ void Chassis_Task(void const * argument)
     //对没错，就是看看有没有正常的定时执行而已
     chassis_time_ms = HAL_GetTick() - chassis_time_last;
     chassis_time_last = HAL_GetTick();
+
+    osSignalSet(CanMsg_Send_TaskHandle, CHASSIS_SEND_SIGNAL);
 }
 
 /*———————————————————————————————其他执行函数———————————————————————————————*/

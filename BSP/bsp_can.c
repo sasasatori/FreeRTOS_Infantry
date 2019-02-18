@@ -21,6 +21,63 @@
 /*———————————————————————————————执行函数———————————————————————————————*/
 
 /**
+* @brief :  没有什么鸟用的回调函数
+* @param :  hcan
+* @retval:  NONE
+* @note  :  反正就是这样
+*/
+
+void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
+{
+    //下面的switch-case会根据不同的电机id进行解码
+    switch (hcan->pRxMsg->StdId)
+    {
+        case CAN_3508_M1_ID:
+        case CAN_3508_M2_ID:
+        case CAN_3508_M3_ID:
+        case CAN_3508_M4_ID:
+        {
+            ;
+        }break;
+
+        case CAN_6623_PI_ID:
+        {
+            ;
+        }break;
+
+        case CAN_6623_YA_ID:
+        {
+            ;
+        }break;
+
+        case CAN_TRIGGER_ID:
+        {
+            ;
+        }break;
+
+        case SHOOTER_LEF_ID:
+        case SHOOTER_RIG_ID:
+        {
+            ;
+        }break;
+
+        default:
+        {
+            ;
+        }break;
+    }
+
+    __HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0);
+    __HAL_CAN_ENABLE_IT(&hcan2, CAN_IT_FMP0);
+}
+
+//死马当做活马医式写法（简称自暴自弃式写法）
+void __HAL_CAN_ErrorCallback(CAN_HandleTypeDef* hcan)
+{
+    __HAL_CAN_ENABLE_IT(hcan, CAN_IT_FMP0);
+}
+
+/**
 * @brief :  初始化CAN1,CAN2的过滤器
 * @param :  NONE
 * @retval:  NONE
@@ -46,9 +103,16 @@ void Can_Device_Init(void)
     can_filter.BankNumber           = 14;
     can_filter.FilterActivation     = ENABLE;
     HAL_CAN_ConfigFilter(&hcan1, &can_filter);
+    //while (HAL_CAN_ConfigFilter(&hcan1, &can_filter) != HAL_OK);
 
     can_filter.FilterNumber         = 14;
     HAL_CAN_ConfigFilter(&hcan2, &can_filter);
+    //while (HAL_CAN_ConfigFilter(&hcan2, &can_filter) != HAL_OK);
+
+    hcan1.pTxMsg = &Tx1Message;
+    hcan1.pRxMsg = &Rx1Message;
+    hcan2.pTxMsg = &Tx2Message;
+    hcan2.pRxMsg = &Rx2Message;
 }
 
 /**
@@ -107,7 +171,7 @@ void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current,int16_t Left_Curren
     GIMBAL_SHOOTER_CAN.pTxMsg->Data[5] = Left_Current;
     GIMBAL_SHOOTER_CAN.pTxMsg->Data[6] = Right_Current >> 8;
     GIMBAL_SHOOTER_CAN.pTxMsg->Data[7] = Right_Current;
-    HAL_CAN_Transmit(&GIMBAL_SHOOTER_CAN, 10);
+    HAL_CAN_Transmit(&GIMBAL_SHOOTER_CAN, 1);
 };
 
 /**
@@ -130,5 +194,5 @@ void Send_Trigger_Cur(int16_t Trigger_Current)
     TRIGGER_CAN.pTxMsg->Data[5] = 0;
     TRIGGER_CAN.pTxMsg->Data[6] = 0;
     TRIGGER_CAN.pTxMsg->Data[7] = 0;
-    HAL_CAN_Transmit(&TRIGGER_CAN,10);
+    HAL_CAN_Transmit(&TRIGGER_CAN,1);
 }
