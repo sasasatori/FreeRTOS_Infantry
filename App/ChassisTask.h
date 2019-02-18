@@ -49,4 +49,9 @@ typedef __packed struct
 
 void Chassis_Task(void const * argument);
 
+void Chassis_Remote_Control_Handler(void);
+void Chassis_Keymouse_Control_Handler(void);
+void Chassis_Sway_Handler(void);
+void Chassis_Stop_Handler(void);
+
 #endif /*_CHASSIS_H_*/

@@ -120,9 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name> 逅
-?魐 逅
-</Name>
+          <Name>糕??魐糕?</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -198,6 +196,16 @@
           <count>5</count>
           <WinNumber>2</WinNumber>
           <ItemText>can_send_time_ms,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>shoot_time_last,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>\\Infantry_Project_yyy\../App/ShootTask.c\shoot_time_ms,0x0A</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
@@ -657,7 +665,7 @@
 
   <Group>
     <GroupName>Application/User</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

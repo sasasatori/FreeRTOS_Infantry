@@ -103,11 +103,9 @@ void Can_Device_Init(void)
     can_filter.BankNumber           = 14;
     can_filter.FilterActivation     = ENABLE;
     HAL_CAN_ConfigFilter(&hcan1, &can_filter);
-    //while (HAL_CAN_ConfigFilter(&hcan1, &can_filter) != HAL_OK);
 
     can_filter.FilterNumber         = 14;
     HAL_CAN_ConfigFilter(&hcan2, &can_filter);
-    //while (HAL_CAN_ConfigFilter(&hcan2, &can_filter) != HAL_OK);
 
     hcan1.pTxMsg = &Tx1Message;
     hcan1.pRxMsg = &Rx1Message;
@@ -194,5 +192,5 @@ void Send_Trigger_Cur(int16_t Trigger_Current)
     TRIGGER_CAN.pTxMsg->Data[5] = 0;
     TRIGGER_CAN.pTxMsg->Data[6] = 0;
     TRIGGER_CAN.pTxMsg->Data[7] = 0;
-    HAL_CAN_Transmit(&TRIGGER_CAN,1);
+    HAL_CAN_Transmit(&TRIGGER_CAN, 1);
 }
