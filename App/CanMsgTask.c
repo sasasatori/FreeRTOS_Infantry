@@ -26,6 +26,14 @@ extern Motor_t Chassis_Motor_2;
 extern Motor_t Chassis_Motor_3;
 extern Motor_t Chassis_Motor_4;
 
+extern Motor_t Gimbal_Motor_Pitch;
+extern Motor_t Gimbal_Motor_Yaw;
+
+extern Motor_t Left_Fric_Wheel;
+extern Motor_t Right_Fric_Wheel;
+
+extern Motor_t Trigger;
+
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 /**
@@ -50,12 +58,18 @@ void CanMsg_Send_TaskStart(void const * argument)
         {
             if (event.value.signals & CHASSIS_SEND_SIGNAL)
             {
-                Send_Chassis_Cur((int16_t)(Chassis_Motor_1.pid.output),(int16_t)(Chassis_Motor_2.pid.output),(int16_t)(Chassis_Motor_3.pid.output),(int16_t)(Chassis_Motor_4.pid.output));
+                Send_Chassis_Cur((int16_t)(Chassis_Motor_1.pid.output),\
+                                (int16_t)(Chassis_Motor_2.pid.output),\
+                                (int16_t)(Chassis_Motor_3.pid.output),\
+                                (int16_t)(Chassis_Motor_4.pid.output));
             }
 
             if (event.value.signals & GIMBAL_SEND_SIGNAL)
             {
-                ;
+                Send_Gimbal_Cur((int16_t)(Gimbal_Motor_Yaw.pid.output),\
+                                (int16_t)(Gimbal_Motor_Pitch.pid.output),\
+                                (int16_t)(Left_Fric_Wheel.pid.output),\
+                                (int16_t)(Right_Fric_Wheel.pid.output));
             }
         }
     }

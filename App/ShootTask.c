@@ -21,6 +21,11 @@ shoot_t shooter;
 uint32_t shoot_time_ms;
 uint32_t shoot_time_last;
 
+Motor_t Left_Fric_Wheel;
+Motor_t Right_Fric_Wheel;
+
+Motor_t Trigger;
+
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！峇佩痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 void Shoot_TaskStart(void const * argument)

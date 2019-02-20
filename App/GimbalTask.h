@@ -45,5 +45,9 @@ typedef __packed struct
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 void Gimbal_Task(void const * argument);
+void Gimbal_Remote_Control_Handler(void);
+void Gimbal_Keymouse_Control_Handler(void);
+void Gimbal_Auto_Handler(void);
+void Gimbal_Stop_Handler(void);
 
 #endif  /*_GIMBAL_H_*/

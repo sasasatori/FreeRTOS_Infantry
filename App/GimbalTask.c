@@ -24,6 +24,9 @@ extern osThreadId Shoot_TaskHandle;
 uint32_t gimbal_time_last;
 uint32_t gimbal_time_ms;
 
+Motor_t Gimbal_Motor_Yaw;
+Motor_t Gimbal_Motor_Pitch;
+
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！販暦痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 /**
@@ -38,8 +41,78 @@ void Gimbal_Task(void const * argument)
     gimbal_time_ms = HAL_GetTick() - gimbal_time_last;
     gimbal_time_last = HAL_GetTick();
 
-    osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
+    switch (gimbal.gimbal_mode)
+    {
+        case GIMBAL_REMOTE_CONTROL:
+        {
+            Gimbal_Remote_Control_Handler();
+        }break;
+
+        case GIMBAL_KEYMOUSE_CONTROL:
+        {
+            Gimbal_Keymouse_Control_Handler();
+        }break;
+
+        case GIMBAL_AUTO:
+        {
+            Gimbal_Auto_Handler();
+        }break;
+
+        case GIMBAL_STOP:
+        {
+            Gimbal_Stop_Handler();
+        }break;
+
+        default:
+        {
+            ;
+        }break;
+    }
+    
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
+    osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
 }
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！凪麿峇佩痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
+
+/**
+* @brief :  劭陣匂陣崙
+* @param :  NONE
+* @retval:  NONE
+* @note  :  NONE
+*/
+
+void Gimbal_Remote_Control_Handler(void)
+{
+    ;
+}
+
+/**
+* @brief :  囚報陣崙
+* @param :  NONE
+* @retval:  NONE
+* @note  :  NONE
+*/
+
+void Gimbal_Keymouse_Control_Handler(void)
+{
+    ;
+}
+
+void Gimbal_Auto_Handler(void)
+{
+    ;
+}
+
+/**
+* @brief :  悳岻唯祥斤阻
+* @param :  NONE
+* @retval:  NONE
+* @note  :  短俵挫傍
+*/
+
+void Gimbal_Stop_Handler(void)
+{
+    gimbal.yaw_gyro_ref     = 0;
+    gimbal.pitch_gyro_ref   = 0;
+}
