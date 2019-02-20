@@ -13,10 +13,16 @@
 #include "ShootTask.h"
 
 #include "sys_config.h"
+#include "Motor.h"
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªºê¶¨Òå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª±äÁ¿¶¨Òå¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+
+extern Motor_t Chassis_Motor_1;
+extern Motor_t Chassis_Motor_2;
+extern Motor_t Chassis_Motor_3;
+extern Motor_t Chassis_Motor_4;
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÖ´ÐÐº¯Êý¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
@@ -27,44 +33,78 @@
 * @note  :  ·´Õý¾ÍÊÇÕâÑù
 */
 
-void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
+void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
 {
-    //ÏÂÃæµÄswitch-case»á¸ù¾Ý²»Í¬µÄµç»úid½øÐÐ½âÂë
-    switch (hcan->pRxMsg->StdId)
+    if (hcan->Instance == CAN1)
     {
-        case CAN_3508_M1_ID:
-        case CAN_3508_M2_ID:
-        case CAN_3508_M3_ID:
-        case CAN_3508_M4_ID:
+        switch (hcan->pRxMsg->StdId)
         {
-            ;
-        }break;
+            case CAN_3508_M1_ID:
+            {
+                Chassis_Motor_1.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Chassis_Motor_1.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Chassis_Motor_1.pid.spd_fdb   = (float)Chassis_Motor_1.encoder.speed;
+            }break;
 
-        case CAN_6623_PI_ID:
-        {
-            ;
-        }break;
+            case CAN_3508_M2_ID:
+            {
+                Chassis_Motor_2.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Chassis_Motor_2.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Chassis_Motor_2.pid.spd_fdb   = (float)Chassis_Motor_2.encoder.speed;
+            }break;
 
-        case CAN_6623_YA_ID:
-        {
-            ;
-        }break;
+            case CAN_3508_M3_ID:
+            {
+                Chassis_Motor_3.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Chassis_Motor_3.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Chassis_Motor_3.pid.spd_fdb   = (float)Chassis_Motor_3.encoder.speed;
+            }break;
 
-        case CAN_TRIGGER_ID:
-        {
-            ;
-        }break;
+            case CAN_3508_M4_ID:
+            {
+                Chassis_Motor_4.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Chassis_Motor_4.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Chassis_Motor_4.pid.spd_fdb   = (float)Chassis_Motor_4.encoder.speed;
+            }break;
 
-        case SHOOTER_LEF_ID:
-        case SHOOTER_RIG_ID:
-        {
-            ;
-        }break;
+            case CAN_6623_PI_ID:
+            {
+                ;
+            }break;
 
-        default:
+            case CAN_6623_YA_ID:
+            {
+                ;
+            }break;
+
+            case SHOOTER_LEF_ID:
+            case SHOOTER_RIG_ID:
+            {
+                ;
+            }break;
+
+            default:
+            {
+                ;
+            }break;
+        }
+    //ÏÂÃæµÄswitch-case»á¸ù¾Ý²»Í¬µÄµç»úid½øÐÐ½âÂë        
+    }
+
+    if (hcan->Instance == CAN2)
+    {
+        switch (hcan->pRxMsg->StdId)
         {
-            ;
-        }break;
+            case CAN_TRIGGER_ID:
+            {
+                ;
+            }break;
+
+            default:
+            {
+                ;
+            }break;
+        }
     }
 
     __HAL_CAN_ENABLE_IT(&hcan1, CAN_IT_FMP0);
@@ -84,33 +124,42 @@ void __HAL_CAN_ErrorCallback(CAN_HandleTypeDef* hcan)
 * @note  :  Ã»É¶ºÃËµµÄ£¬ÄãÐ´ÍâÉè²»³õÊ¼»¯Âð£¿
 */
 
-void Can_Device_Init(void)
+void Can_Device_Init(CAN_HandleTypeDef* hcan)
 {
-    CAN_FilterConfTypeDef   can_filter;
-    static CanTxMsgTypeDef  Tx1Message;
-    static CanRxMsgTypeDef  Rx1Message;
-    static CanTxMsgTypeDef  Tx2Message;
-    static CanRxMsgTypeDef  Rx2Message;
-
-    can_filter.FilterNumber         = 0;
-    can_filter.FilterMode           = CAN_FILTERMODE_IDMASK;
-    can_filter.FilterMode           = CAN_FILTERSCALE_32BIT;
-    can_filter.FilterIdHigh         = 0x0000;
-    can_filter.FilterIdLow          = 0x0000;
-    can_filter.FilterMaskIdHigh     = 0x0000;
-    can_filter.FilterMaskIdLow      = 0x0000;
-    can_filter.FilterFIFOAssignment = CAN_FilterFIFO0;
-    can_filter.BankNumber           = 14;
-    can_filter.FilterActivation     = ENABLE;
-    HAL_CAN_ConfigFilter(&hcan1, &can_filter);
-
-    can_filter.FilterNumber         = 14;
-    HAL_CAN_ConfigFilter(&hcan2, &can_filter);
-
-    hcan1.pTxMsg = &Tx1Message;
-    hcan1.pRxMsg = &Rx1Message;
-    hcan2.pTxMsg = &Tx2Message;
-    hcan2.pRxMsg = &Rx2Message;
+  CAN_FilterConfTypeDef canfilter;
+  
+  static CanTxMsgTypeDef  Tx1Message;
+  static CanRxMsgTypeDef  Rx1Message;
+  static CanTxMsgTypeDef  Tx2Message;
+  static CanRxMsgTypeDef  Rx2Message;
+  
+  canfilter.FilterMode              = CAN_FILTERMODE_IDMASK;
+  canfilter.FilterScale             = CAN_FILTERSCALE_32BIT;
+  
+  canfilter.FilterIdHigh            = 0x0000;
+  canfilter.FilterIdLow             = 0x0000;
+  canfilter.FilterMaskIdHigh        = 0x0000;
+  canfilter.FilterMaskIdLow         = 0x0000;
+  
+  canfilter.FilterFIFOAssignment    = CAN_FilterFIFO0;
+  canfilter.FilterActivation        = ENABLE;
+  canfilter.BankNumber              = 14;
+  
+  if(hcan == &hcan1)
+  {
+    canfilter.FilterNumber = 0;
+    hcan->pTxMsg = &Tx1Message;
+    hcan->pRxMsg = &Rx1Message;
+  }
+  if(hcan == &hcan2)
+  {
+    canfilter.FilterNumber = 14;
+    hcan->pTxMsg = &Tx2Message;
+    hcan->pRxMsg = &Rx2Message;
+  }
+  
+  HAL_CAN_ConfigFilter(hcan, &canfilter);
+  
 }
 
 /**

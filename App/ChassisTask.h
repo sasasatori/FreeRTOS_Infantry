@@ -53,5 +53,7 @@ void Chassis_Remote_Control_Handler(void);
 void Chassis_Keymouse_Control_Handler(void);
 void Chassis_Sway_Handler(void);
 void Chassis_Stop_Handler(void);
+void ChassisRef_to_MotorRef_Handler(void);
+void Chassis_Motor_PIDCalc(Motor_t *Motor);
 
 #endif /*_CHASSIS_H_*/

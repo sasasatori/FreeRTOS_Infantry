@@ -38,8 +38,6 @@ void Gimbal_Task(void const * argument)
     gimbal_time_ms = HAL_GetTick() - gimbal_time_last;
     gimbal_time_last = HAL_GetTick();
 
-
-
     osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
 }

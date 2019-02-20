@@ -37,7 +37,7 @@ typedef enum
     CAN_CHASSIS_ALL_ID  = 0x200,
     GIMBAL_SHOOTER_ID   = 0x1FF,
     //和中宸乂航壓CAN2貧中
-    CAN_TRIGGER_ID      = 0x200,
+    CAN_TRIGGER_ID      = 0x201,
 
 } can_id_e;
 
@@ -52,7 +52,7 @@ extern CanRxMsgTypeDef  Rx2Message;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
-void Can_Device_Init(void);
+void Can_Device_Init(CAN_HandleTypeDef* hcan);
 void Can_Receive_Start(void);
 void Send_Chassis_Cur(int16_t CM1_Current,int16_t CM2_Current,int16_t CM3_Current,int16_t CM4_Current);
 void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current,int16_t Left_Current,int16_t Right_Current);

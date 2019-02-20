@@ -12,6 +12,7 @@
 
 #include "sys_config.h"
 #include "cmsis_os.h"
+#include "Motor.h"
 
 /*———————————————————————————————宏定义———————————————————————————————*/
 
@@ -20,13 +21,18 @@
 uint32_t can_send_time_last;
 uint32_t can_send_time_ms;
 
+extern Motor_t Chassis_Motor_1;
+extern Motor_t Chassis_Motor_2;
+extern Motor_t Chassis_Motor_3;
+extern Motor_t Chassis_Motor_4;
+
 /*———————————————————————————————函数———————————————————————————————*/
 
 /**
 * @brief :  can发送任务
 * @param :  NONE
 * @retval:  NONE
-* @note  :  处于阻塞状态，等待来自底盘和云台任务发送来的信号
+* @note  :  处于阻塞状态，等待来自底盘，云台，发射任务发送来的信号
 */
 
 void CanMsg_Send_TaskStart(void const * argument)
@@ -44,7 +50,7 @@ void CanMsg_Send_TaskStart(void const * argument)
         {
             if (event.value.signals & CHASSIS_SEND_SIGNAL)
             {
-                //Send_Chassis_Cur(10000,10000,10000,10000);;
+                Send_Chassis_Cur((int16_t)(Chassis_Motor_1.pid.output),(int16_t)(Chassis_Motor_2.pid.output),(int16_t)(Chassis_Motor_3.pid.output),(int16_t)(Chassis_Motor_4.pid.output));
             }
 
             if (event.value.signals & GIMBAL_SEND_SIGNAL)

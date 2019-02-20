@@ -191,3 +191,102 @@ emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = DISABLE;
 既然遥控器的数据也读出来了，电机也能动了，那么接下来就只剩下一件事情了，那就是......今晚写一个能动的底盘出来，嘿嘿嘿
+
+2019/2/19
+然后我就咕了，没来的及写完（哦豁，完蛋.jpg）
+今天上午把到底盘电机的解算给写掉了，还是靠自己写工程才真实的感受到FreeRTOS的强大之处
+第一，可以节省硬件资源，比如软件定时器功能，产生的软件定时中断效果和硬件定时中断没有感受到区别
+第二，基于任务与任务通知的更高的抽象思路，可以使编程的思路变得更加清晰，所有的任务都可以抽象成线程，只要处理线程之间的关系就可以，而在这之前基于轮询-中断的代码要写起来就比较容易思路混乱，因为都是在各种中断回调里面乱丢东西
+第三，更加灵活。尤其是osSignalSet()和osSignalWait()这两个函数，可以说用起来非常的爽，可以当成一种万能的'外部中断'来用，某种程度上甚至可以说OS其实拓展了32的中断系统
+
+总的来说，我目前对于os的使用其实也才刚刚是冰山一角，但也切实的感受到os的功能真的非常非常强大，用好了可以非常好的帮助完成庞大的工程
+
+喜出新bug，接收的时候进不了中断回调函数，然后就闭不了环，非常的郁闷了可以说
+而且最谜的是我的发送是完全正常的，按照CAN的通讯协议，每一帧都应该是有Ack的，这就非常非常非常奇怪
+总之发送是完全没有任何问题的，但是接收就从始至终都是一切为0，这使我极度郁闷
+
+搞定了，初始化的过滤器弄得有点问题，我虽然感觉自己弄得和能动的这版毫无区别，但是最后就是读不出来东西，绝了
+提一下这版能用的
+void Can_Device_Init(CAN_HandleTypeDef* hcan)
+{
+  CAN_FilterConfTypeDef canfilter;
+  
+  static CanTxMsgTypeDef  Tx1Message;
+  static CanRxMsgTypeDef  Rx1Message;
+  static CanTxMsgTypeDef  Tx2Message;
+  static CanRxMsgTypeDef  Rx2Message;
+  
+  canfilter.FilterMode              = CAN_FILTERMODE_IDMASK;
+  canfilter.FilterScale             = CAN_FILTERSCALE_32BIT;
+  
+  canfilter.FilterIdHigh            = 0x0000;
+  canfilter.FilterIdLow             = 0x0000;
+  canfilter.FilterMaskIdHigh        = 0x0000;
+  canfilter.FilterMaskIdLow         = 0x0000;
+  
+  canfilter.FilterFIFOAssignment    = CAN_FilterFIFO0;
+  canfilter.FilterActivation        = ENABLE;
+  canfilter.BankNumber              = 14;
+  
+  if(hcan == &hcan1)
+  {
+    canfilter.FilterNumber = 0;
+    hcan->pTxMsg = &Tx1Message;
+    hcan->pRxMsg = &Rx1Message;
+  }
+  if(hcan == &hcan2)
+  {
+    canfilter.FilterNumber = 14;
+    hcan->pTxMsg = &Tx2Message;
+    hcan->pRxMsg = &Rx2Message;
+  }
+  
+  HAL_CAN_ConfigFilter(hcan, &canfilter);
+  
+}
+
+2019/2/20
+昨天想直接初始化的时候赋值一波pid参数，后来发现不靠谱，因为有这样的一个机制：
+#include <stdio.h>
+
+typedef struct
+{
+    int a;
+    int b;
+} B;
+
+typedef struct
+{
+    int c;
+    B d;
+} A;
+
+int main()
+{
+    A C.d={1,2};
+    printf("%d",C.c);
+}
+
+这样的结构体赋值是无法成功的
+
+#include <stdio.h>
+
+typedef struct
+{
+    int a;
+    int b;
+} B;
+
+typedef struct
+{
+    int c;
+    B d;
+} A;
+
+int main()
+{
+    A C = {1,{2,3}};
+    printf("%d",C.d.a);
+}
+
+而这种嵌套就可以了

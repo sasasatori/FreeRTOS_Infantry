@@ -8,6 +8,7 @@
 #include "RemoteMsgTask.h"
 #include "ChassisTask.h"
 #include "bsp_can.h"
+#include "Motor.h"
 
 #include "sys_config.h"
 #include "cmsis_os.h"
@@ -21,6 +22,13 @@
 //冷静的掏出我的底盘结构体，并定义了一个结构体变量
 chassis_t chassis;
 
+//冷静的掏出Motor结构体，并一口气定义了四个,甚至还顺手搞了一波pid参数配置
+
+Motor_t Chassis_Motor_1 = {{{5.0f,0.0f,0.0f,CHASSIS_SPD_MAX,-CHASSIS_SPD_MAX}}};
+Motor_t Chassis_Motor_2 = {{{5.0f,0.0f,0.0f,CHASSIS_SPD_MAX,-CHASSIS_SPD_MAX}}};
+Motor_t Chassis_Motor_3 = {{{5.0f,0.0f,0.0f,CHASSIS_SPD_MAX,-CHASSIS_SPD_MAX}}};
+Motor_t Chassis_Motor_4 = {{{5.0f,0.0f,0.0f,CHASSIS_SPD_MAX,-CHASSIS_SPD_MAX}}};
+
 //没有什么意义的CAN发送任务
 extern osThreadId CanMsg_Send_TaskHandle;
 extern remote_info_t remote_data;
@@ -28,6 +36,8 @@ extern remote_info_t remote_data;
 //定义两个时间有关的变量用来监控任务是否正常定时执行
 uint32_t chassis_time_last;
 uint32_t chassis_time_ms;
+
+float ref,fdb;
 
 /*———————————————————————————————任务函数———————————————————————————————*/
 
@@ -73,6 +83,16 @@ void Chassis_Task(void const * argument)
         }break;
     }
 
+    ChassisRef_to_MotorRef_Handler();
+
+    Chassis_Motor_PIDCalc(&Chassis_Motor_1);
+    Chassis_Motor_PIDCalc(&Chassis_Motor_2);
+    Chassis_Motor_PIDCalc(&Chassis_Motor_3);
+    Chassis_Motor_PIDCalc(&Chassis_Motor_4);
+
+    ref = Chassis_Motor_3.pid.spd_ref;
+    fdb = Chassis_Motor_3.pid.spd_fdb;
+
     osSignalSet(CanMsg_Send_TaskHandle, CHASSIS_SEND_SIGNAL);
 }
 
@@ -81,8 +101,13 @@ void Chassis_Task(void const * argument)
 //遥控模式
 void Chassis_Remote_Control_Handler(void)
 {
+    taskENTER_CRITICAL();
     //第一段用来做遥控器到底盘的解算
-    ;
+    chassis.vy = remote_data.remote.ch0 * CHASSIS_RC_MOVE_RATIO;
+    chassis.vx = remote_data.remote.ch1 * CHASSIS_RC_MOVE_RATIO;
+    //这边严格意义上来说要用和云台角度之间的PID来进行处理，不过我急着写底盘就先不管这么多了
+    chassis.vw = remote_data.remote.ch2 * CHASSIS_RC_MOVE_RATIO;
+    taskEXIT_CRITICAL();
 }
 
 //键鼠模式
@@ -100,7 +125,54 @@ void Chassis_Sway_Handler(void)
 //THE WORLD！時よ！止まれ！
 void Chassis_Stop_Handler(void)
 {
+    taskENTER_CRITICAL();
+    //反正停就对了
     chassis.vx = 0;
     chassis.vy = 0;
     chassis.vw = 0;
+    taskEXIT_CRITICAL();
+}
+
+void ChassisRef_to_MotorRef_Handler(void)
+{
+    //等会我改成期望吧，正常应该是这边是pid期望来着
+    taskENTER_CRITICAL();
+    Chassis_Motor_1.pid.spd_ref =   chassis.vx + chassis.vy + chassis.vw;
+    Chassis_Motor_2.pid.spd_ref = - chassis.vx + chassis.vy + chassis.vw;
+    Chassis_Motor_3.pid.spd_ref = - chassis.vx - chassis.vy + chassis.vw;
+    Chassis_Motor_4.pid.spd_ref =   chassis.vx - chassis.vy + chassis.vw;
+    taskEXIT_CRITICAL();
+}
+
+//将来有一天调参的时候还是会用得上的
+//float kp,ki,kd;
+
+void Chassis_Motor_PIDCalc(Motor_t *Motor)
+{
+    float Error;
+
+    Error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+    Motor->pid.sum += Error;
+    
+    Motor->pid.derror = Motor->pid.error[0] - Motor->pid.error[1];
+
+    Motor->pid.error[1] = Motor->pid.error[0];
+    Motor->pid.error[0] = Error;
+
+    
+    //计算pid
+   Motor->pid.output = Motor->pid.parament.kp * Error + 
+                       Motor->pid.parament.ki * Motor->pid.sum + 
+                       Motor->pid.parament.kd * Motor->pid.derror;
+    
+    if(Motor->pid.output >= Motor->pid.parament.max)
+    Motor->pid.output = Motor->pid.parament.max;
+    if(Motor->pid.output <= Motor->pid.parament.min)
+    Motor->pid.output = Motor->pid.parament.min;
+    
+    //仅调参用
+    // Motor->pid.output = kp * Motor->pid.error[0] +
+    //                     ki * Motor->pid.sum +
+    //                     kd * Motor->pid.derror;
+
 }

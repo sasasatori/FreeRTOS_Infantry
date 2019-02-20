@@ -123,9 +123,10 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-  //外设初始化
-  Can_Device_Init();
-
+  //can的滤波器初始化
+  Can_Device_Init(&hcan1);
+  Can_Device_Init(&hcan2);
+  //开启接收中断
   Can_Receive_Start();
   RemoteMsg_Receive_Init();
   /* USER CODE END 2 */

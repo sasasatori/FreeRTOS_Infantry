@@ -19,23 +19,14 @@
 /*———————————————————————————————底盘设置———————————————————————————————*/
 
 //底盘的最大速度,其实我根本不想要给速度设限，因为我要dejavu
-//遥控器设置的最大速度
-#define CHASSIS_RC_SPD_MAX_X    3300.0f
-#define CHASSIS_RC_SPD_MAX_Y    3300.0f
-#define CHASSIS_RC_SPD_MAX_R    300.0f
+//最大速度
+#define CHASSIS_SPD_MAX         5000.0f
 
 //遥控器值映射到底盘的期望值
-#define CHASSIS_RC_MOVE_RATIO   1.0f
-
-//键盘设置的最大速度
-#define CHASSIS_KB_SPD_MAX_X    3300.0f
-#define CHASSIS_KB_SPD_MAX_Y    3300.0f
-#define CHASSIS_KB_SPD_MAX_R    300.0f
+#define CHASSIS_RC_MOVE_RATIO   15.0f
 
 //键盘映射到底盘的期望值
-#define CHASSIS_KB_MOVE_RATIO_X 1.0f
-#define CHASSIS_KB_MOVE_RATIO_Y 1.0f
-#define CHASSIS_KB_MOVE_RATIO_R 1.0f
+#define CHASSIS_KB_MOVE_RATIO   1.0f
 
 /*———————————————————————————————云台设置———————————————————————————————*/
 
