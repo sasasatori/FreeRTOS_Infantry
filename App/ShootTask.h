@@ -96,5 +96,10 @@ typedef __packed struct
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
 void Shoot_TaskStart(void const * argument);
+void Shoot_Auto_Handler(void);
+void Shoot_Keymouse_Handler(void);
+void Shoot_Remote_Handler(void);
+void Shoot_Stop_Handler(void);
+
 
 #endif /*_SHOOT_H_*/

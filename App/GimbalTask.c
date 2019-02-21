@@ -65,7 +65,7 @@ void Gimbal_Task(void const * argument)
 
         default:
         {
-            ;
+            Error_Handler();
         }break;
     }
     
@@ -98,6 +98,13 @@ void Gimbal_Keymouse_Control_Handler(void)
 {
     ;
 }
+
+/**
+* @brief :  云台自动控制
+* @param :  NONE
+* @retval:  NONE
+* @note  :  我也不知道怎么自动控制，反正先留着呗
+*/
 
 void Gimbal_Auto_Handler(void)
 {

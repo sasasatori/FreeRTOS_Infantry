@@ -21,7 +21,8 @@ typedef __packed struct
 
 typedef __packed struct
 {
-    PID_Parament_t parament;
+    PID_Parament_t spd_parament;
+    PID_Parament_t pos_parament;
     float spd_ref;
     float pos_ref;
     float spd_fdb;
