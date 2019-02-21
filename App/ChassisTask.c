@@ -111,10 +111,29 @@ void Chassis_Remote_Control_Handler(void)
     taskEXIT_CRITICAL();
 }
 
-//键鼠模式
+/**
+* @brief :  键鼠控制
+* @param :  NONE
+* @retval:  NONE
+* @note  :  键鼠模式下也分为跟随和不跟随云台两种模式
+*/
+
 void Chassis_Keymouse_Control_Handler(void)
 {
-    ;
+    taskENTER_CRITICAL();
+    switch (chassis.chassis_mode)
+    {
+        case CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL:
+        {
+            ;
+        }break;
+
+        case CHASSIS_FREE_KEYMOUSE_CONTROL:
+        {
+            ;
+        }
+    }
+    taskEXIT_CRITICAL();
 }
 
 //晃tm的
@@ -136,7 +155,6 @@ void Chassis_Stop_Handler(void)
 
 void ChassisRef_to_MotorRef_Handler(void)
 {
-    //等会我改成期望吧，正常应该是这边是pid期望来着
     taskENTER_CRITICAL();
     Chassis_Motor_1.pid.spd_ref =   chassis.vx + chassis.vy + chassis.vw;
     Chassis_Motor_2.pid.spd_ref = - chassis.vx + chassis.vy + chassis.vw;

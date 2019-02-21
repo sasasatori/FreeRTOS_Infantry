@@ -19,10 +19,24 @@
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！延楚協吶！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
+//悳岻祥頁匯均窮字
+
 extern Motor_t Chassis_Motor_1;
 extern Motor_t Chassis_Motor_2;
 extern Motor_t Chassis_Motor_3;
 extern Motor_t Chassis_Motor_4;
+
+extern Motor_t Gimbal_Motor_Pitch;
+extern Motor_t Gimbal_Motor_Yaw;
+
+extern Motor_t Left_Fric_Wheel;
+extern Motor_t Right_Fric_Wheel;
+
+extern Motor_t Trigger;
+
+//殊霞扮寂
+uint32_t canmsg_rx_time_last;
+uint32_t canmsg_rx_time_ms;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！峇佩痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
@@ -35,6 +49,10 @@ extern Motor_t Chassis_Motor_4;
 
 void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
 {
+
+    canmsg_rx_time_ms = HAL_GetTick() - canmsg_rx_time_last;
+    canmsg_rx_time_last = HAL_GetTick();
+
     if (hcan->Instance == CAN1)
     {
         switch (hcan->pRxMsg->StdId)
@@ -69,18 +87,34 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
 
             case CAN_6623_PI_ID:
             {
-                ;
+                Gimbal_Motor_Pitch.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Gimbal_Motor_Pitch.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Gimbal_Motor_Pitch.pid.pos_fdb = (float)Gimbal_Motor_Pitch.encoder.angle;
+                Gimbal_Motor_Pitch.pid.spd_fdb = (float)Gimbal_Motor_Pitch.encoder.speed;
             }break;
 
             case CAN_6623_YA_ID:
             {
-                ;
+                Gimbal_Motor_Yaw.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Gimbal_Motor_Yaw.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Gimbal_Motor_Yaw.pid.pos_fdb = (float)Gimbal_Motor_Yaw.encoder.angle;
+                Gimbal_Motor_Yaw.pid.spd_fdb = (float)Gimbal_Motor_Yaw.encoder.speed;
             }break;
 
             case SHOOTER_LEF_ID:
+            {
+                Left_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Left_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Left_Fric_Wheel.pid.pos_fdb = (float)Left_Fric_Wheel.encoder.angle;
+                Left_Fric_Wheel.pid.spd_fdb = (float)Left_Fric_Wheel.encoder.speed;
+            }break;
+
             case SHOOTER_RIG_ID:
             {
-                ;
+                Right_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Right_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Right_Fric_Wheel.pid.pos_fdb = (float)Right_Fric_Wheel.encoder.angle;
+                Right_Fric_Wheel.pid.spd_fdb = (float)Right_Fric_Wheel.encoder.speed;
             }break;
 
             default:
@@ -97,7 +131,10 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
         {
             case CAN_TRIGGER_ID:
             {
-                ;
+                Trigger.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Trigger.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Trigger.pid.pos_fdb = (float)Trigger.encoder.angle;
+                Trigger.pid.spd_fdb = (float)Trigger.encoder.speed;
             }break;
 
             default:

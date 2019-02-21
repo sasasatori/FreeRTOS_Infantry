@@ -70,7 +70,6 @@ void Gimbal_Task(void const * argument)
     }
     
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
-    osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
 }
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！凪麿峇佩痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/

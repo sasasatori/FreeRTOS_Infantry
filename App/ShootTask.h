@@ -58,7 +58,6 @@ typedef enum
 //2.速度环期望
 //3.位置环期望
 //4.方向
-//5.供弹速度
 
 typedef __packed struct
 {
@@ -66,7 +65,6 @@ typedef __packed struct
     int32_t             spd_ref;
     int32_t             pos_ref;
     trigger_dir_e       dir;
-    int32_t             feed_bullet_spd;
 } trigger_t;
 
 //所有与发射机构有关的参数会在这个里面给定义：
@@ -74,9 +72,8 @@ typedef __packed struct
 //2.射击挡位
 //3.持续射击时间
 //4.摩擦轮开启/不开
-//5.摩擦轮转速
-//6.射出的子弹数
-//7.剩余的子弹数
+//5.射出的子弹数
+//6.剩余的子弹数
 
 typedef __packed struct
 {
@@ -84,7 +81,6 @@ typedef __packed struct
     bullet_spd_e       shoot_gear;
     uint32_t           continue_shoot_time;
     wheel_status_e     fric_wheel_run;
-    uint16_t           fric_wheel_spd;
     uint16_t           shoot_bullets;
     uint16_t           remain_bullets;
     trigger_t          trigger;
