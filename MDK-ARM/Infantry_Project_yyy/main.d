@@ -65,3 +65,7 @@ infantry_project_yyy\main.o: ../Inc/gpio.h
 infantry_project_yyy\main.o: ..\BSP\bsp_uart.h
 infantry_project_yyy\main.o: ..\BSP\bsp_can.h
 infantry_project_yyy\main.o: ..\App\Motor.h
+infantry_project_yyy\main.o: ..\App\IMU_Task.h
+infantry_project_yyy\main.o: ..\BSP\bsp_imu.h
+infantry_project_yyy\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+infantry_project_yyy\main.o: ../Drivers/CMSIS/Include/core_cmFunc.h

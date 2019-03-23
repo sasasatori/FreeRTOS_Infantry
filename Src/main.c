@@ -59,6 +59,7 @@
 #include "gpio.h"
 #include "bsp_uart.h"
 #include "bsp_can.h"
+#include "IMU_Task.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -74,7 +75,6 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
-
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
@@ -129,6 +129,8 @@ int main(void)
   //开启接收中断
   Can_Receive_Start();
   RemoteMsg_Receive_Init();
+  //初始化mpu参数
+  init_quaternion();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

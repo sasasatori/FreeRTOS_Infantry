@@ -58,6 +58,7 @@
 /*OS相关*/
 #define GIMBAL_PERIOD           1
 #define CHASSIS_PERIOD          10
+#define IMU_PERIOD              1
 
 //信号量定义
 #define RC_MODE_SIGNAL          ( 1 << 0 )

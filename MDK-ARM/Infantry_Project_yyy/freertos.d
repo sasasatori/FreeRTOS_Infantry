@@ -61,4 +61,7 @@ infantry_project_yyy\freertos.o: ..\BSP\bsp_can.h
 infantry_project_yyy\freertos.o: ../Inc/can.h
 infantry_project_yyy\freertos.o: ..\App\ShootTask.h
 infantry_project_yyy\freertos.o: ..\App\IMU_Task.h
+infantry_project_yyy\freertos.o: ..\BSP\bsp_imu.h
+infantry_project_yyy\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+infantry_project_yyy\freertos.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 infantry_project_yyy\freertos.o: ..\App\sys_config.h
