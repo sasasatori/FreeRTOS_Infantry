@@ -29,6 +29,23 @@ static volatile float gx, gy, gz, ax, ay, az, mx, my, mz;   //
 
 extern void mpu_get_data(void);
 
+void IMU_TaskStart(void const * argument)
+{
+    uint32_t imu_wake_time = osKernelSysTick();
+
+    while(1)
+    {
+        imu_time_ms = HAL_GetTick() - imu_time_last;
+        imu_time_last = HAL_GetTick();
+
+        mpu_get_data();
+        imu_AHRS_update();
+        imu_attitude_update();
+
+        osDelayUntil(&imu_wake_time, IMU_PERIOD);
+    }
+}
+
 /**
 * @brief :  快速求平方根倒数
 * @param :  x
@@ -303,7 +320,7 @@ static void imu_AHRS_update(void)
 
 }
 
-int yaw_a_js;
+//int yaw_a_js;
 static void imu_attitude_update(void)
 {
   imu.rol = atan2(2*q2*q3 + 2*q0*q1, -2*q1*q1 - 2*q2*q2 + 1)* 57.3; // roll       -pi----pi
@@ -326,22 +343,6 @@ static void imu_attitude_update(void)
 //  gim.sensor.pit_gyro_angle = atti.pitch;
 //  gim.sensor.yaw_gyro_angle = atti.yaw;
   
-  yaw_a_js = atti.yaw;
+//  yaw_a_js = atti.yaw;
 }
 
-void IMU_TaskStart(void const * argument)
-{
-    uint32_t imu_wake_time = osKernelSysTick();
-
-    while(1)
-    {
-        imu_time_ms = HAL_GetTick() - imu_time_last;
-        imu_time_last = HAL_GetTick();
-
-        mpu_get_data();
-        imu_AHRS_update();
-        imu_attitude_update();
-
-        osDelayUntil(&imu_wake_time, IMU_PERIOD);
-    }
-}

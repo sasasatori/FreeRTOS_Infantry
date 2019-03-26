@@ -164,8 +164,8 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(CANMsg_Send_Task,CanMsg_Send_TaskStart , osPriorityAboveNormal , 0 , 128);
   CanMsg_Send_TaskHandle = osThreadCreate(osThread(CANMsg_Send_Task),NULL);
   
-//  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
-//  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);
+  osThreadDef(IMU_Task, IMU_TaskStart, osPriorityNormal, 0 ,128);
+  IMU_TaskHandle = osThreadCreate(osThread(IMU_Task),NULL);
 
   osThreadDef(Shoot_Task, Shoot_TaskStart, osPriorityNormal , 0 , 128);
   Shoot_TaskHandle = osThreadCreate(osThread(Shoot_Task),NULL);

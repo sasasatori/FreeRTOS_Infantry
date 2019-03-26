@@ -73,5 +73,9 @@ extern imu_attitude_t atti;
 
 void init_quaternion(void);
 void IMU_TaskStart(void const * argument);
+float invSqrt(float x);
+void init_quaternion(void);
+void imu_AHRS_update(void);
+void imu_attitude_update(void);
 
 #endif /*_IMU_H_*/

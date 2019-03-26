@@ -184,6 +184,8 @@ void ist8310_get_data(uint8_t* buff)
 
 void mpu_get_data(void)
 {
+  uint8_t ist_data[6];
+
   mpu_read_regs(MPU6500_ACCEL_XOUT_H, mpu_buff, 14);
 
   mpu_data.ax   = mpu_buff[0] << 8 | mpu_buff[1];
@@ -194,7 +196,11 @@ void mpu_get_data(void)
   mpu_data.gy = ((mpu_buff[10] << 8 | mpu_buff[11]) - mpu_data.gy_offset);
   mpu_data.gz = ((mpu_buff[12] << 8 | mpu_buff[13]) - mpu_data.gz_offset);
 
-  //ist8310_get_data((uint8_t*)&mpu_data.mx);
+  ist8310_get_data(ist_data);
+
+  mpu_data.mx = (ist_data[0]<<8 | ist_data[1]);
+  mpu_data.my = (ist_data[2]<<8 | ist_data[3]);
+  mpu_data.mz = (ist_data[4]<<8 | ist_data[5]);
 
   memcpy(&imu.ax, &mpu_data.ax, 6 * sizeof(int16_t));
   imu.wx   = mpu_data.gx / 32.768f / 57.3f; //1000dps -> rad/s

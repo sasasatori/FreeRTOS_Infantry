@@ -57,6 +57,7 @@
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
+#include "bsp_imu.h"
 #include "bsp_uart.h"
 #include "bsp_can.h"
 #include "IMU_Task.h"
@@ -75,6 +76,8 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
+
+extern uint8_t mpu_device_init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
@@ -123,14 +126,15 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
+	//初始化mpu
+	init_quaternion();
+	mpu_device_init();
   //can的滤波器初始化
   Can_Device_Init(&hcan1);
   Can_Device_Init(&hcan2);
   //开启接收中断
   Can_Receive_Start();
   RemoteMsg_Receive_Init();
-  //初始化mpu参数
-  init_quaternion();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
