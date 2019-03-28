@@ -18,7 +18,7 @@ gimbal_t gimbal;
 
 //前面一个大括号里面是速度环的pid参数，后面一个是位置环的pid参数
 Motor_t Gimbal_Motor_Yaw    = {{{1.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}}};
-Motor_t Gimbal_Motor_Pitch  = {{{1.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}}};
+Motor_t Gimbal_Motor_Pitch  = {{{100.0f,0.0f,0.0f},{100.0f,0.0f,0.0f}}};
 
 //CAN发送任务和射击任务
 extern osThreadId CanMsg_Send_TaskHandle;
@@ -44,36 +44,37 @@ void Gimbal_Task(void const * argument)
     gimbal_time_ms = HAL_GetTick() - gimbal_time_last;
     gimbal_time_last = HAL_GetTick();
 
-    switch (gimbal.gimbal_mode)
+    if(gimbal.gimbal_mode == GIMBAL_STOP)
     {
-        case GIMBAL_REMOTE_CONTROL:
-        {
-            Gimbal_Remote_Control_Handler();
-        }break;
-
-        case GIMBAL_KEYMOUSE_CONTROL:
-        {
-            Gimbal_Keymouse_Control_Handler();
-        }break;
-
-        case GIMBAL_AUTO:
-        {
-            Gimbal_Auto_Handler();
-        }break;
-
-        case GIMBAL_STOP:
-        {
-            Gimbal_Stop_Handler();
-        }break;
-
-        default:
-        {
-            Error_Handler();
-        }break;
+        Gimbal_Stop_Handler();
     }
+    else
+    {
+        switch (gimbal.gimbal_mode)
+        {
+            case GIMBAL_REMOTE_CONTROL:
+            {
+                Gimbal_Remote_Control_Handler();
+            }break;
 
-    gimbal_pid_calc(&Gimbal_Motor_Yaw);
-    gimbal_pid_calc(&Gimbal_Motor_Pitch);
+            case GIMBAL_KEYMOUSE_CONTROL:
+            {
+                Gimbal_Keymouse_Control_Handler();
+            }break;
+
+            case GIMBAL_AUTO:
+            {
+                Gimbal_Auto_Handler();
+            }break;
+
+            default:
+            {
+                Error_Handler();
+            }break;
+        }
+        //gimbal_pid_calc(&Gimbal_Motor_Yaw);
+        gimbal_pid_calc(&Gimbal_Motor_Pitch);
+    }
     
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
 }
@@ -125,8 +126,8 @@ void Gimbal_Auto_Handler(void)
 
 void Gimbal_Stop_Handler(void)
 {
-    gimbal.yaw_gyro_ref     = 0;
-    gimbal.pitch_gyro_ref   = 0;
+    Gimbal_Motor_Pitch.pid.output   = 0;
+    Gimbal_Motor_Yaw.pid.output     = 0;
 }
 
 /**
@@ -158,9 +159,9 @@ void gimbal_pid_calc(Motor_t *Motor)
     Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
     Motor->pid.error_spd[0] = spd_error;
 
-    Motor->pid.output = Motor->pid.spd_parament.kp * spd_error + 
-                        Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
-                        Motor->pid.spd_parament.kd * Motor->pid.derror_spd;
+    Motor->pid.output = -(Motor->pid.spd_parament.kp * spd_error + 
+                          Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
+                          Motor->pid.spd_parament.kd * Motor->pid.derror_spd);
     
     //计算完pid，加个限幅
     if(Motor->pid.output >= GIMBAL_SPD_MAX)
