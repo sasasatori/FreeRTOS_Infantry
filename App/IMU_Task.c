@@ -351,5 +351,5 @@ void gimbal_fdb_update(void)
   Gimbal_Motor_Pitch.pid.pos_fdb = atti.pitch;
   //速度反馈两个我都要
   Gimbal_Motor_Pitch.pid.spd_fdb = mpu_data.gz / 16.384f;
-  Gimbal_Motor_Yaw.pid.spd_ref   = (mpu_data.gx / 16.384f) + 4.0f;
+  Gimbal_Motor_Yaw.pid.spd_fdb   = (mpu_data.gx / 16.384f) + 4.0f;
 }
