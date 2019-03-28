@@ -18,7 +18,7 @@ gimbal_t gimbal;
 
 //前面一个大括号里面是速度环的pid参数，后面一个是位置环的pid参数
 Motor_t Gimbal_Motor_Yaw    = {{{1.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}}};
-Motor_t Gimbal_Motor_Pitch  = {{{100.0f,0.0f,0.0f},{100.0f,0.0f,0.0f}}};
+Motor_t Gimbal_Motor_Pitch  = {{{13.0f,0.000001f,0.0f},{10.0f,0.00019f,0.0f}}};
 
 //CAN发送任务和射击任务
 extern osThreadId CanMsg_Send_TaskHandle;
@@ -137,6 +137,9 @@ void Gimbal_Stop_Handler(void)
 * @note  :  我的pid是无敌的
 */
 
+float pos_kp,pos_ki,pos_kd;
+float spd_kp,spd_ki,spd_kd;
+
 void gimbal_pid_calc(Motor_t *Motor)
 {
     float pos_error,spd_error;
@@ -151,7 +154,12 @@ void gimbal_pid_calc(Motor_t *Motor)
     Motor->pid.spd_ref = Motor->pid.pos_parament.kp * pos_error + 
                          Motor->pid.pos_parament.ki * Motor->pid.sum_pos +
                          Motor->pid.pos_parament.kd * Motor->pid.derror_pos;
-    
+
+    //调参用
+    // Motor->pid.spd_ref = pos_kp * pos_error + 
+    //                      pos_ki * Motor->pid.sum_pos +
+    //                      pos_kd * Motor->pid.derror_pos;
+
     spd_error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
     Motor->pid.sum_spd += spd_error;
     Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
@@ -162,6 +170,10 @@ void gimbal_pid_calc(Motor_t *Motor)
     Motor->pid.output = -(Motor->pid.spd_parament.kp * spd_error + 
                           Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
                           Motor->pid.spd_parament.kd * Motor->pid.derror_spd);
+    
+    // Motor->pid.output = -(spd_kp * spd_error + 
+    //                       spd_ki * Motor->pid.sum_spd + 
+    //                       spd_kd * Motor->pid.derror_spd);
     
     //计算完pid，加个限幅
     if(Motor->pid.output >= GIMBAL_SPD_MAX)
