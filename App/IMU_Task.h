@@ -77,5 +77,6 @@ float invSqrt(float x);
 void init_quaternion(void);
 void imu_AHRS_update(void);
 void imu_attitude_update(void);
+void gimbal_fdb_update(void);
 
 #endif /*_IMU_H_*/

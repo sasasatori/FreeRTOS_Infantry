@@ -37,7 +37,8 @@ extern remote_info_t remote_data;
 uint32_t chassis_time_last;
 uint32_t chassis_time_ms;
 
-float ref,fdb;
+//距歌喘
+//float ref,fdb;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！販暦痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
@@ -171,18 +172,18 @@ void Chassis_Motor_PIDCalc(Motor_t *Motor)
     float Error;
 
     Error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
-    Motor->pid.sum += Error;
+    Motor->pid.sum_spd += Error;
     
-    Motor->pid.derror = Motor->pid.error[0] - Motor->pid.error[1];
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
 
-    Motor->pid.error[1] = Motor->pid.error[0];
-    Motor->pid.error[0] = Error;
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = Error;
 
     
     //柴麻pid
    Motor->pid.output = Motor->pid.spd_parament.kp * Error + 
-                       Motor->pid.spd_parament.ki * Motor->pid.sum + 
-                       Motor->pid.spd_parament.kd * Motor->pid.derror;
+                       Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
+                       Motor->pid.spd_parament.kd * Motor->pid.derror_spd;
     
     if(Motor->pid.output >= Motor->pid.spd_parament.max)
     Motor->pid.output = Motor->pid.spd_parament.max;
@@ -190,8 +191,8 @@ void Chassis_Motor_PIDCalc(Motor_t *Motor)
     Motor->pid.output = Motor->pid.spd_parament.min;
     
     //叙距歌喘
-    // Motor->pid.output = kp * Motor->pid.error[0] +
-    //                     ki * Motor->pid.sum +
-    //                     kd * Motor->pid.derror;
+    // Motor->pid.output = kp * Motor->pid.error_spd[0] +
+    //                     ki * Motor->pid.sum_spd +
+    //                     kd * Motor->pid.derror_spd;
 
 }

@@ -27,9 +27,12 @@ typedef __packed struct
     float pos_ref;
     float spd_fdb;
     float pos_fdb;
-    float error[2];
-    float derror;
-    float sum;
+    float error_spd[2];
+    float error_pos[2];
+    float derror_spd;
+    float derror_pos;
+    float sum_spd;
+    float sum_pos;
     float output;
 } PID_t;
 

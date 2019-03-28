@@ -120,9 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>h蛞
-?^wh蛞
-</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -160,17 +157,12 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>atti</ItemText>
+          <ItemText>Gimbal_Motor_Pitch</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>imu</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>mpu_data</ItemText>
+          <ItemText>Gimbal_Motor_Yaw</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -213,6 +205,16 @@
           <count>7</count>
           <WinNumber>2</WinNumber>
           <ItemText>\\Infantry_Project_yyy\../App/ShootTask.c\shoot_time_ms,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>imu_time_last,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>imu_time_ms,0x0A</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

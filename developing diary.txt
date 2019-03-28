@@ -323,3 +323,44 @@ extern了一下，上面的bug解决了，然而最大的问题也就是mpu读不到寄存器的问题仍然没解
 
 2019/3/25
 我要猝死了，先躺会，今天的目标是把云台的控制代码完成，考虑到bsp层我已经写好了，mpu的数据我也已经能读了，那么剩下的任务无非就是分成pitch轴和yaw轴各自的控制实现了
+
+2019/3/28
+开始写傻吊代码，IMU的pitch反馈给了gimbal_motor_pitch，先把几个反馈给过去再说吧，好烦啊（结果发现我自己一大早就是CAN接收中断把反馈的东西给写好了，不愧是我，工作效率真jb高） 
+看了一下数据，不愧是垃圾编码器，电机速度反馈在0-16-（-32）几个值之间跳变，真的讨厌，我要考虑一下滤波或者换个东西来反馈吗？反正直接用大概率出事
+看了一下ICRA的代码，反馈果然还是用的IMU，那就没什么好说的了
+简单测试了一下，pitch轴角速度反馈很好看，yaw轴会有-4的偏置，所以手动把偏置给修正掉了，概括一下就是一句话——稳得一匹
+看了一下任务执行时间，imu_task大概比gimbal_task慢了一个时间单位，考虑到1个时间单位挺小的了，所以基本上可以当成是同步更新的，欸嘿嘿
+然后简单拿ICRA车子的例子来说一下云台的控制算法吧，简单来说就是这样——
+
+while(1)
+{
+  pid_calc(&pid_yaw, gim.pid.yaw_angle_fdb, gim.pid.yaw_angle_ref);
+  pid_calc(&pid_pit, gim.pid.pit_angle_fdb, gim.pid.pit_angle_ref);
+  
+  gim.pid.yaw_spd_ref = pid_yaw.out;
+  gim.pid.pit_spd_ref = pid_pit.out;
+  
+  gim.pid.yaw_spd_fdb = gim.sensor.yaw_palstance;
+  gim.pid.pit_spd_fdb = gim.sensor.pit_palstance;
+  
+  pid_calc(&pid_yaw_spd, gim.pid.yaw_spd_fdb, gim.pid.yaw_spd_ref);
+  pid_calc(&pid_pit_spd, gim.pid.pit_spd_fdb, gim.pid.pit_spd_ref);
+
+  if (gimbal_is_controllable())
+  {
+    glb_cur.gimbal_cur[0] = YAW_MOTO_POSITIVE_DIR*pid_yaw_spd.out;
+    glb_cur.gimbal_cur[1] = PIT_MOTO_POSITIVE_DIR*pid_pit_spd.out;
+    glb_cur.gimbal_cur[2] = pid_trigger_spd.out;
+  }
+  else
+  {
+    memset(glb_cur.gimbal_cur, 0, sizeof(glb_cur.gimbal_cur));
+    gim.ctrl_mode = GIMBAL_RELAX;
+    //pid_trigger.iout = 0;
+  } 
+}
+
+//ICRA这破车代码牛逼之处在于安全性弄得特别特别好，能爆炸的地方都给削掉了
+
+Pitch的控制代码写完了，之后要解决的问题只有两个，一个是如何把计算出来的pid转化成实际给电机的数值，另外一个是用什么方式控制遥控器的期望
+然后对于yaw轴来说，麻烦稍微多一点，我要通过某种计算方式把电机的实际角度换算到和imu的数据同一个数量级的东西，然后再重复pitch轴的工作，好烦啊

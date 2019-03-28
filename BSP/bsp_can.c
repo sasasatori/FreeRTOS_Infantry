@@ -89,16 +89,14 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
             {
                 Gimbal_Motor_Pitch.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
                 Gimbal_Motor_Pitch.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
-                Gimbal_Motor_Pitch.pid.pos_fdb = (float)Gimbal_Motor_Pitch.encoder.angle;
-                Gimbal_Motor_Pitch.pid.spd_fdb = (float)Gimbal_Motor_Pitch.encoder.speed;
             }break;
 
             case CAN_6623_YA_ID:
             {
                 Gimbal_Motor_Yaw.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
                 Gimbal_Motor_Yaw.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                //最后也就一个yaw轴的角度数据可怜兮兮的要从编码器获取了
                 Gimbal_Motor_Yaw.pid.pos_fdb = (float)Gimbal_Motor_Yaw.encoder.angle;
-                Gimbal_Motor_Yaw.pid.spd_fdb = (float)Gimbal_Motor_Yaw.encoder.speed;
             }break;
 
             case SHOOTER_LEF_ID:

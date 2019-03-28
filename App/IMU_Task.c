@@ -7,9 +7,13 @@
 
 #include "bsp_imu.h"
 #include "IMU_Task.h"
+#include "GimbalTask.h"
 #include "sys_config.h"
 #include "cmsis_os.h"
 #include "math.h"
+
+extern Motor_t Gimbal_Motor_Pitch;
+extern Motor_t Gimbal_Motor_Yaw;
 
 uint32_t imu_time_last;
 uint32_t imu_time_ms;
@@ -41,6 +45,7 @@ void IMU_TaskStart(void const * argument)
         mpu_get_data();
         imu_AHRS_update();
         imu_attitude_update();
+        gimbal_fdb_update();
 
         osDelayUntil(&imu_wake_time, IMU_PERIOD);
     }
@@ -338,11 +343,13 @@ static void imu_attitude_update(void)
   atti.yaw   = imu.yaw + atti.yaw_cnt*360;
   atti.pitch = -imu.rol;
   atti.roll  = imu.pit;
-  
-  //在这边更新云台数据，不过我先注释了
-//  gim.sensor.pit_gyro_angle = atti.pitch;
-//  gim.sensor.yaw_gyro_angle = atti.yaw;
-  
-//  yaw_a_js = atti.yaw;
 }
 
+void gimbal_fdb_update(void)
+{
+  //IMU的数据我就只要pitch轴的角度了，yaw轴的解算没融合磁力计数据垃圾的一批
+  Gimbal_Motor_Pitch.pid.pos_fdb = atti.pitch;
+  //速度反馈两个我都要
+  Gimbal_Motor_Pitch.pid.spd_fdb = mpu_data.gz / 16.384f;
+  Gimbal_Motor_Yaw.pid.spd_ref   = (mpu_data.gx / 16.384f) + 4.0f;
+}

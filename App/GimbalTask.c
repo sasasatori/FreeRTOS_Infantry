@@ -7,7 +7,7 @@
 
 #include "GimbalTask.h"
 #include "bsp_can.h"
-
+#include "RemoteMsgTask.h"
 #include "sys_config.h"
 #include "cmsis_os.h"
 
@@ -16,16 +16,19 @@
 //掏出云台结构体
 gimbal_t gimbal;
 
+//前面一个大括号里面是速度环的pid参数，后面一个是位置环的pid参数
+Motor_t Gimbal_Motor_Yaw    = {{{1.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}}};
+Motor_t Gimbal_Motor_Pitch  = {{{1.0f,0.0f,0.0f},{1.0f,0.0f,0.0f}}};
+
 //CAN发送任务和射击任务
 extern osThreadId CanMsg_Send_TaskHandle;
 extern osThreadId Shoot_TaskHandle;
 
+extern remote_info_t remote_data;
+
 //定义两个时间有关的变量用来监测任务是否正常定时执行
 uint32_t gimbal_time_last;
 uint32_t gimbal_time_ms;
-
-Motor_t Gimbal_Motor_Yaw;
-Motor_t Gimbal_Motor_Pitch;
 
 /*———————————————————————————————任务函数———————————————————————————————*/
 
@@ -68,6 +71,9 @@ void Gimbal_Task(void const * argument)
             Error_Handler();
         }break;
     }
+
+    gimbal_pid_calc(&Gimbal_Motor_Yaw);
+    gimbal_pid_calc(&Gimbal_Motor_Pitch);
     
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
 }
@@ -121,4 +127,45 @@ void Gimbal_Stop_Handler(void)
 {
     gimbal.yaw_gyro_ref     = 0;
     gimbal.pitch_gyro_ref   = 0;
+}
+
+/**
+* @brief :  双环pid计算
+* @param :  Motor
+* @retval:  none
+* @note  :  我的pid是无敌的
+*/
+
+void gimbal_pid_calc(Motor_t *Motor)
+{
+    float pos_error,spd_error;
+
+    pos_error = Motor->pid.pos_ref - Motor->pid.pos_fdb;
+    Motor->pid.sum_pos += pos_error;
+    Motor->pid.derror_pos = Motor->pid.error_pos[0] - Motor->pid.error_pos[1];
+
+    Motor->pid.error_pos[1] = Motor->pid.error_pos[0];
+    Motor->pid.error_pos[0] = pos_error;
+
+    Motor->pid.spd_ref = Motor->pid.pos_parament.kp * pos_error + 
+                         Motor->pid.pos_parament.ki * Motor->pid.sum_pos +
+                         Motor->pid.pos_parament.kd * Motor->pid.derror_pos;
+    
+    spd_error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+    Motor->pid.sum_spd += spd_error;
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
+
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = spd_error;
+
+    Motor->pid.output = Motor->pid.spd_parament.kp * spd_error + 
+                        Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
+                        Motor->pid.spd_parament.kd * Motor->pid.derror_spd;
+    
+    //计算完pid，加个限幅
+    if(Motor->pid.output >= GIMBAL_SPD_MAX)
+    Motor->pid.output = GIMBAL_SPD_MAX;
+    if(Motor->pid.output <= -GIMBAL_SPD_MAX)
+    Motor->pid.output = -GIMBAL_SPD_MAX;
+
 }
