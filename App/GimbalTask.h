@@ -51,4 +51,5 @@ void Gimbal_Auto_Handler(void);
 void Gimbal_Stop_Handler(void);
 
 void gimbal_pid_calc(Motor_t *Motor);
+void gimbal_pid_parament_fix(Motor_t *Motor);
 #endif  /*_GIMBAL_H_*/

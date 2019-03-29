@@ -194,6 +194,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>spd_kd</ItemText>
         </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>remote_data</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
