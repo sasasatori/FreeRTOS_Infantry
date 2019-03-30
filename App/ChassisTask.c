@@ -24,10 +24,10 @@ chassis_t chassis;
 
 //冷静的掏出Motor结构体，并一口气定义了四个,甚至还顺手搞了一波pid参数配置
 //最惨的是这波pid参数的效果还挺难看的，我也很绝望
-Motor_t Chassis_Motor_1 = {{{15.0f,0.0f,0.0f}}};
-Motor_t Chassis_Motor_2 = {{{15.0f,0.0f,0.0f}}};
-Motor_t Chassis_Motor_3 = {{{15.0f,0.0f,0.0f}}};
-Motor_t Chassis_Motor_4 = {{{15.0f,0.0f,0.0f}}};
+Motor_t Chassis_Motor_1 = {{{5.0f,0.0f,0.0f}}};
+Motor_t Chassis_Motor_2 = {{{5.0f,0.0f,0.0f}}};
+Motor_t Chassis_Motor_3 = {{{5.0f,0.0f,0.0f}}};
+Motor_t Chassis_Motor_4 = {{{5.0f,0.0f,0.0f}}};
 
 //没有什么意义的CAN发送任务
 extern osThreadId CanMsg_Send_TaskHandle;
@@ -110,11 +110,11 @@ void Chassis_Remote_Control_Handler(void)
     //这边严格意义上来说要用和云台角度之间的PID来进行处理，不过我急着写底盘就先不管这么多了
     chassis.vw = remote_data.remote.ch2 * CHASSIS_RC_MOVE_RATIO;
     taskEXIT_CRITICAL();
-    if(chassis.vx >= CHASSIS_STR_MAX)   chassis.vx =  CHASSIS_STR_MAX;
+    if(chassis.vx >=  CHASSIS_STR_MAX)  chassis.vx =  CHASSIS_STR_MAX;
     if(chassis.vx <= -CHASSIS_STR_MAX)  chassis.vx = -CHASSIS_STR_MAX;
-    if(chassis.vy >= CHASSIS_STR_MAX)   chassis.vy =  CHASSIS_STR_MAX;
+    if(chassis.vy >=  CHASSIS_STR_MAX)  chassis.vy =  CHASSIS_STR_MAX;
     if(chassis.vy <= -CHASSIS_STR_MAX)  chassis.vy = -CHASSIS_STR_MAX;
-    if(chassis.vw >= CHASSIS_ROT_MAX)   chassis.vw =  CHASSIS_ROT_MAX;
+    if(chassis.vw >=  CHASSIS_ROT_MAX)  chassis.vw =  CHASSIS_ROT_MAX;
     if(chassis.vw <= -CHASSIS_ROT_MAX)  chassis.vw = -CHASSIS_ROT_MAX;
 }
 
