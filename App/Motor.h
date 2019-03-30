@@ -15,8 +15,6 @@ typedef __packed struct
     float kp;
     float ki;
     float kd;
-    float max;
-    float min;
 } PID_Parament_t;
 
 typedef __packed struct

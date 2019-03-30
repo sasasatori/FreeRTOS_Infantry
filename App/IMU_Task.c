@@ -22,6 +22,8 @@ mpu_data_t      mpu_data;
 imu_data_t      imu;
 imu_attitude_t  atti;
 
+float angle_filterp[FILTER_LENGTH];
+
 /* imu task static parameter */
 static volatile float q0 = 1.0f;
 static volatile float q1 = 0.0f;
@@ -345,11 +347,19 @@ static void imu_attitude_update(void)
   atti.roll  = imu.pit;
 }
 
+/**
+* @brief :  更新gimbal反馈数据
+* @param :  none
+* @retval:  none
+* @note  :  加个均值滤波搞搞算了
+*/
+
 void gimbal_fdb_update(void)
 {
   //IMU的数据我就只要pitch轴的角度了，yaw轴的解算没融合磁力计数据垃圾的一批
-  Gimbal_Motor_Pitch.pid.pos_fdb = atti.pitch;
+  //然后我发现pitch轴数据和shit一样，我动一下yaw轴之后pitch轴就抽风的和真的一样
+  //角度值去你妈的imu
   //速度反馈两个我都要
-  Gimbal_Motor_Pitch.pid.spd_fdb = mpu_data.gz / 16.384f;
-  Gimbal_Motor_Yaw.pid.spd_fdb   = (mpu_data.gx / 16.384f) + 4.0f;
+  Gimbal_Motor_Yaw.pid.spd_fdb = (mpu_data.gz / IMU_TO_REAL_RATIO) + IMU_PITCH_BIAS;
+  Gimbal_Motor_Pitch.pid.spd_fdb   = (mpu_data.gx / IMU_TO_REAL_RATIO) + IMU_YAW_BIAS;
 }
