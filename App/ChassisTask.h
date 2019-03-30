@@ -22,6 +22,7 @@ typedef enum
     CHASSIS_FREE_KEYMOUSE_CONTROL               = 2,
     CHASSIS_SWAY                                = 3,
     CHASSIS_STOP                                = 4,
+    CHASSIS_FREE_REMOTE_CONTROL                 = 5,
 } chassis_mode_e;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！潤更悶！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
