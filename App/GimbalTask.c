@@ -75,6 +75,8 @@ void Gimbal_Task(void const * argument)
             }break;
         }
         
+        gimbalref_to_motorref_handler();
+
         gimbal_pid_calc(&Gimbal_Motor_Yaw);
         gimbal_pid_calc(&Gimbal_Motor_Pitch);
     }
@@ -85,6 +87,18 @@ void Gimbal_Task(void const * argument)
 /*———————————————————————————————其他执行函数———————————————————————————————*/
 
 /**
+* @brief :  将云台期望值变成电机期望值
+* @param :  none
+* @retval:  none
+* @note  :  none
+*/
+
+void gimbalref_to_motorref_handler(void)
+{
+    Gimbal_Motor_Pitch.pid.pos_ref = - gimbal.pitch_angle_ref;
+}
+
+/**
 * @brief :  遥控器控制
 * @param :  NONE
 * @retval:  NONE
@@ -93,7 +107,9 @@ void Gimbal_Task(void const * argument)
 
 void Gimbal_Remote_Control_Handler(void)
 {
-    ;
+    gimbal.pitch_angle_ref += remote_data.remote.ch3 * GIMABL_RC_RATIO;
+    if(gimbal.pitch_angle_ref >=  GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref =  GIMBAL_PITCH_MAX;
+    if(gimbal.pitch_angle_ref <= -GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref = -GIMBAL_PITCH_MAX;
 }
 
 /**

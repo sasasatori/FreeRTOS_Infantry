@@ -91,10 +91,6 @@ void Chassis_Task(void const * argument)
     Chassis_Motor_PIDCalc(&Chassis_Motor_3);
     Chassis_Motor_PIDCalc(&Chassis_Motor_4);
 
-    //用来调参
-    // ref = Chassis_Motor_3.pid.spd_ref;
-    // fdb = Chassis_Motor_3.pid.spd_fdb;
-
     osSignalSet(CanMsg_Send_TaskHandle, CHASSIS_SEND_SIGNAL);
 }
 

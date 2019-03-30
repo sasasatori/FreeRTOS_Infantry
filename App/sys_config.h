@@ -22,6 +22,7 @@
 //最大平动速度
 #define CHASSIS_STR_MAX         3000.0f
 
+//最大旋转速度
 #define CHASSIS_ROT_MAX         1500.0f
 
 //遥控器值映射到底盘的期望值
@@ -37,6 +38,15 @@
 
 //定义编码器到实际角度的映射值
 #define GIMBAL_REAL_RATIO       22.8f
+
+//定义遥控器期望到实际角度的映射值
+#define GIMABL_RC_RATIO         0.0001f
+
+//定义pitch轴的角度幅值
+#define GIMBAL_PITCH_MAX        40.0f
+
+//定义yaw轴的角度幅值
+#define GIMBAL_YAW_MAX          40.0f
 
 /*———————————————————————————————发射机构设置———————————————————————————————*/
 

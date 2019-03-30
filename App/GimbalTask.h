@@ -52,4 +52,6 @@ void Gimbal_Stop_Handler(void);
 
 void gimbal_pid_calc(Motor_t *Motor);
 void gimbal_pid_parament_fix(Motor_t *Motor);
+
+void gimbalref_to_motorref_handler(void);
 #endif  /*_GIMBAL_H_*/
