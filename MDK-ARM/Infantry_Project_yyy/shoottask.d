@@ -53,4 +53,6 @@ infantry_project_yyy\shoottask.o: ../Middlewares/Third_Party/FreeRTOS/Source/inc
 infantry_project_yyy\shoottask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 infantry_project_yyy\shoottask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 infantry_project_yyy\shoottask.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+infantry_project_yyy\shoottask.o: ..\App\RemoteMsgTask.h
+infantry_project_yyy\shoottask.o: ../Inc/usart.h
 infantry_project_yyy\shoottask.o: ..\App\sys_config.h

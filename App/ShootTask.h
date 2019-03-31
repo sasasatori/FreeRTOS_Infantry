@@ -97,5 +97,6 @@ void Shoot_Keymouse_Handler(void);
 void Shoot_Remote_Handler(void);
 void Shoot_Stop_Handler(void);
 
-
+void fric_wheel_pid_calc(Motor_t *Motor);
+void fric_wheel_pid_parament_fix(Motor_t *Motor);
 #endif /*_SHOOT_H_*/

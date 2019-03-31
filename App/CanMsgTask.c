@@ -63,21 +63,17 @@ void CanMsg_Send_TaskStart(void const * argument)
                                 (int16_t)(Chassis_Motor_2.pid.output),\
                                 (int16_t)(Chassis_Motor_3.pid.output),\
                                 (int16_t)(Chassis_Motor_4.pid.output));
-                Send_Gimbal_Cur((int16_t)(Gimbal_Motor_Yaw.pid.output),\
-                                (int16_t)(Gimbal_Motor_Pitch.pid.output),\
-                                (int16_t)(Left_Fric_Wheel.pid.output),\
-                                (int16_t)(Right_Fric_Wheel.pid.output));
             }
 
             if (event.value.signals & GIMBAL_SEND_SIGNAL)
             {
                 //can发送云台，摩擦轮，拨盘电机数据
                 Send_Gimbal_Cur((int16_t)(Gimbal_Motor_Yaw.pid.output),\
-                                (int16_t)(Gimbal_Motor_Pitch.pid.output),\
+                                (int16_t)(Gimbal_Motor_Pitch.pid.output));
+                
+                Send_Trigger_Cur((int16_t)Trigger.pid.output,\
                                 (int16_t)(Left_Fric_Wheel.pid.output),\
                                 (int16_t)(Right_Fric_Wheel.pid.output));
-                
-                Send_Trigger_Cur((int16_t)Trigger.pid.output);
             }
         }
     }

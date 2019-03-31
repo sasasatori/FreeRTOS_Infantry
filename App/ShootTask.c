@@ -9,10 +9,15 @@
 
 #include "ShootTask.h"
 #include "cmsis_os.h"
+#include "RemoteMsgTask.h"
 
 #include "sys_config.h"
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！崎協吶！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
+
+#define REMOTE_KEY_UP       1
+#define REMOTE_KEY_MID      3
+#define REMOTE_KEY_DOWN     2
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！延楚！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
@@ -27,6 +32,8 @@ Motor_t Left_Fric_Wheel;
 Motor_t Right_Fric_Wheel;
 
 Motor_t Trigger;
+
+extern remote_info_t remote_data;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！販暦痕方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 
@@ -73,7 +80,6 @@ void Shoot_TaskStart(void const * argument)
                     }break;
                 }
 
-                //彫価態嚥王態験嚠豚李峙
                 //彫価態嚥王態pid柴麻
 
                 //恷朔公can窟僕販暦窟僕宥岑
@@ -119,7 +125,54 @@ void Shoot_Keymouse_Handler(void)
 
 void Shoot_Remote_Handler(void)
 {
-    ;
+    static uint8_t mode_last = 0;
+    static uint8_t mode_now = 0;
+
+    static uint8_t key_up_counter;
+    static uint8_t key_down_counter;
+
+
+
+    mode_now = remote_data.remote.s1;
+
+    if(mode_now != mode_last)
+    {
+        switch(mode_now)
+        {
+            case REMOTE_KEY_UP:
+            {
+                key_up_counter++;
+                
+                if(key_up_counter % 2 == 0)
+                {
+                    Left_Fric_Wheel.pid.output  = 0;
+                    Right_Fric_Wheel.pid.output = 0;
+                }
+                else
+                {
+                    Left_Fric_Wheel.pid.output  = SHOOTER_SPD_LOW;
+                    Right_Fric_Wheel.pid.output = -SHOOTER_SPD_LOW;
+                }
+                
+            }break;
+
+            case REMOTE_KEY_DOWN:
+            {
+                key_down_counter++;
+                
+                if(key_down_counter % 2 == 0)
+                {
+                    Trigger.pid.output = 0;
+                }
+                else
+                {
+                    Trigger.pid.output = TRIGGER_SPD_LOW;
+                }
+            }break;
+        }
+    }
+    
+    mode_last = mode_now;
 }
 
 /**
@@ -131,7 +184,31 @@ void Shoot_Remote_Handler(void)
 
 void Shoot_Stop_Handler(void)
 {
-    //唯峭彫価態才王態
-    shooter.fric_wheel_run = WHEEL_STOP;
-    shooter.trigger.trig_mode = TRIG_STOP;
+    Left_Fric_Wheel.pid.output  = 0;
+    Right_Fric_Wheel.pid.output = 0;
+    Trigger.pid.output          = 0;
+}
+
+/**
+* @brief :  柴麻彫価態pid
+* @param :  Motor
+* @retval:  none
+* @note  :  none
+*/
+
+void fric_wheel_pid_calc(Motor_t *Motor)
+{
+    ;
+}
+
+/**
+* @brief :  喘栖距歌
+* @param :  Motor
+* @retval:  none
+* @note  :  none
+*/
+
+void fric_wheel_pid_parament_fix(Motor_t *Motor)
+{
+    ;
 }

@@ -101,22 +101,6 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
 
             }break;
 
-            case SHOOTER_LEF_ID:
-            {
-                Left_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
-                Left_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
-                Left_Fric_Wheel.pid.pos_fdb = (float)Left_Fric_Wheel.encoder.angle;
-                Left_Fric_Wheel.pid.spd_fdb = (float)Left_Fric_Wheel.encoder.speed;
-            }break;
-
-            case SHOOTER_RIG_ID:
-            {
-                Right_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
-                Right_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
-                Right_Fric_Wheel.pid.pos_fdb = (float)Right_Fric_Wheel.encoder.angle;
-                Right_Fric_Wheel.pid.spd_fdb = (float)Right_Fric_Wheel.encoder.speed;
-            }break;
-
             default:
             {
                 ;
@@ -135,6 +119,22 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef *hcan)
                 Trigger.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
                 Trigger.pid.pos_fdb = (float)Trigger.encoder.angle;
                 Trigger.pid.spd_fdb = (float)Trigger.encoder.speed;
+            }break;
+
+            case SHOOTER_LEF_ID:
+            {
+                Left_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Left_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Left_Fric_Wheel.pid.pos_fdb = (float)Left_Fric_Wheel.encoder.angle;
+                Left_Fric_Wheel.pid.spd_fdb = (float)Left_Fric_Wheel.encoder.speed;
+            }break;
+
+            case SHOOTER_RIG_ID:
+            {
+                Right_Fric_Wheel.encoder.angle = hcan->pRxMsg->Data[0] << 8 | hcan->pRxMsg->Data[1];
+                Right_Fric_Wheel.encoder.speed = hcan->pRxMsg->Data[2] << 8 | hcan->pRxMsg->Data[3];
+                Right_Fric_Wheel.pid.pos_fdb = (float)Right_Fric_Wheel.encoder.angle;
+                Right_Fric_Wheel.pid.spd_fdb = (float)Right_Fric_Wheel.encoder.speed;
             }break;
 
             default:
@@ -236,26 +236,26 @@ void Send_Chassis_Cur(int16_t CM1_Current,int16_t CM2_Current,int16_t CM3_Curren
 };
 
 /**
-* @brief :  云台&摩擦轮电机Can发送
+* @brief :  云台电机Can发送
 * @param :  Yaw_Current,Pitch_Current
 * @retval:  NONE
 * @note  :  给云台电机发送电流
 */
-void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current,int16_t Left_Current,int16_t Right_Current)
+void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current)
 {
-    GIMBAL_SHOOTER_CAN.pTxMsg->StdId   = GIMBAL_SHOOTER_ID;
-    GIMBAL_SHOOTER_CAN.pTxMsg->IDE     = CAN_ID_STD;
-    GIMBAL_SHOOTER_CAN.pTxMsg->RTR     = CAN_RTR_DATA;
-    GIMBAL_SHOOTER_CAN.pTxMsg->DLC     = 0x08;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[0] = YAW_Current >> 8;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[1] = YAW_Current;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[2] = PIT_Current >> 8;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[3] = PIT_Current;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[4] = Left_Current >> 8;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[5] = Left_Current;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[6] = Right_Current >> 8;
-    GIMBAL_SHOOTER_CAN.pTxMsg->Data[7] = Right_Current;
-    HAL_CAN_Transmit(&GIMBAL_SHOOTER_CAN, 1);
+    GIMBAL_CAN.pTxMsg->StdId   = CAN_GIMBAL_ID;
+    GIMBAL_CAN.pTxMsg->IDE     = CAN_ID_STD;
+    GIMBAL_CAN.pTxMsg->RTR     = CAN_RTR_DATA;
+    GIMBAL_CAN.pTxMsg->DLC     = 0x08;
+    GIMBAL_CAN.pTxMsg->Data[0] = YAW_Current >> 8;
+    GIMBAL_CAN.pTxMsg->Data[1] = YAW_Current;
+    GIMBAL_CAN.pTxMsg->Data[2] = PIT_Current >> 8;
+    GIMBAL_CAN.pTxMsg->Data[3] = PIT_Current;
+    GIMBAL_CAN.pTxMsg->Data[4] = 0;
+    GIMBAL_CAN.pTxMsg->Data[5] = 0;
+    GIMBAL_CAN.pTxMsg->Data[6] = 0;
+    GIMBAL_CAN.pTxMsg->Data[7] = 0;
+    HAL_CAN_Transmit(&GIMBAL_CAN, 1);
 };
 
 /**
@@ -264,19 +264,19 @@ void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current,int16_t Left_Curren
 * @retval:  NONE
 * @note  :  给拨弹电机发送电流
 */
-void Send_Trigger_Cur(int16_t Trigger_Current)
+void Send_Trigger_Cur(int16_t Trigger_Current,int16_t Left_Current,int16_t Right_Current)
 {
-    TRIGGER_CAN.pTxMsg->StdId   = CAN_TRIGGER_ID;
-    TRIGGER_CAN.pTxMsg->IDE     = CAN_ID_STD;
-    TRIGGER_CAN.pTxMsg->RTR     = CAN_RTR_DATA;
-    TRIGGER_CAN.pTxMsg->DLC     = 0x08;
-    TRIGGER_CAN.pTxMsg->Data[0] = Trigger_Current >> 8;
-    TRIGGER_CAN.pTxMsg->Data[1] = Trigger_Current;
-    TRIGGER_CAN.pTxMsg->Data[2] = 0;
-    TRIGGER_CAN.pTxMsg->Data[3] = 0;
-    TRIGGER_CAN.pTxMsg->Data[4] = 0;
-    TRIGGER_CAN.pTxMsg->Data[5] = 0;
-    TRIGGER_CAN.pTxMsg->Data[6] = 0;
-    TRIGGER_CAN.pTxMsg->Data[7] = 0;
-    HAL_CAN_Transmit(&TRIGGER_CAN, 1);
+    SHOOTER_CAN.pTxMsg->StdId   = CAN_SHOOTER_ID;
+    SHOOTER_CAN.pTxMsg->IDE     = CAN_ID_STD;
+    SHOOTER_CAN.pTxMsg->RTR     = CAN_RTR_DATA;
+    SHOOTER_CAN.pTxMsg->DLC     = 0x08;
+    SHOOTER_CAN.pTxMsg->Data[0] = Trigger_Current >> 8;
+    SHOOTER_CAN.pTxMsg->Data[1] = Trigger_Current;
+    SHOOTER_CAN.pTxMsg->Data[2] = Left_Current >> 8;
+    SHOOTER_CAN.pTxMsg->Data[3] = Left_Current;
+    SHOOTER_CAN.pTxMsg->Data[4] = Right_Current >> 8;
+    SHOOTER_CAN.pTxMsg->Data[5] = Right_Current;
+    SHOOTER_CAN.pTxMsg->Data[6] = 0;
+    SHOOTER_CAN.pTxMsg->Data[7] = 0;
+    HAL_CAN_Transmit(&SHOOTER_CAN, 1);
 }

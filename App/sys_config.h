@@ -23,7 +23,7 @@
 #define CHASSIS_STR_MAX         3000.0f
 
 //×î´óÐý×ªËÙ¶È
-#define CHASSIS_ROT_MAX         1500.0f
+#define CHASSIS_ROT_MAX         2000.0f
 
 //Ò£¿ØÆ÷ÖµÓ³Éäµ½µ×ÅÌµÄÆÚÍûÖµ
 #define CHASSIS_RC_MOVE_RATIO   15.0f
@@ -52,10 +52,14 @@
 
 //ÉèÖÃÄ¦²ÁÂÖÈý¸öµ²Î»µÄ×ªËÙ
 #define SHOOTER_SPD_HIGH        3000.0f
+
 #define SHOOTER_SPD_MID         2000.0f
+
 #define SHOOTER_SPD_LOW         1000.0f
 
-/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªµ×ÅÌ²ÎÊý¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+#define TRIGGER_SPD_HIGH        3000.0f
+
+#define TRIGGER_SPD_LOW         300.0f
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªIMU²ÎÊý¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
@@ -68,12 +72,11 @@
 
 /*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÏµÍ³½»»¥ÉèÖÃ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
 
-
 /*CANÏà¹Ø*/
 #define CHASSIS_CAN             hcan1
-#define GIMBAL_SHOOTER_CAN      hcan1
+#define GIMBAL_CAN              hcan1
 
-#define TRIGGER_CAN             hcan2
+#define SHOOTER_CAN             hcan2
 
 /*UARTÏà¹Ø*/
 #define DBUS_HUART              huart1

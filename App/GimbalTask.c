@@ -18,7 +18,7 @@ gimbal_t gimbal;
 
 //前面一个大括号里面是速度环的pid参数，后面一个是位置环的pid参数
 Motor_t Gimbal_Motor_Yaw    = {{{-3.0f,0.0f,0.0f},{-90.0f,0.0f,0.0f}}};
-Motor_t Gimbal_Motor_Pitch  = {{{3.0f,0.0f,0.0f},{60.0f,0.0008f,0.0f}}};
+Motor_t Gimbal_Motor_Pitch  = {{{3.4f,0.0f,0.0f},{60.0f,0.0008f,0.0f}}};
 
 //CAN发送任务和射击任务
 extern osThreadId CanMsg_Send_TaskHandle;
@@ -81,7 +81,7 @@ void Gimbal_Task(void const * argument)
         gimbal_pid_calc(&Gimbal_Motor_Pitch);
     }
     
-    osSignalSet(CanMsg_Send_TaskHandle,GIMBAL_SEND_SIGNAL);
+    osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
 }
 
 /*———————————————————————————————其他执行函数———————————————————————————————*/

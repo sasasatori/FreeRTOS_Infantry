@@ -27,17 +27,17 @@ typedef enum
     CAN_3508_M4_ID      = 0x204,
     CAN_6623_YA_ID      = 0x205,
     CAN_6623_PI_ID      = 0x206,
-    SHOOTER_LEF_ID      = 0x207,
-    SHOOTER_RIG_ID      = 0x208,
-    //拨弹电机反正挂在CAN2上面
-    CAM_TRIGGER_ID      = 0x201,
+    //拨弹和摩擦轮电机反正挂在CAN2上面
+    CAN_TRIGGER_ID      = 0x201,
+    SHOOTER_LEF_ID      = 0x202,
+    SHOOTER_RIG_ID      = 0x203,
 
     //这部分是发送报文
     //下面这些挂在CAN1上面
     CAN_CHASSIS_ALL_ID  = 0x200,
-    GIMBAL_SHOOTER_ID   = 0x1FF,
-    //下面这些挂在CAN2上面
-    CAN_TRIGGER_ID      = 0x201,
+    CAN_GIMBAL_ID       = 0x1FF,
+    //摩擦轮和拨轮挂在CAN2上面
+    CAN_SHOOTER_ID      = 0x200,
 
 } can_id_e;
 
@@ -55,7 +55,7 @@ extern CanRxMsgTypeDef  Rx2Message;
 void Can_Device_Init(CAN_HandleTypeDef* hcan);
 void Can_Receive_Start(void);
 void Send_Chassis_Cur(int16_t CM1_Current,int16_t CM2_Current,int16_t CM3_Current,int16_t CM4_Current);
-void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current,int16_t Left_Current,int16_t Right_Current);
-void Send_Trigger_Cur(int16_t Trigger_Current);
+void Send_Gimbal_Cur(int16_t YAW_Current,int16_t PIT_Current);
+void Send_Trigger_Cur(int16_t Trigger_Current,int16_t Left_Current,int16_t Right_Current);
 
 #endif /*BSP_CAN_H_*/
