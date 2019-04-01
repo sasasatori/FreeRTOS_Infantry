@@ -1,20 +1,28 @@
-´úÂëÆ½Ì¨£ºRM¿ª·¢°å
-FreeRTOS: V9.00
-HAL¿â°æ±¾£º1.13.0
-×÷Õß£ºSatori
+## ´úÂëÆ½Ì¨£ºRM¿ª·¢°å
 
-2019/2/13
+## FreeRTOS: V9.00
+
+## HAL¿â°æ±¾£º1.13.0
+
+## ×÷Õß£ºSatori
+
+# 2019/2/13
 ½¨Á¢ÁËAppºÍBspÁ½¸öÎÄ¼þ¼Ð£¬·Ö±ð·ÅRTOSµÄtaskºÍbsp²ãµÄ¶«Î÷£¬Ä¿Ç°´òËãÏÈ°ÑÒ£¿ØÆ÷Êý¾ÝµÄ½âÂë×öµô£¬È»ºó°ÑcanµÄ·¢ËÍ×öµô£¬×îºóÊµÏÖÒ»ÏÂÒ£¿ØÆ÷¿Øµç»ú
+
 Ö÷Òª¹¤×÷¿´RemoteMsgTask.cºÍbsp_uart.cÁ½¸öÎÄ¼þ
 
-2019/2/14
+# 2019/2/14
+
 ·¢ÏÖÒ»¸ö¿ÓµÄÒªËÀµÄµØ·½......
+
 CUBEMXÉú³ÉµÄ¹¦ÄÜÒý½ÅºÍ°å×ÓÉÏÊµ¼ÊÓÃµÄÒý½Å²»Í¬µÄÓÐºÃ¼¸¸ö£¬¾Í·Ç³£¸ã
+
 Ò£¿Ø½ÓÊÕÍê³É£¬µ«ÊÇÊÇÂã»úµÄ£¬Êµ¼ÊÉÏ±¾À´DJIµÄ´úÂëÒ²Ã»ÓÐÓÃÕâ¸ö£¬µ«ÊÇÓÐÒ»¸ö±È½ÏÓÐÒâË¼µÄ£¬×¨ÃÅÓÐ¸öÈÎÎñÓÃÀ´Ö´ÐÐÄ£Ê½ÇÐ»»£¬ÎÒ¾õµÃÎÒÃÇÒ²¿ÉÒÔ³¢ÊÔÒ»ÏÂÕâ¸ö
 
-2019/2/15
+# 2019/2/15
+
 ÓÃÐÅºÅÁ¿ÅªÁËÒ»ÏÂÄ£Ê½ÇÐ»»
-'
+```
 void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
 {
     osEvent Event;
@@ -43,12 +51,12 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
         }
     }
 }
-'
+```
 ¾ÍÊÇÕâÑùµÄÒ»¸öÈõÖÇÍæÒâ£¬¸Ð¾õ»¹ÊÇÏÈÉè¼ÆÒ»ÏÂÕûÌåµÄ³ÌÐòÔÙÈ¥Åª±È½ÏºÃ£¬²»È»µ½Ê±ºòÐ´¸öÂÒÆß°ËÔãµÄ¹¤³Ì³öÀ´¾ÍÌ«´ÀÁË
 
 ´ó¸ÅÀíÁËÒ»ÏÂ³ÌÐò£¬ºóÃæÔÚÕâ¸ö»ù´¡ÉÏÈ¥ÔÙ¼Ó¸ü¸Ä°É
 Ä¿Ç°¿ØÖÆÄ£Ê½ÕâÑù·Ö£º
-'
+```
 typedef enum
 {
 chassis_follow_gimbal_remote_control£¬
@@ -73,33 +81,36 @@ shoot_remote_control£¬
 shoot_keymouse_control£¬
 shoot_stop£¬
 }shoot_mode£»
-'
+```
 ÆäÖÐ£¬Èç¹ûÊÇÒ£¿ØÆ÷¿ØÖÆÄ£Ê½£¬ÔòÊÇ
-'
+```
 chassis_mode = CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL
 
 gimbal_mode = GIMBAL_REMOTE_CONTROL
 
 shoot_mode = SHOOT_REMOTE_CONTROL/SHOOT_STOP
-'
+```
+
 Èç¹ûÊÇÍ£Ö¹Ä£Ê½£¬ÔòÊÇ
-'chassis_mode = CHASSIS_STOP
+```
+chassis_mode = CHASSIS_STOP
 
 gimabl_mode = GIMBAL_STOP
 
-shoot_mode = SHOOT_STOP'
-
+shoot_mode = SHOOT_STOP
+```
 Èç¹ûÊÇ¼üÅÌ¿ØÖÆÄ£Ê½£¬ÔòÊÇ
-'chassis_mode = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL/CHASSIS_FREE_KEYMOUSE_CONTROL/CHASSIS_SWAY/CHASSIS_STOP
+```
+chassis_mode = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL/CHASSIS_FREE_KEYMOUSE_CONTROL/CHASSIS_SWAY/CHASSIS_STOP
 
 gimbal_mode = GIMBAL_KEYMOUSE_CONTROL/GIMBAL_AUTO/GIMBAL_STOP
 
-shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP'
-
-2019/2/16
+shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP
+```
+# 2019/2/16
 ´úÂëµÄÕûÌå¿ò¼Ü»ù±¾ÉÏ´î½¨Íê±Ï£¬³ÌÐòÕûÌåÁ÷³ÌÍ¼Ò²»­ÁËÒ»²¿·Ö£¬ÏÂÃæ¾ÍÊÇ¸÷¸öÈÎÎñµÄ¾ßÌåÊµÏÖÉÏÁË£¬Ã÷ÌìÓ¦¸ÃÄÜ¹»°Ñµ×ÅÌµÄtask¸øÍê³Éµô
 »ØÍ·¹À¼ÆÒª½¨Ò»¸öbsp_canÀ´×öcanÍ¨ÐÅµÄÏà¹Ø²ÎÊý
-'
+```
 static void chassis_twist_handler(void)
 {
   twist_count++;
@@ -139,39 +150,57 @@ static void chassis_twist_handler(void)
   chassis.vw = -pid_calc(&pid_chassis_angle, gim.sensor.yaw_relative_angle, chassis.position_ref);
   
 }
-'
+```
 ICRAµÄ³µµÄchassis_twist_handler
 
-2019/2/17
+# 2019/2/17
+
 °ÑÈí¼þ¶¨Ê±Æ÷¿ªÁË£¬ÀïÃæÈí¼þ¶¨Ê±ÖÐ¶Ï»Øµ÷ÔÆÌ¨µÄ¿ØÖÆÈÎÎñºÍµ×ÅÌµÄ¿ØÖÆÈÎÎñ
+
 È»ºó¸Õ²ÅÅÜÁËÒ»ÏÂ³ÌÐò·¢ÏÖ¼°Æä¿ìÀÖµÄÊÂÇé£¬Èí¼þ¶¨Ê±Æ÷Ã»¿ªÆô³É¹¦£¬×îºó³öÀ´µÄ½á¹ûÊÇosError£¬·Ç³£µÄ·ßÅ­²»ÖªµÀµ½µ×ÊÇ¸öÊ²Ã´¹í
+
 È»ºó¿´ÁËÒ»ÏÂÊÇÒòÎªÔÚFreeRTOSConfig.hÏÂÃæµÄÅäÖÃ¾Í²»¶Ô£¬Õâ¾ÍÊÇÒ»¸ö·Ç³£ÓÐÈ¤µÄ¿ÓÁË£¬ÎÒÇÃÁËÕâÃ´¾Ã´úÂëÉõÖÁ¶¼Ã»ÓÐÏëµ½ÏÈÈ¥°ÑFreeRTOSConfig.hÏÈ¸øÐÞ¸ÄÒ»ÏÂ£¬¾øÁË
+
 È»ºó¾ÍÄÜ³É¹¦ÅÜÈí¼þ¶¨Ê±Æ÷ÁË£¬¼Ç×¡Èí¼þ¶¨Ê±Æ÷µÄÄ¬ÈÏÓÅÏÈ¼¶ÊÇbelowNormalPriority,ËùÒÔÆäËûÈÎÎñÈç¹û²»ÊÇÒÔ×èÈûÌ¬ÔËÐÐ¾Í¶¼ÄÜËæËæ±ã±ãµÄ´ò¶ÏËü
+
 »¹ÓÐÒ»¸ö·Ç³£¿ÓµÄ¶«Î÷£¬¾ÍÊÇÎÒÍ»È»·¢ÏÖÒ»¿ªÊ¼ÎÒ´´½¨¹¤³ÌµÄÊ±ºòÃ²ËÆÊÇ´òËãÖ»Ð´¸ödemo»¹ÊÇÉ¶µÄ£¬ËùÒÔÒ»¿ªÊ¼³õÊ¼»¯µÄ´®¿ÚÖÐ¶ÏÖ»ÓÐ´®¿Ú6Ò»¸ö£¬Õâ¾Í·Ç³£µÄ¿ÓÁË£¬ÒòÎªÊµ¼ÊÓÃµÄ¹¤³ÌÅÂÊÇºÃ¼¸¸ö´®¿ÚÖÐ¶Ï¶¼ÐèÒªÓÃÉÏ£¬´ËÊ±Ò»Ãû²»ÖªËÀ»îµÄ·ÊÕ¬½øÈëÁË×Ô±Õ×´Ì¬£¬¸ü²ÒµÄÊÇÎÒ¶¨Ê±Æ÷µÄÍâÉè¾Í³õÊ¼»¯ÁËÒ»¸ö6ºÅ¶¨Ê±Æ÷£¬Õæjb¾«²Ê
+
 ÏÖÔÚÒ»¸öÒþ²ØµÄÀ×Çø¾ÍÊÇICRAµÄ³µ×ÓÅªÁËÒ»¶Ñ¶¨Ê±Æ÷£¬¶øÎÒ²¢²»ÖªµÀËü¿ªÕâÃ´¶à¶¨Ê±Æ÷¾¿¾¹Ïë×öÒ»Ð©Ê²Ã´£¬¸ãµÃÎÒ·Ç³£·Ç³£»Å
 
-2019/2/18
+# 2019/2/18
+
 ¿ªÑ§Ã»¼¸ÌìÁËàÓàÓàÓ£¬ÏÈ°ÑcanµÄÊÕ·¢Ð´µôÔÙËµ£¬ÓÉÓÚÄ¿Ç°Ã»ÓÐmpuµÈÂÒÆß°ËÔãÍæÒâµÄ×ÊÁÏ£¬ËùÒÔÎÒÏÖÔÚÒ²²»Ì«Ïë¼ÌÐøÏ¸»¯ÎÒµÄ³ÌÐò¿ò¼ÜÍ¼ÁË
+
 »ù±¾ÉÏÐ´ÍêÁËbsp_can£¬ÉÏÊÖ²âÊÔÁËÒ»ÏÂ×Ô¼ºÐ´µÄcan£¬½á¹û
+
 ÄãÐ´ÄáÂêÄØ£¿£¿£¿£¿£¿£¿
+
 ·Ç³£·Ç³£µÄ±À£¬ÅÜÁË¼¸´ÎÖ®ºó¾Í»á±¨can_error£¬ÎÒÒ²ºÜãÂ±ÆºÜ²»Ë¬£¬Ü³
+
 ×¼È·µÄËµÊÇÕâÑùµÄÒ»¸ö×´Ì¬
+
 Õû¸öCAN·¢ËÍ»áÓÐÈý´Î·¢ËÍ´¦ÓÚ³É¹¦µÄ£¬È·Êµ½øÈëÁËHAL_CAN_STATE_BUSY_TXÀïÃæÈ¥£¬µ«ÊÇÈý´ÎÖ®ºó¾Í»áÍêÃÀ½øÈëerror£¬Õâ¾ÍÈÃÎÒºÜãÂ±Æ
+
 ÁíÍâÃ²ËÆcanµÄ½ÓÊÕÖÐ¶ÏÒ²Ã»ÓÐ½øÈ¥
 
-Ö÷ÒªÉæ¼°µ½µÄÎÊÌâÊÇhcan1.Instance.TSRÕâÒ»Î»£¬ÕâÊÇÕý³£·¢ËÍµÄÇé¿ö£º
+Ö÷ÒªÉæ¼°µ½µÄÎÊÌâÊÇ`hcan1.Instance.TSR`ÕâÒ»Î»£¬ÕâÊÇÕý³£·¢ËÍµÄÇé¿ö£º
+
 0x1C000003
 
 ¶øÎÒµÄÇé¿ö£º
+
 0x1C000000
+
 0x19000008
+
 0x52000008
+
 0x82000008
 
 emmmmºÃµÄ°É£¬ÄÇÎÒ¾Í¿´¿´µ½µ×ÊÇÄÄ±ß»áÊ¹µÃÕâ¸öÖµ±ä»¯£¬×î²ÒµÄÊÇ£¬ÎÒÃ»ÕÒµ½
 
 ºÃ°ÉÎÒtm¾ÍÊÇ¸öÉµ±Æ£¬ÎÒ°´ÕÕICRAµÄÍâÉèÅäÖÃ½øÐÐµÄ³õÊ¼»¯£¬µ«ÊÇÒ»µãÄñÓÃ¶¼Ã»ÓÐ£¬È»ºóÎÒ¾Í°´ÕÕAÐÍ°åµÄ½øÐÐÁËÒ»ÏÂÅäÖÃ£¬È»ºóÎÈÁË
-'
+```
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 3;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
@@ -184,9 +213,9 @@ emmmmºÃµÄ°É£¬ÄÇÎÒ¾Í¿´¿´µ½µ×ÊÇÄÄ±ß»áÊ¹µÃÕâ¸öÖµ±ä»¯£¬×î²ÒµÄÊÇ£¬ÎÒÃ»ÕÒµ½
   hcan1.Init.NART = DISABLE;
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = ENABLE;
-'
+```
 ÌùÒ»ÏÂ'ÕýÈ·'µÄÅäÖÃºÍ'´íÎó'µÄÅäÖÃ
-'
+```
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 5;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
@@ -199,25 +228,32 @@ emmmmºÃµÄ°É£¬ÄÇÎÒ¾Í¿´¿´µ½µ×ÊÇÄÄ±ß»áÊ¹µÃÕâ¸öÖµ±ä»¯£¬×î²ÒµÄÊÇ£¬ÎÒÃ»ÕÒµ½
   hcan1.Init.NART = DISABLE;
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = DISABLE;
-'
+```
 ¼ÈÈ»Ò£¿ØÆ÷µÄÊý¾ÝÒ²¶Á³öÀ´ÁË£¬µç»úÒ²ÄÜ¶¯ÁË£¬ÄÇÃ´½ÓÏÂÀ´¾ÍÖ»Ê£ÏÂÒ»¼þÊÂÇéÁË£¬ÄÇ¾ÍÊÇ......½ñÍíÐ´Ò»¸öÄÜ¶¯µÄµ×ÅÌ³öÀ´£¬ºÙºÙºÙ
 
-2019/2/19
+# 2019/2/19
+
 È»ºóÎÒ¾Í¹¾ÁË£¬Ã»À´µÄ¼°Ð´Íê£¨Å¶»í£¬Íêµ°.jpg£©
+
 ½ñÌìÉÏÎç°Ñµ½µ×ÅÌµç»úµÄ½âËã¸øÐ´µôÁË£¬»¹ÊÇ¿¿×Ô¼ºÐ´¹¤³Ì²ÅÕæÊµµÄ¸ÐÊÜµ½FreeRTOSµÄÇ¿´óÖ®´¦
+
 µÚÒ»£¬¿ÉÒÔ½ÚÊ¡Ó²¼þ×ÊÔ´£¬±ÈÈçÈí¼þ¶¨Ê±Æ÷¹¦ÄÜ£¬²úÉúµÄÈí¼þ¶¨Ê±ÖÐ¶ÏÐ§¹ûºÍÓ²¼þ¶¨Ê±ÖÐ¶ÏÃ»ÓÐ¸ÐÊÜµ½Çø±ð
+
 µÚ¶þ£¬»ùÓÚÈÎÎñÓëÈÎÎñÍ¨ÖªµÄ¸ü¸ßµÄ³éÏóË¼Â·£¬¿ÉÒÔÊ¹±à³ÌµÄË¼Â·±äµÃ¸ü¼ÓÇåÎú£¬ËùÓÐµÄÈÎÎñ¶¼¿ÉÒÔ³éÏó³ÉÏß³Ì£¬Ö»Òª´¦ÀíÏß³ÌÖ®¼äµÄ¹ØÏµ¾Í¿ÉÒÔ£¬¶øÔÚÕâÖ®Ç°»ùÓÚÂÖÑ¯-ÖÐ¶ÏµÄ´úÂëÒªÐ´ÆðÀ´¾Í±È½ÏÈÝÒ×Ë¼Â·»ìÂÒ£¬ÒòÎª¶¼ÊÇÔÚ¸÷ÖÖÖÐ¶Ï»Øµ÷ÀïÃæÂÒ¶ª¶«Î÷
+
 µÚÈý£¬¸ü¼ÓÁé»î¡£ÓÈÆäÊÇosSignalSet()ºÍosSignalWait()ÕâÁ½¸öº¯Êý£¬¿ÉÒÔËµÓÃÆðÀ´·Ç³£µÄË¬£¬¿ÉÒÔµ±³ÉÒ»ÖÖÍòÄÜµÄ'Íâ²¿ÖÐ¶Ï'À´ÓÃ£¬Ä³ÖÖ³Ì¶ÈÉÏÉõÖÁ¿ÉÒÔËµOSÆäÊµÍØÕ¹ÁË32µÄÖÐ¶ÏÏµÍ³
 
 ×ÜµÄÀ´Ëµ£¬ÎÒÄ¿Ç°¶ÔÓÚosµÄÊ¹ÓÃÆäÊµÒ²²Å¸Õ¸ÕÊÇ±ùÉ½Ò»½Ç£¬µ«Ò²ÇÐÊµµÄ¸ÐÊÜµ½osµÄ¹¦ÄÜÕæµÄ·Ç³£·Ç³£Ç¿´ó£¬ÓÃºÃÁË¿ÉÒÔ·Ç³£ºÃµÄ°ïÖúÍê³ÉÅÓ´óµÄ¹¤³Ì
 
 Ï²³öÐÂbug£¬½ÓÊÕµÄÊ±ºò½ø²»ÁËÖÐ¶Ï»Øµ÷º¯Êý£¬È»ºó¾Í±Õ²»ÁË»·£¬·Ç³£µÄÓôÃÆÁË¿ÉÒÔËµ
 ¶øÇÒ×îÃÕµÄÊÇÎÒµÄ·¢ËÍÊÇÍêÈ«Õý³£µÄ£¬°´ÕÕCANµÄÍ¨Ñ¶Ð­Òé£¬Ã¿Ò»Ö¡¶¼Ó¦¸ÃÊÇÓÐAckµÄ£¬Õâ¾Í·Ç³£·Ç³£·Ç³£Ææ¹Ö
+
 ×ÜÖ®·¢ËÍÊÇÍêÈ«Ã»ÓÐÈÎºÎÎÊÌâµÄ£¬µ«ÊÇ½ÓÊÕ¾Í´ÓÊ¼ÖÁÖÕ¶¼ÊÇÒ»ÇÐÎª0£¬ÕâÊ¹ÎÒ¼«¶ÈÓôÃÆ
 
 ¸ã¶¨ÁË£¬³õÊ¼»¯µÄ¹ýÂËÆ÷ÅªµÃÓÐµãÎÊÌâ£¬ÎÒËäÈ»¸Ð¾õ×Ô¼ºÅªµÃºÍÄÜ¶¯µÄÕâ°æºÁÎÞÇø±ð£¬µ«ÊÇ×îºó¾ÍÊÇ¶Á²»³öÀ´¶«Î÷£¬¾øÁË
+
 ÌáÒ»ÏÂÕâ°æÄÜÓÃµÄ
-'
+```
 void Can_Device_Init(CAN_HandleTypeDef* hcan)
 {
   CAN_FilterConfTypeDef canfilter;
@@ -255,11 +291,10 @@ void Can_Device_Init(CAN_HandleTypeDef* hcan)
   HAL_CAN_ConfigFilter(hcan, &canfilter);
   
 }
-'
-
-2019/2/20
+```
+# 2019/2/20
 ×òÌìÏëÖ±½Ó³õÊ¼»¯µÄÊ±ºò¸³ÖµÒ»²¨pid²ÎÊý£¬ºóÀ´·¢ÏÖ²»¿¿Æ×£¬ÒòÎªÓÐÕâÑùµÄÒ»¸ö»úÖÆ£º
-'
+```
 #include <stdio.h>
 
 typedef struct
@@ -301,7 +336,7 @@ int main()
     A C = {1,{2,3}};
     printf("%d",C.d.a);
 }
-'
+```
 ¶øÕâÖÖÇ¶Ì×¾Í¿ÉÒÔÁË
 
 µ÷ÁËÒ»²¨µ×ÅÌ£¬¶¯µÄºÍÕæµÄÒ»Ñù£¬²»¹ýÊ¹ÓÃÆðÀ´ÒÀÈ»Ö»ÄÜËµÊÇÓÎÏ·ÌåÑé²»ÊÇºÜ¼Ñ£¬±Ï¾¹pid²ÎÊýµ÷µÄ±È½ÏÀÃ£¬»ØÍ·¿ÉÄÜ»áÔÙµ÷µ÷£¬Ëµµ½Í·ÄÇÃ´´óµÄ¾²²îÊÇ´ÓÄÄÀïÀ´µÄ¾Í¸ãµÃÎÒºÜãÂ±Æ
@@ -312,39 +347,59 @@ int main()
 
 ¿´ÁËÒ»ÍíÉÏAHRS£¬±íÃæ¶®ÁË£¬Í¦ÓÐÒâË¼µÄ£¬±Ê¼Ç¶¼¼ÇÔÚonenoteÉÏÃæÁË
 
-2019/2/21
+# 2019/2/21
+
 µ«ÊÇÓÐÒ»¸öÎÊÌâ£¬×÷ÎªÒ»¸öÀä¿áµÄjy901Ê¹ÓÃÕß£¬ÎªÊ²Ã´ÎÒÒª¹ØÐÄAHRS½âËãÄØ£¨
+
 ºÃ°É¹ØÐÄÒ»ÏÂ×ÜÊÇºÃµÄ£¬±Ï¾¹ICRAµÄ³µ¾ÍÓÃ°åÔØ9Öáµ÷µÄÎÈµ½Ç×Âè²»ÈÏ
 
 È»ºó¼ÌÐø»­ÎÒµÄÕûÌåËã·¨Í¼£¬°ÑgimbalºÍshootµÄÒ£¿Ø²¿·ÖµÄ´úÂëÐ´µôÔÙËµ£¬ÎÒµ¹ÊÇ²»Ö¸ÍûÄÜ¹»ÔÚÕâ±ßÄÜÕÒµ½Ò»¸ö¿ÉÒÔÓÃÀ´µ÷µÄÔÆÌ¨ÁË
 
-2019/3/23
+# 2019/3/23
+
 ³µ×ÓÀ´ÁË£¬ÎÒÒª¿ªÊ¼µ÷ÁË£¬ËäÈ»ÎÒºÜÏëºÜÏë°ÑËùÓÐ´úÂë¸Ä³É·ûºÏunix/linux·ç¸ñµÄ£¬µ«ÊÇÏÖÔÚÊµÔÚÊÇÌ«²»ºÏÊ±ÒËÁË£¬ËùÒÔÎÒ»¹ÊÇ¾ÍÕâÑùÐ´°É£¬ºóÃæµÄÈËÒ²²»Òª¶ÔÎÒÕâÖÖ·ç¸ñÍ»±ä¸Ðµ½Ææ¹Ö
+
 È»ºó·´ÕýÕâ°æ´úÂë¹À¼ÆÔÚÅÄÍêÖÐÆÚÊÓÆµÖ®ºó¾Í¿ÉÒÔÍÆ·­ÖØÐ´ÁË£¬ÒòÎª»ØÍ·ÏÂ¹©µ¯+»¬»·µÄ°æ±¾ÐèÒªË«Ö÷¿ØÀ´Åª£¬šGºÙºÙ
 
-2019/3/24
+# 2019/3/24
+
 °¾Ò¹°Ñ mpuµÄ´úÂë¸øÒÆÖ²ÁËÒ»ÏÂ£¬µ«ÊÇ»¹Ã»ÓÐÈÏÕæÑÐ¾¿£¬Õâ¸ö´úÂëÈÃÎÒ¾õµÃ±È½Ï¹íµÄÊÇºÃÏñËûÒª×Ô¼ºËãµôÆ«ÖÃ£¿£¿£¿ÕâÃ´6pµÄÂð£¿
+
 ½ñÌì°×Ìì²âÊÔÒ»ÏÂÄÜ²»ÄÜÓÃÏÈ
+
 ¿´ÁËÒ»ÏÂÄÜÓÃ£¬¶øÇÒ·Â·ðÐ§¹û²»´íµÄÑù×Ó£¬µ«¾ßÌå»¹ÊÇµÃÄÃ¸ö¶«Î÷²âÊÔÒ»ÏÂÊý¾Ý£¨¶øÇÒ»°ËµÕâÍêÈ«Ã»È¡ÏûµôÆ«ÖÃ°É
+
 Ð§¹û²»´í¸ö´óÍ·¹í£¬Êý¾Ý²»»á¶¯£¬¿´ÁËÒ»ÏÂ·¢ÏÖÍÓÂÝÒÇ½ÇËÙ¶È¾Í²»»á¶¯£¬ÎÒÓÐµã»ð´ó£¬ÔÙÑÐ¾¿ÑÐ¾¿
+
 ½áÂÛ¾ÍÊÇspi¶ÁÈ¡ÁË¸ö¼ÙµÄ£¬¼Ä´æÆ÷Êý¾Ý¸ù±¾Ã»±»¶Á³öÀ´£¬ºÃÁËÕâÏÂÎÒ»¹µÃÂýÂýÑÐ¾¿ÊÇÄÄ±ß³öµÄÎÊÌâ
+
 È»ºó·¢ÏÖ¹ûÈ»ÊÇdevice_initÃ»µ÷ÓÃ£¬µ«ÊÇÕâ¸öÊ±ºò±¨µÄÒ»¸ö´íÈÃÎÒºÜãÂ±Æ
+```
 ../Src/main.c(129): warning:  #223-D: function "mpu_device_init" declared implicitly
+```
 ¾¡¹ÜÎÒÓ¦¸ÃÕý³£µÄIncludeÁËÍ·ÎÄ¼þ
+
 externÁËÒ»ÏÂ£¬ÉÏÃæµÄbug½â¾öÁË£¬È»¶ø×î´óµÄÎÊÌâÒ²¾ÍÊÇmpu¶Á²»µ½¼Ä´æÆ÷µÄÎÊÌâÈÔÈ»Ã»½â¾ö£¬ÎÒÓÐµã»³ÒÉÊÇ²»ÊÇÎÒIO¿Ú³õÊ¼»¯µÄÎÊÌâÁË
+
 ¾ÍÊÇIO³õÊ¼»¯µÄÎÊÌâ£¬Êý¾Ý³É¹¦¶Á³öÀ´ÁË£¬¶øÇÒ¾­¹ý²âÊÔ£¬pitchÖáµÄÊý¾Ý¶ÁÈ¡·Ç³£µÄºÃ£¬È»¶øyawÖáÈ´Ò»Ö±ÔÚÆ®£¬¼ì²éÁËÒ»ÏÂ·¢ÏÖÎÊÌâÔÚÓÚ´ÅÁ¦¼ÆµÄÊý¾ÝÃ»ÓÐ±»Õý³£¶ÁÈ¡³öÀ´£¬È»ºó·¢ÏÖÌØ±ð¸ãµÄÒ»¼þÊÂ£¬ÎÒÒÆÖ²µÄÕâ°æ´úÂëÍêÍêÈ«È«Ã»°Ñ´ÅÁ¦¼ÆµÄÊý¾Ý´ø½øÈÚºÏ½âËãÀïÃæ£¬Õâ¾ÍÈÃÎÒ¸Ð¾õ·Ç³£·Ç³£ÓÐÈ¤£¬ËùÒÔÎªÁË¹¦ÄÜÐÔ¿¼ÂÇ£¬»ØÍ·ÎÒ¿Ï¶¨ÊÇÒªÖØÐÂÒÆÖ²Ò»ÏÂICRAÄÇ¸ö¹¤³ÌÀïÃæµÄ½âËãµÄ£¬ÄÇ¸öÀïÃæ°Ñ´ÅÁ¦¼ÆÊý¾ÝËã½øÁËyawÖá½âËãÀïÃæ£¬µ«ÊÇ×î½üÕâ¶ÎÊ±¼ä¾ÍËãÁË£¬ÎÒÏÈÄÃµç»ú·´À¡µÄ½Ç¶ÈÖµµ±±Õ»·°É£¬·´ÕýÏÖÔÚÕâ¸ö³µ×ÓÓÖ²»Éæ¼°ÎÞÍ·Ä£Ê½£¬²»ÐèÒª¸ß¾«¶ÈµÄyawÖáÊý¾Ý
 
-2019/3/25
+# 2019/3/25
+
 ÎÒÒªâ§ËÀÁË£¬ÏÈÌÉ»á£¬½ñÌìµÄÄ¿±êÊÇ°ÑÔÆÌ¨µÄ¿ØÖÆ´úÂëÍê³É£¬¿¼ÂÇµ½bsp²ãÎÒÒÑ¾­Ð´ºÃÁË£¬mpuµÄÊý¾ÝÎÒÒ²ÒÑ¾­ÄÜ¶ÁÁË£¬ÄÇÃ´Ê£ÏÂµÄÈÎÎñÎÞ·Ç¾ÍÊÇ·Ö³ÉpitchÖáºÍyawÖá¸÷×ÔµÄ¿ØÖÆÊµÏÖÁË
 
-2019/3/28
+# 2019/3/28
+
 ¿ªÊ¼Ð´Éµµõ´úÂë£¬IMUµÄpitch·´À¡¸øÁËgimbal_motor_pitch£¬ÏÈ°Ñ¼¸¸ö·´À¡¸ø¹ýÈ¥ÔÙËµ°É£¬ºÃ·³°¡£¨½á¹û·¢ÏÖÎÒ×Ô¼ºÒ»´óÔç¾ÍÊÇCAN½ÓÊÕÖÐ¶Ï°Ñ·´À¡µÄ¶«Î÷¸øÐ´ºÃÁË£¬²»À¢ÊÇÎÒ£¬¹¤×÷Ð§ÂÊÕæjb¸ß£© 
+
 ¿´ÁËÒ»ÏÂÊý¾Ý£¬²»À¢ÊÇÀ¬»ø±àÂëÆ÷£¬µç»úËÙ¶È·´À¡ÔÚ0-16-£¨-32£©¼¸¸öÖµÖ®¼äÌø±ä£¬ÕæµÄÌÖÑá£¬ÎÒÒª¿¼ÂÇÒ»ÏÂÂË²¨»òÕß»»¸ö¶«Î÷À´·´À¡Âð£¿·´ÕýÖ±½ÓÓÃ´ó¸ÅÂÊ³öÊÂ
+
 ¿´ÁËÒ»ÏÂICRAµÄ´úÂë£¬·´À¡¹ûÈ»»¹ÊÇÓÃµÄIMU£¬ÄÇ¾ÍÃ»Ê²Ã´ºÃËµµÄÁË
+
 ¼òµ¥²âÊÔÁËÒ»ÏÂ£¬pitchÖá½ÇËÙ¶È·´À¡ºÜºÃ¿´£¬yawÖá»áÓÐ-4µÄÆ«ÖÃ£¬ËùÒÔÊÖ¶¯°ÑÆ«ÖÃ¸øÐÞÕýµôÁË£¬¸ÅÀ¨Ò»ÏÂ¾ÍÊÇÒ»¾ä»°¡ª¡ªÎÈµÃÒ»Æ¥
+
 ¿´ÁËÒ»ÏÂÈÎÎñÖ´ÐÐÊ±¼ä£¬imu_task´ó¸Å±Ègimbal_taskÂýÁËÒ»¸öÊ±¼äµ¥Î»£¬¿¼ÂÇµ½1¸öÊ±¼äµ¥Î»Í¦Ð¡µÄÁË£¬ËùÒÔ»ù±¾ÉÏ¿ÉÒÔµ±³ÉÊÇÍ¬²½¸üÐÂµÄ£¬šGºÙºÙ
 È»ºó¼òµ¥ÄÃICRA³µ×ÓµÄÀý×ÓÀ´ËµÒ»ÏÂÔÆÌ¨µÄ¿ØÖÆËã·¨°É£¬¼òµ¥À´Ëµ¾ÍÊÇÕâÑù¡ª¡ª
-'
+```
 while(1)
 {
   pid_calc(&pid_yaw, gim.pid.yaw_angle_fdb, gim.pid.yaw_angle_ref);
@@ -372,18 +427,24 @@ while(1)
     //pid_trigger.iout = 0;
   } 
 }
-'
-//ICRAÕâÆÆ³µ´úÂëÅ£±ÆÖ®´¦ÔÚÓÚ°²È«ÐÔÅªµÃÌØ±ðÌØ±ðºÃ£¬ÄÜ±¬Õ¨µÄµØ·½¶¼¸øÏ÷µôÁË
 
+//ICRAÕâÆÆ³µ´úÂëÅ£±ÆÖ®´¦ÔÚÓÚ°²È«ÐÔÅªµÃÌØ±ðÌØ±ðºÃ£¬ÄÜ±¬Õ¨µÄµØ·½¶¼¸øÏ÷µôÁË
+```
 PitchµÄ¿ØÖÆ´úÂëÐ´ÍêÁË£¬Ö®ºóÒª½â¾öµÄÎÊÌâÖ»ÓÐÁ½¸ö£¬Ò»¸öÊÇÈçºÎ°Ñ¼ÆËã³öÀ´µÄpid×ª»¯³ÉÊµ¼Ê¸øµç»úµÄÊýÖµ£¬ÁíÍâÒ»¸öÊÇÓÃÊ²Ã´·½Ê½¿ØÖÆÒ£¿ØÆ÷µÄÆÚÍû
 È»ºó¶ÔÓÚyawÖáÀ´Ëµ£¬Âé·³ÉÔÎ¢¶àÒ»µã£¬ÎÒÒªÍ¨¹ýÄ³ÖÖ¼ÆËã·½Ê½°Ñµç»úµÄÊµ¼Ê½Ç¶È»»Ëãµ½ºÍimuµÄÊý¾ÝÍ¬Ò»¸öÊýÁ¿¼¶µÄ¶«Î÷£¬È»ºóÔÙÖØ¸´pitchÖáµÄ¹¤×÷£¬ºÃ·³°¡
 
 ×ª»»¸öp£¬Ö±½Óµ÷²Î¾ÍºÃÁË
+
 ×îºóµÄ²ÎÊý£º
+
 Î»ÖÃ»·kp:8 ki:0 kd:0
+
 ËÙ¶È»·kp:21 ki:1.3e-06 kd:0
+
 ·¢ÏÖ¾²²î±È½Ï´ó
+```
 Motor_t Gimbal_Motor_Pitch  = {{{13.0f,0.000001f,0.0f},{10.0f,0.00019f,0.0f}}};
+```
 Ò»¸ö±È½ÏºÃµÄ²ÎÊý
 
 yawÖá½Ç¶ÈÓÃÁË¼òµ¥µÄÊýÑ§·½Ê½±ê¶¨ÁËÒ»ÏÂ£¬°Ñ±àÂëÆ÷×ª»¯³ÉÁËÊµ¼Ê½Ç¶ÈÖµ£¬È»ºó¾ÍÕý³£´ø½øÈ¥Ð´´úÂë+µ÷ÊÔ¾ÍokÁË£¬ÄÄÀ´ÄÇÃ´¶à·³ÈËµÄ¶«Î÷£¬ÍêÃÀ
@@ -391,33 +452,51 @@ yawÖá½Ç¶ÈÓÃÁË¼òµ¥µÄÊýÑ§·½Ê½±ê¶¨ÁËÒ»ÏÂ£¬°Ñ±àÂëÆ÷×ª»¯³ÉÁËÊµ¼Ê½Ç¶ÈÖµ£¬È»ºó¾ÍÕý³£´ø½
 yawÖáÅªÍêÁË
 
 ÏÖÔÚÎÒËÀÁË
-ÒòÎªÎÒ·¢ÏÖÕâÑùÒ»¼þºÃÍæµÄÊÂÇé£¬yawÖáµ¥¶Àµ÷£¬ºÜºÃ£¬ÍêÃÀ£¬pitchÖáµ¥¶Àµ÷£¬ºÜºÃ£¬ÍêÃÀ£¬×îºóºÏÔÚÒ»Æð¡ª¡ªboom  ¾øÁË£¬ÎÒÃ»Ïëµ½ÏµÍ³Ö®¼ä»áÓÐÏà»¥¸ÉÉæ£¬ÎÒËÀÁË£¬Ü³
 
-2019/3/29
+ÒòÎªÎÒ·¢ÏÖÕâÑùÒ»¼þºÃÍæµÄÊÂÇé£¬yawÖáµ¥¶Àµ÷£¬ºÜºÃ£¬ÍêÃÀ£¬pitchÖáµ¥¶Àµ÷£¬ºÜºÃ£¬ÍêÃÀ£¬×îºóºÏÔÚÒ»Æð¡ª¡ªboom  
+
+¾øÁË£¬ÎÒÃ»Ïëµ½ÏµÍ³Ö®¼ä»áÓÐÏà»¥¸ÉÉæ£¬ÎÒËÀÁË£¬Ü³
+
+# 2019/3/29
+
 ·¢ÏÖÈç¹û²»¼ÓÉÏÄ³¸ö²Ù×÷µÄ»°£¬Ò£¿ØÆ÷ÀëÏßÊÇ¼ì²â²»ÁËµÄ£¬±¾À´Ïë×Å´òËã¸ø¼¸¸öÇý¶¯Æ÷ÉèÖÃ¸ö³õÖµ¾Í½â¾öÎÊÌâµÄ£¬ºóÀ´·¢ÏÖ²»¶Ô£¬¼ÙÈçÒ£¿ØÆ÷ÖÐÍ¾¹ØÁË¾Í»¹ÊÇÅ¶»íÍêµ°
+
 ËùÒÔÕâ¸öÎÊÌâ»ØÍ·»¹ÊÇÒªºÃºÃÏëÒ»ÏÂÔõÃ´½â¾ö£¨ºÃ·³°¡
 
 µ÷ÁË°ëÌì²ÎÊý£¬·¢ÏÖ»¹ÊÇºÜÌÖÑáºÜÌÖÑá£¬pitchÖáµÄ½Ç¶È»áÊÜµ½yawÖáºÜÃ÷ÏÔµÄ¸ÉÈÅ£¬ÎÒË¼¿¼ÁËÒ»ÏÂ¾õµÃÎÒÓÐ±ØÒª¸øµ¹Ã¹µÄpitchÖá½Ç¶ÈÊý¾ÝÒ»¸öÂË²¨£¬²»¸øµÄ»°»á±¬Õ¨£¬ÄÇÃ´²ÉÓÃÊ²Ã´ÂË²¨·½Ê½ÄØ£¿
+
 1.ÒÆÖ²ÉñÆæµÄicraµÄ¿¨¶ûÂüÂË²¨
 2.¾ùÖµÂË²¨½â¾öÎÊÌâ
 ÔÚË¼¿¼Á¼¾ÃÖ®ºó£¬ÎÒ¾õµÃÏÈÀ´Ò»¸ö¾ùÖµÂË²¨ÅªÒ»ÏÂ¿´¿´ÄÜ²»ÄÜºÃÒ»µã£¨pitchÖáµÄÈÅ¶¯ÕæµÄÊÇÌ«´óÌ«¶ñÐÄÁË£©
 
-2019/3/30
+# 2019/3/30
+
 ÄãÂèµÄ
+
 ÎÒ·¢ÏÖ
+
 ÎÒ°Ñ
+
 pitchÖáµÄ·´À¡ºÍyawÖáµÄ·´À¡Åª·´ÁË
+
 ÎÒÉ±ÎÒ×Ô¼º
+
 È»ºó·¢ÏÖIMUµÄ½Ç¶È·´À¡·Ç³£µÄÊº£¬¶øÇÒÑÓ³Ù³Ì¶È·Ç³£ÑÏÖØ£¬×ÜµÄÀ´Ëµ¾ÍÊÇºÜ±¬Õ¨£¬ËùÒÔÎÒÖ±½Ó»»³ÉÁËÓÃ±àÂëÆ÷µ±·´À¡£¬ÏÖÔÚÕâ°æÔÆÌ¨Ð§¹ûokÁË
+
 È»¶øÐÂµÄÎÊÌâ·¢ÏÖ£¬ÔÚÎÒÒ£¿ØÆ÷Êý¾Ý½ô¼±±ä»»µÄÇé¿öÏÂ£¬µ×ÅÌ»áÅÜ·É£¬ÈÃÎÒÀ´ÑÐ¾¿Ò»ÏÂÕâ¸öbug
+
 ½á¹û·¢ÏÖÖ»ÊÇµ×ÅÌpid²ÎÊýÌ«´óÁË¶øÒÑ£¬Ð¡ÎÊÌâ
 
 µÈÒ»ÏÂÎÒÓÃÒ£¿ØÆ÷È¥¿ØÖÆÒ»ÏÂÔÆÌ¨£¬ÏÖÔÚpitchÖá¿ÉÒÔÓÃÒ£¿ØÆ÷¿ØÁË£¬yawÖáÎÒÔÝÊ±Ã»ÓÐÌØ±ð´óµÄÐËÈ¤
 
-2019/3/31
+# 2019/3/31
+
 ½ñÌìÐÄÇéºÃµÄ»°¾Í°Ñ·¢Éä»ú¹¹¸øÅªÍê°É
+
 £¨²»¶ÔºÃÏñ±ØÐëµÃÍ·ÌúÅªÍêµÄÑù×Ó£¬»¹ÓÐ¸øÊÓ¾õÁôµÄ½Ó¿Ú£©
+
 ·¢Éä»ú¹¹µ¹ÊÇºÃÅª£¬ÓÃs1¿ØÖÆÒ»ÏÂÄ£Ê½¾ÍÐÐÁË£¬¿ØÖÆÂß¼­ÓÃµÄÊÇ´òµ½0¿ªÄ¦²ÁÂÖ£¬´òµ½2¿ª²¦ÂÖ£¬ÔÙ´òµ½0¹ØÄ¦²ÁÂÖ£¬´òµ½2¹Ø²¦ÂÖ£¨ºÃjbÂé·³°¡£©
+
 ·À¿¨µ¯ºÍÄ¦²ÁÂÖËÙ¶È±Õ»·ÕâÖÖ·³ÈËµÄÊÂÇéÅª²»ÅªÈ¡¾öÓÚÎÒµÄÐÄÇé£¨
 
 È»ºó·¢ÏÖ±È½ÏÌÖÑáµÄÊÂÇé£¬ÐèÒªµ÷ÕûÒ»ÏÂ´úÂë½á¹¹£¬Ö®Ç°ÊÇ°ÑÄ¦²ÁÂÖ¹ÒÔÚCAN1ÉÏÃæµÄ£¬µ«ÊÇÏÖÔÚµÄÓ²¼þ½á¹¹¸ãµÃÎÒºÃÏñÊÇÖ»ÄÜÓÃCAN2À´ÅªÁË£¬ÓÐµã·³ÈË
@@ -428,10 +507,16 @@ pitchÖáµÄ·´À¡ºÍyawÖáµÄ·´À¡Åª·´ÁË
 
 ½á¹û·¢ÏÖÊÇC610µçµ÷»µÁË,mdzz£¬»ØÍ·¿´¿´Òª²»ÒªÖØÐÂË¢¸ö¹Ì¼þÉ¶µÄ£¬ÕâÉµ±ÆÍæÒâÀË·ÑÁËÎÒ¿ìÒ»¸öÐ¡Ê±µÄÈËÉú£¬ÕæµÄ·³ÈË
 
-2019/4/1
+# 2019/4/1
+
 ¿ªÊ¼Í·Ìú·¢Éä»ú¹¹¿ØÖÆ´úÂë£¬¸Ð¾õÆäÊµÃ»ÓÐÊ²Ã´ÌØ±ðºÃËµµÄ£¬ÔÚÒ£¿ØÄ£Ê½ÏÂÒªÊµÏÖµÄ¹¦ÄÜÒ²ºÜ¼òµ¥£¬ÓÃs1À´×÷ÎªÕû¸öµç¼«µÄ¿ØÖÆ¾ÍokÁË£¬Ã»É¶ÌØ±ð´óµÄÎÊÌâ£¬ÕâÀï¿ÉÒÔÏÈ¿´Ò»ÏÂICRAµÄ¿ØÖÆÂß¼­
+
 ÅÞ£¬¿´¸ö¹íµÄICRA£¬ÕâÃ´¼òµ¥µÄ¶«Î÷
+
 ´òÒ»´Îµ½ÉÏÃæ£¬Ä¦²ÁÂÖ¿ª£¬´òÁ½´ÎÄ¦²ÁÂÖ¹Ø
+
 ´òÒ»´Îµ½ÏÂÃæ£¬²¦ÂÖ¿ª£¬´òÁ½´Î²¦ÂÖ¹Ø
-¿ØÖÆÂß¼­Âß¼­´óÖÂÈçÏÂ£º
-switch()
+
+È»ºóÎÒ»¨ÁË²»ÉÙÊ±¼äÔÚ°ÑÎÒµÄdeveloping diary×ª³Émarkdown£¬markdownÕæºÃÍæ£¬šGºÙºÙ£¨Êµ¼ÊÉÏÊÇÃþÓã
+
+±¾À´´òËã°Ñ¸øÊÓ¾õµÄ½Ó¿Ú¸øÅª³öÀ´È»ºó²âÊÔÒ»ÏÂµÄ£¬²»¹ýÕâ»áÒÑ¾­ºÜÍíÁËËùÒÔÏÈ¹¾¹¾¹¾
