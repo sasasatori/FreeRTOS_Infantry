@@ -14,6 +14,7 @@ CUBEMX生成的功能引脚和板子上实际用的引脚不同的有好几个，就非常搞
 
 2019/2/15
 用信号量弄了一下模式切换
+'
 void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
 {
     osEvent Event;
@@ -42,10 +43,12 @@ void RemoteMsg_Receive_ModeSw_TaskStart(void * argument)
         }
     }
 }
+'
 就是这样的一个弱智玩意，感觉还是先设计一下整体的程序再去弄比较好，不然到时候写个乱七八糟的工程出来就太蠢了
 
 大概理了一下程序，后面在这个基础上去再加更改吧
 目前控制模式这样分：
+'
 typedef enum
 {
 chassis_follow_gimbal_remote_control，
@@ -70,31 +73,33 @@ shoot_remote_control，
 shoot_keymouse_control，
 shoot_stop，
 }shoot_mode；
-
+'
 其中，如果是遥控器控制模式，则是
+'
 chassis_mode = CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL
 
 gimbal_mode = GIMBAL_REMOTE_CONTROL
 
 shoot_mode = SHOOT_REMOTE_CONTROL/SHOOT_STOP
-
+'
 如果是停止模式，则是
-chassis_mode = CHASSIS_STOP
+'chassis_mode = CHASSIS_STOP
 
 gimabl_mode = GIMBAL_STOP
 
-shoot_mode = SHOOT_STOP
+shoot_mode = SHOOT_STOP'
 
 如果是键盘控制模式，则是
-chassis_mode = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL/CHASSIS_FREE_KEYMOUSE_CONTROL/CHASSIS_SWAY/CHASSIS_STOP
+'chassis_mode = CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL/CHASSIS_FREE_KEYMOUSE_CONTROL/CHASSIS_SWAY/CHASSIS_STOP
 
 gimbal_mode = GIMBAL_KEYMOUSE_CONTROL/GIMBAL_AUTO/GIMBAL_STOP
 
-shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP
+shoot_mode = SHOOT_KEYMOUSE_CONTROL/SHOOT_STOP'
 
 2019/2/16
 代码的整体框架基本上搭建完毕，程序整体流程图也画了一部分，下面就是各个任务的具体实现上了，明天应该能够把底盘的task给完成掉
 回头估计要建一个bsp_can来做can通信的相关参数
+'
 static void chassis_twist_handler(void)
 {
   twist_count++;
@@ -134,6 +139,7 @@ static void chassis_twist_handler(void)
   chassis.vw = -pid_calc(&pid_chassis_angle, gim.sensor.yaw_relative_angle, chassis.position_ref);
   
 }
+'
 ICRA的车的chassis_twist_handler
 
 2019/2/17
@@ -165,6 +171,7 @@ ICRA的车的chassis_twist_handler
 emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
 
 好吧我tm就是个傻逼，我按照ICRA的外设配置进行的初始化，但是一点鸟用都没有，然后我就按照A型板的进行了一下配置，然后稳了
+'
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 3;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
@@ -177,7 +184,9 @@ emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
   hcan1.Init.NART = DISABLE;
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = ENABLE;
+'
 贴一下'正确'的配置和'错误'的配置
+'
   hcan1.Instance = CAN1;
   hcan1.Init.Prescaler = 5;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
@@ -190,6 +199,7 @@ emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
   hcan1.Init.NART = DISABLE;
   hcan1.Init.RFLM = DISABLE;
   hcan1.Init.TXFP = DISABLE;
+'
 既然遥控器的数据也读出来了，电机也能动了，那么接下来就只剩下一件事情了，那就是......今晚写一个能动的底盘出来，嘿嘿嘿
 
 2019/2/19
@@ -207,6 +217,7 @@ emmmm好的吧，那我就看看到底是哪边会使得这个值变化，最惨的是，我没找到
 
 搞定了，初始化的过滤器弄得有点问题，我虽然感觉自己弄得和能动的这版毫无区别，但是最后就是读不出来东西，绝了
 提一下这版能用的
+'
 void Can_Device_Init(CAN_HandleTypeDef* hcan)
 {
   CAN_FilterConfTypeDef canfilter;
@@ -244,9 +255,11 @@ void Can_Device_Init(CAN_HandleTypeDef* hcan)
   HAL_CAN_ConfigFilter(hcan, &canfilter);
   
 }
+'
 
 2019/2/20
 昨天想直接初始化的时候赋值一波pid参数，后来发现不靠谱，因为有这样的一个机制：
+'
 #include <stdio.h>
 
 typedef struct
@@ -288,7 +301,7 @@ int main()
     A C = {1,{2,3}};
     printf("%d",C.d.a);
 }
-
+'
 而这种嵌套就可以了
 
 调了一波底盘，动的和真的一样，不过使用起来依然只能说是游戏体验不是很佳，毕竟pid参数调的比较烂，回头可能会再调调，说到头那么大的静差是从哪里来的就搞得我很懵逼
@@ -331,7 +344,7 @@ extern了一下，上面的bug解决了，然而最大的问题也就是mpu读不到寄存器的问题仍然没解
 简单测试了一下，pitch轴角速度反馈很好看，yaw轴会有-4的偏置，所以手动把偏置给修正掉了，概括一下就是一句话——稳得一匹
 看了一下任务执行时间，imu_task大概比gimbal_task慢了一个时间单位，考虑到1个时间单位挺小的了，所以基本上可以当成是同步更新的，欸嘿嘿
 然后简单拿ICRA车子的例子来说一下云台的控制算法吧，简单来说就是这样——
-
+'
 while(1)
 {
   pid_calc(&pid_yaw, gim.pid.yaw_angle_fdb, gim.pid.yaw_angle_ref);
@@ -359,7 +372,7 @@ while(1)
     //pid_trigger.iout = 0;
   } 
 }
-
+'
 //ICRA这破车代码牛逼之处在于安全性弄得特别特别好，能爆炸的地方都给削掉了
 
 Pitch的控制代码写完了，之后要解决的问题只有两个，一个是如何把计算出来的pid转化成实际给电机的数值，另外一个是用什么方式控制遥控器的期望
