@@ -120,13 +120,13 @@ void Shoot_Keymouse_Handler(void)
 * @brief :  遥控
 * @param :  NONE
 * @retval:  NONE
-* @note  :  NONE
+* @note  :  遥控器模式下，摩擦轮速度被宏定义限定在low，拨轮采用单发的连发
 */
 
 void Shoot_Remote_Handler(void)
 {
-    static uint8_t mode_last = 0;
-    static uint8_t mode_now = 0;
+    static uint8_t mode_last    = 0;
+    static uint8_t mode_now     = 0;
 
     static uint8_t key_up_counter;
     static uint8_t key_down_counter;
@@ -150,8 +150,8 @@ void Shoot_Remote_Handler(void)
                 }
                 else
                 {
-                    Left_Fric_Wheel.pid.output  = SHOOTER_SPD_LOW;
-                    Right_Fric_Wheel.pid.output = -SHOOTER_SPD_LOW;
+                    Left_Fric_Wheel.pid.spd_ref  = SHOOTER_SPD_LOW;
+                    Right_Fric_Wheel.pid.spd_ref = -SHOOTER_SPD_LOW;
                 }
                 
             }break;
@@ -198,17 +198,117 @@ void Shoot_Stop_Handler(void)
 
 void fric_wheel_pid_calc(Motor_t *Motor)
 {
-    ;
+    float error;
+
+    error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+    Motor->pid.sum_spd += error;
+    
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
+
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = error;
+
+    Motor->pid.output = Motor->pid.spd_parament.kp * Motor->pid.error_spd[0] +
+                        Motor->pid.spd_parament.ki * Motor->pid.sum_spd +
+                        Motor->pid.spd_parament.kd * Motor->pid.derror_spd;    
 }
 
 /**
-* @brief :  用来调参
+* @brief :  用来给摩擦轮调参
+* @param :  Motor
+* @retval:  none
+* @note  :  none
+*/
+float fric_kp,fric_ki,fric_kd;
+
+void fric_wheel_pid_parament_fix(Motor_t *Motor)
+{
+    float error;
+
+    error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+
+    Motor->pid.sum_spd += error;
+    
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
+
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = error;
+
+    Motor->pid.output = fric_kp * Motor->pid.error_spd[0] +
+                        fric_ki * Motor->pid.sum_spd +
+                        fric_kd * Motor->pid.derror_spd;    
+}
+
+/**
+* @brief :  计算拨轮pid
+* @param :  Motor
+* @retval:  none
+* @note  :  noen
+*/
+
+void trigger_pid_calc(Motor_t *Motor)
+{
+    float pos_error,spd_error;
+
+    pos_error = Motor->pid.pos_ref - Motor->pid.pos_fdb;
+    Motor->pid.sum_pos += pos_error;
+    Motor->pid.derror_pos = Motor->pid.error_pos[0] - Motor->pid.error_pos[1];
+
+    Motor->pid.error_pos[1] = Motor->pid.error_pos[0];
+    Motor->pid.error_pos[0] = pos_error;
+
+    Motor->pid.spd_ref = Motor->pid.pos_parament.kp * pos_error + 
+                         Motor->pid.pos_parament.ki * Motor->pid.sum_pos +
+                         Motor->pid.pos_parament.kd * Motor->pid.derror_pos;
+
+
+    spd_error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+    Motor->pid.sum_spd += spd_error;
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
+
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = spd_error;
+
+    Motor->pid.output = Motor->pid.spd_parament.kp * spd_error + 
+                        Motor->pid.spd_parament.ki * Motor->pid.sum_spd + 
+                        Motor->pid.spd_parament.kd * Motor->pid.derror_spd;
+}
+
+/**
+* @brief :  拨轮调参
 * @param :  Motor
 * @retval:  none
 * @note  :  none
 */
 
-void fric_wheel_pid_parament_fix(Motor_t *Motor)
+float trigger_pos_kp,trigger_pos_ki,trigger_pos_kd;
+float trigger_spd_kp,trigger_spd_ki,trigger_spd_kd;
+
+void trigger_pid_parament_fix(Motor_t *Motor)
 {
-    ;
+    float pos_error,spd_error;
+
+    pos_error = Motor->pid.pos_ref - Motor->pid.pos_fdb;
+    Motor->pid.sum_pos += pos_error;
+    Motor->pid.derror_pos = Motor->pid.error_pos[0] - Motor->pid.error_pos[1];
+
+    Motor->pid.error_pos[1] = Motor->pid.error_pos[0];
+    Motor->pid.error_pos[0] = pos_error;
+
+    //调参用
+    Motor->pid.spd_ref = trigger_pos_kp * pos_error + 
+                         trigger_pos_ki * Motor->pid.sum_pos +
+                         trigger_pos_kd * Motor->pid.derror_pos;
+
+    spd_error = Motor->pid.spd_ref - Motor->pid.spd_fdb;
+    Motor->pid.sum_spd += spd_error;
+    Motor->pid.derror_spd = Motor->pid.error_spd[0] - Motor->pid.error_spd[1];
+
+    Motor->pid.error_spd[1] = Motor->pid.error_spd[0];
+    Motor->pid.error_spd[0] = spd_error;
+
+    
+    Motor->pid.output = trigger_spd_kp * spd_error + 
+                        trigger_spd_ki * Motor->pid.sum_spd + 
+                        trigger_spd_kd * Motor->pid.derror_spd;
 }
