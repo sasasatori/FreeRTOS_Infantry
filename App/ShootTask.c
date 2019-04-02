@@ -52,33 +52,36 @@ void Shoot_TaskStart(void const * argument)
                 shoot_time_ms = HAL_GetTick() - shoot_time_last;
                 shoot_time_last = HAL_GetTick();
 
-                switch (shooter.ctrl_mode)
+                if(shooter.ctrl_mode == SHOOT_STOP)
                 {
-                    case SHOOT_AUTO:
-                    {
-                        Shoot_Auto_Handler();
-                    }break;
-
-                    case SHOOT_KEYMOUSE_CONTROL:
-                    {
-                        Shoot_Keymouse_Handler();
-                    }break;
-
-                    case SHOOT_REMOTE_CONTROL:
-                    {
-                        Shoot_Remote_Handler();
-                    }break;
-
-                    case SHOOT_STOP:
-                    {
-                        Shoot_Stop_Handler();
-                    }break;
-
-                    default:
-                    {
-                        Error_Handler();
-                    }break;
+                    Shoot_Stop_Handler();
                 }
+                else
+                {
+                    switch (shooter.ctrl_mode)
+                    {
+                        case SHOOT_AUTO:
+                        {
+                            Shoot_Auto_Handler();
+                        }break;
+
+                        case SHOOT_KEYMOUSE_CONTROL:
+                        {
+                            Shoot_Keymouse_Handler();
+                        }break;
+
+                        case SHOOT_REMOTE_CONTROL:
+                        {
+                            Shoot_Remote_Handler();
+                        }break;
+
+                        default:
+                        {
+                            Error_Handler();
+                        }break;
+                    }
+                }
+                
 
                 //Ä¦²ÁÂÖÓë²¦ÂÖpid¼ÆËã
 
@@ -113,7 +116,52 @@ void Shoot_Auto_Handler(void)
 
 void Shoot_Keymouse_Handler(void)
 {
-    ;
+    static uint8_t left_now,left_last;
+    static uint8_t right_now,right_last;
+    static uint8_t left_counter;
+    static uint8_t right_counter;
+
+    left_now = remote_data.mouse.left;
+    right_now = remote_data.mouse.right; 
+
+    if(left_now != left_last)
+    {
+        if(remote_data.mouse.left == PRESS)
+        {
+            left_counter++;
+
+            if(left_counter % 2 == 0)
+            {
+                Trigger.pid.output = 0;
+            }
+            else
+            {
+                Trigger.pid.output = TRIGGER_SPD_LOW;
+            }
+        }
+    }    
+
+    if(right_now != right_last)
+    {
+        if(remote_data.mouse.right == PRESS)
+        {
+            right_counter++;
+
+            if(right_counter % 2 == 0)
+            {
+                Left_Fric_Wheel.pid.output  = 0;
+                Right_Fric_Wheel.pid.output = 0;
+            }
+            else
+            {
+                Left_Fric_Wheel.pid.output  = SHOOTER_SPD_LOW;
+                Right_Fric_Wheel.pid.output = -SHOOTER_SPD_LOW;
+            }
+        }
+    }
+
+    left_last = left_now;
+    right_last = right_now;
 }
 
 /**
@@ -130,8 +178,6 @@ void Shoot_Remote_Handler(void)
 
     static uint8_t key_up_counter;
     static uint8_t key_down_counter;
-
-
 
     mode_now = remote_data.remote.s1;
 
@@ -150,8 +196,8 @@ void Shoot_Remote_Handler(void)
                 }
                 else
                 {
-                    Left_Fric_Wheel.pid.spd_ref  = SHOOTER_SPD_LOW;
-                    Right_Fric_Wheel.pid.spd_ref = -SHOOTER_SPD_LOW;
+                    Left_Fric_Wheel.pid.output  = SHOOTER_SPD_LOW;
+                    Right_Fric_Wheel.pid.output = -SHOOTER_SPD_LOW;
                 }
                 
             }break;

@@ -95,8 +95,16 @@ void Gimbal_Task(void const * argument)
 
 void gimbalref_to_motorref_handler(void)
 {
+    
+    if(gimbal.pitch_angle_ref >=  GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref =  GIMBAL_PITCH_MAX;
+    if(gimbal.pitch_angle_ref <= -GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref = -GIMBAL_PITCH_MAX;
+    
+    if(gimbal.yaw_angle_ref >=  GIMBAL_YAW_MAX) gimbal.yaw_angle_ref =  GIMBAL_YAW_MAX;
+    if(gimbal.yaw_angle_ref <= -GIMBAL_YAW_MAX) gimbal.yaw_angle_ref = -GIMBAL_YAW_MAX;
+
     Gimbal_Motor_Pitch.pid.pos_ref  = - gimbal.pitch_angle_ref;
     Gimbal_Motor_Yaw.pid.pos_ref    = gimbal.yaw_angle_ref;
+    
 }
 
 /**
@@ -109,8 +117,7 @@ void gimbalref_to_motorref_handler(void)
 void Gimbal_Remote_Control_Handler(void)
 {
     gimbal.pitch_angle_ref += remote_data.remote.ch3 * GIMABL_RC_RATIO;
-    if(gimbal.pitch_angle_ref >=  GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref =  GIMBAL_PITCH_MAX;
-    if(gimbal.pitch_angle_ref <= -GIMBAL_PITCH_MAX) gimbal.pitch_angle_ref = -GIMBAL_PITCH_MAX;
+    gimbal.yaw_angle_ref = 0;
 }
 
 /**
