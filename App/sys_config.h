@@ -29,7 +29,9 @@
 #define CHASSIS_RC_MOVE_RATIO   15.0f
 
 //键盘映射到底盘的期望值
-#define CHASSIS_KB_MOVE_RATIO   1.0f
+#define CHASSIS_STR_ACC_STEP    40.0f
+
+#define CHASSIS_KM_ROT_SPD      2000.0f
 
 /*———————————————————————————————云台设置———————————————————————————————*/
 
@@ -47,6 +49,9 @@
 
 //定义yaw轴的角度幅值
 #define GIMBAL_YAW_MAX          40.0f
+
+//定义鼠标到云台的映射值
+#define GIMBAL_MOUSE_RATIO      500.0f
 
 /*———————————————————————————————发射机构设置———————————————————————————————*/
 
@@ -105,6 +110,13 @@ typedef struct
     int16_t Shooter_Cur[2];
     int16_t Trigger_Cur;
 } motor_current_t;
+
+//定义按键以及鼠标的释放与按下
+typedef enum
+{
+    RELEASE = 0,
+    PRESS   = 1,
+} key_state_e;
 
 /*其他*/
 #define PI                      3.142f

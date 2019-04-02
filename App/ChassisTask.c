@@ -23,7 +23,7 @@
 chassis_t chassis;
 
 //冷静的掏出Motor结构体，并一口气定义了四个,甚至还顺手搞了一波pid参数配置
-//最惨的是这波pid参数的效果还挺难看的，我也很绝望
+
 Motor_t Chassis_Motor_1 = {{{5.0f,0.0f,0.0f}}};
 Motor_t Chassis_Motor_2 = {{{5.0f,0.0f,0.0f}}};
 Motor_t Chassis_Motor_3 = {{{5.0f,0.0f,0.0f}}};
@@ -54,35 +54,36 @@ void Chassis_Task(void const * argument)
     //对没错，就是看看有没有正常的定时执行而已
     chassis_time_ms = HAL_GetTick() - chassis_time_last;
     chassis_time_last = HAL_GetTick();
-
-    switch (chassis.chassis_mode)
+    if(chassis.chassis_mode == CHASSIS_STOP)
     {
-        case CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL:
-        {
-            Chassis_Remote_Control_Handler();
-        }break;
-
-        case CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL:
-        case CHASSIS_FREE_KEYMOUSE_CONTROL:
-        {
-            Chassis_Keymouse_Control_Handler();
-        }break;
-
-        case CHASSIS_SWAY:
-        {
-            Chassis_Sway_Handler();
-        }break;
-
-        case CHASSIS_STOP:
-        {
-            Chassis_Stop_Handler();
-        }break;
-    
-        default:
-        {
-            Error_Handler();
-        }break;
+        Chassis_Stop_Handler();
     }
+    else
+    {
+        switch (chassis.chassis_mode)
+        {
+            case CHASSIS_FOLLOW_GIMBAL_REMOTE_CONTROL:
+            {
+                Chassis_Remote_Control_Handler();
+            }break;
+
+            case CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL:
+            {
+                Chassis_Keymouse_Control_Handler();
+            }break;
+
+            case CHASSIS_SWAY:
+            {
+                Chassis_Sway_Handler();
+            }break;
+        
+            default:
+            {
+                Error_Handler();
+            }break;
+        }
+    }
+    
 
     ChassisRef_to_MotorRef_Handler();
 
@@ -106,12 +107,6 @@ void Chassis_Remote_Control_Handler(void)
     //这边严格意义上来说要用和云台角度之间的PID来进行处理，不过我急着写底盘就先不管这么多了
     chassis.vw = remote_data.remote.ch2 * CHASSIS_RC_MOVE_RATIO;
     taskEXIT_CRITICAL();
-    if(chassis.vx >=  CHASSIS_STR_MAX)  chassis.vx =  CHASSIS_STR_MAX;
-    if(chassis.vx <= -CHASSIS_STR_MAX)  chassis.vx = -CHASSIS_STR_MAX;
-    if(chassis.vy >=  CHASSIS_STR_MAX)  chassis.vy =  CHASSIS_STR_MAX;
-    if(chassis.vy <= -CHASSIS_STR_MAX)  chassis.vy = -CHASSIS_STR_MAX;
-    if(chassis.vw >=  CHASSIS_ROT_MAX)  chassis.vw =  CHASSIS_ROT_MAX;
-    if(chassis.vw <= -CHASSIS_ROT_MAX)  chassis.vw = -CHASSIS_ROT_MAX;
 }
 
 /**
@@ -123,20 +118,56 @@ void Chassis_Remote_Control_Handler(void)
 
 void Chassis_Keymouse_Control_Handler(void)
 {
-    taskENTER_CRITICAL();
-    switch (chassis.chassis_mode)
-    {
-        case CHASSIS_FOLLOW_GIMBAL_KEYMOUSE_CONTROL:
-        {
-            ;
-        }break;
+    //这边弄错了，整个逻辑上有问题，本来是想实现云台跟随底盘的，结果给我弄成了底盘跟随云台
+    //回头我把这个垃圾问题解决一下
 
-        case CHASSIS_FREE_KEYMOUSE_CONTROL:
+    if(remote_data.keyboard.bit.W | remote_data.keyboard.bit.S)
+    {
+        if(remote_data.keyboard.bit.W == PRESS)
         {
-            ;
+            chassis.vx += CHASSIS_STR_ACC_STEP;
+        }
+        else if(remote_data.keyboard.bit.S == PRESS)
+        {
+            chassis.vx -= CHASSIS_STR_ACC_STEP;
         }
     }
-    taskEXIT_CRITICAL();
+    else
+    {
+        chassis.vx = 0;
+    }
+
+    if(remote_data.keyboard.bit.A | remote_data.keyboard.bit.D)
+    {
+        if(remote_data.keyboard.bit.A == PRESS)
+        {
+            chassis.vy -= CHASSIS_STR_ACC_STEP;
+        }
+        else if(remote_data.keyboard.bit.D == PRESS)
+        {
+            chassis.vy += CHASSIS_STR_ACC_STEP;
+        }
+    }
+    else
+    {
+        chassis.vy = 0;
+    }
+
+    if(remote_data.keyboard.bit.Q | remote_data.keyboard.bit.E)
+    {
+        if(remote_data.keyboard.bit.Q == PRESS)
+        {
+            chassis.vw = -CHASSIS_KM_ROT_SPD;
+        }
+        else if(remote_data.keyboard.bit.E == PRESS)
+        {
+            chassis.vw = CHASSIS_KM_ROT_SPD;
+        }
+    }
+    else
+    {
+        chassis.vw = 0;
+    }
 }
 
 //晃tm的
@@ -148,10 +179,10 @@ void Chassis_Sway_Handler(void)
 //THE WORLD！時よ！止まれ！
 void Chassis_Stop_Handler(void)
 {
-    taskENTER_CRITICAL();
     //反正停就对了
-    chassis.vx = 0;
+    taskENTER_CRITICAL();
     chassis.vy = 0;
+    chassis.vx = 0;
     chassis.vw = 0;
     taskEXIT_CRITICAL();
 }
@@ -159,10 +190,19 @@ void Chassis_Stop_Handler(void)
 void ChassisRef_to_MotorRef_Handler(void)
 {
     taskENTER_CRITICAL();
+    
+    if(chassis.vx >=  CHASSIS_STR_MAX)  chassis.vx =  CHASSIS_STR_MAX;
+    if(chassis.vx <= -CHASSIS_STR_MAX)  chassis.vx = -CHASSIS_STR_MAX;
+    if(chassis.vy >=  CHASSIS_STR_MAX)  chassis.vy =  CHASSIS_STR_MAX;
+    if(chassis.vy <= -CHASSIS_STR_MAX)  chassis.vy = -CHASSIS_STR_MAX;
+    if(chassis.vw >=  CHASSIS_ROT_MAX)  chassis.vw =  CHASSIS_ROT_MAX;
+    if(chassis.vw <= -CHASSIS_ROT_MAX)  chassis.vw = -CHASSIS_ROT_MAX;
+
     Chassis_Motor_1.pid.spd_ref =   chassis.vx + chassis.vy + chassis.vw;
     Chassis_Motor_2.pid.spd_ref = - chassis.vx + chassis.vy + chassis.vw;
     Chassis_Motor_3.pid.spd_ref = - chassis.vx - chassis.vy + chassis.vw;
     Chassis_Motor_4.pid.spd_ref =   chassis.vx - chassis.vy + chassis.vw;
+    
     taskEXIT_CRITICAL();
 }
 

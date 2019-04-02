@@ -95,7 +95,8 @@ void Gimbal_Task(void const * argument)
 
 void gimbalref_to_motorref_handler(void)
 {
-    Gimbal_Motor_Pitch.pid.pos_ref = - gimbal.pitch_angle_ref;
+    Gimbal_Motor_Pitch.pid.pos_ref  = - gimbal.pitch_angle_ref;
+    Gimbal_Motor_Yaw.pid.pos_ref    = gimbal.yaw_angle_ref;
 }
 
 /**
@@ -121,7 +122,8 @@ void Gimbal_Remote_Control_Handler(void)
 
 void Gimbal_Keymouse_Control_Handler(void)
 {
-    ;
+    gimbal.pitch_angle_ref  += - remote_data.mouse.y / GIMBAL_MOUSE_RATIO;
+    gimbal.yaw_angle_ref    += - remote_data.mouse.x / GIMBAL_MOUSE_RATIO;
 }
 
 /**
