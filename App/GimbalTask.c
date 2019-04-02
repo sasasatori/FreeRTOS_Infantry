@@ -44,9 +44,7 @@ void Gimbal_Task(void const * argument)
     gimbal_time_ms = HAL_GetTick() - gimbal_time_last;
     gimbal_time_last = HAL_GetTick();
 
-    if((gimbal.gimbal_mode != GIMBAL_REMOTE_CONTROL) &&
-       (gimbal.gimbal_mode != GIMBAL_KEYMOUSE_CONTROL) &&
-       (gimbal.gimbal_mode != GIMBAL_AUTO))
+    if(gimbal.gimbal_mode == GIMBAL_STOP)
     {
         Gimbal_Stop_Handler();
     }
@@ -75,11 +73,11 @@ void Gimbal_Task(void const * argument)
             }break;
         }
         
-        gimbalref_to_motorref_handler();
-
-        gimbal_pid_calc(&Gimbal_Motor_Yaw);
-        gimbal_pid_calc(&Gimbal_Motor_Pitch);
     }
+    gimbalref_to_motorref_handler();
+
+    gimbal_pid_calc(&Gimbal_Motor_Yaw);
+    gimbal_pid_calc(&Gimbal_Motor_Pitch);
     
     osSignalSet(Shoot_TaskHandle,SHOOT_SEND_SIGNAL);
 }
